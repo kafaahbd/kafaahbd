@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Kafa'ah Islamic and Multiproject Company</title>
+    <script>
+      // Single Page Apps for GitHub Pages
+      // MIT License
+      // https://github.com/rafgraph/spa-github-pages
+      const pathSegmentsToKeep = 1; // Change this to 1 for username.github.io/reponame
+
+      const l = window.location;
+      const repoName = '/kafaahbd'; // Replace with your repository name
+      
+      l.replace(
+        l.protocol + '//' + l.hostname + (l.port ? ':' + l.port : '') +
+        repoName + '/?/' +
+        l.pathname.slice(1).split('/').slice(pathSegmentsToKeep).join('/').replace(/&/g, '~and~') +
+        (l.search ? '&' + l.search.slice(1).replace(/&/g, '~and~') : '') +
+        (l.hash)
+      );
+    </script>
+  </head>
+  <body>
+    Redirecting...
+  </body>
+</html>
