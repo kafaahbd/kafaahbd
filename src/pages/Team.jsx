@@ -8,7 +8,7 @@ const Team = () => {
   const members = [
     { name: 'Tanvir Ishrak', role: lang === 'bn' ? 'প্রধান স্থপতি' : 'Lead Architect' },
     { name: 'Team Member 2', role: lang === 'bn' ? 'সিনিয়র ডেভেলপার' : 'Senior Developer' },
-    { name: 'Team Member 3', role: lang === 'bn' ? 'প্রকল্প ব্যবস্থাপক' : 'Project Manager' },
+    { name: 'MD Rifat Al Mahmud', role: lang === 'bn' ? 'প্রকল্প ব্যবস্থাপক' : 'Play boy' },
     { name: 'Team Member 4', role: lang === 'bn' ? 'ইসলামিক বিষয় বিশেষজ্ঞ' : 'Islamic Content Specialist' },
     { name: 'Marjuk Mahmud', role: lang === 'bn' ? 'পরিকল্পনা প্রসূতকারী' : 'Idea Generator' },
   ]

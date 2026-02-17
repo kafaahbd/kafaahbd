@@ -10,60 +10,53 @@ const SSCCorner = () => {
       name: t('study.common'),
       icon: '📚',
       subjects: [
-        { name: t('study.subjects.bangla'), path: '#' },
-        { name: t('study.subjects.english'), path: '#' },
-        { name: t('study.subjects.ict'), path: '#' },
-        { name: t('study.subjects.math'), path: '#' },
-        { name: t('study.subjects.islam'), path: '#' },
+        { name: t('study.subjects.bangla'), path: '/study/exam?group=ssc&subject=bangla' },
+        { name: t('study.subjects.english'), path: '/study/exam?group=ssc&subject=english' },
+        { name: t('study.subjects.ict'), path: '/study/exam?group=ssc&subject=ict' },
+        { name: t('study.subjects.math'), path: '/study/exam?group=ssc&subject=math' },
+        { name: t('study.subjects.islam'), path: '/study/exam?group=ssc&subject=islam' },
       ]
     },
     {
       name: t('study.science'),
       icon: '🔬',
       subjects: [
-        { name: t('study.subjects.physics'), path: '#' },
-        { name: t('study.subjects.chemistry'), path: '#' },
-        { name: t('study.subjects.biology'), path: '#' },
-        { name: t('study.subjects.bgs'), path: '#' },
+        { name: t('study.subjects.physics'), path: '/study/exam?group=ssc&subject=physics' },
+        { name: t('study.subjects.chemistry'), path: '/study/exam?group=ssc&subject=chemistry' },
+        { name: t('study.subjects.biology'), path: '/study/exam?group=ssc&subject=biology' },
+        { name: t('study.subjects.bgs'), path: '/study/exam?group=ssc&subject=bgs' },
       ]
     },
     {
       name: t('study.arts'),
       icon: '🎨',
       subjects: [
-        { name: t('study.subjects.history'), path: '#' },
-        { name: t('study.subjects.civics'), path: '#' },
-        { name: t('study.subjects.geography'), path: '#' },
-        { name: t('study.subjects.bgs'), path: '#' },
+        { name: t('study.subjects.history'), path: '/study/exam?group=ssc&subject=history' },
+        { name: t('study.subjects.civics'), path: '/study/exam?group=ssc&subject=civics' },
+        { name: t('study.subjects.geography'), path: '/study/exam?group=ssc&subject=geography' },
+        { name: t('study.subjects.bgs'), path: '/study/exam?group=ssc&subject=bgs' },
       ]
     },
     {
       name: t('study.commerce'),
       icon: '💼',
       subjects: [
-        { name: t('study.subjects.accounting'), path: '#' },
-        { name: t('study.subjects.business'), path: '#' },
-        { name: t('study.subjects.finance'), path: '#' },
-        { name: t('study.subjects.bgs'), path: '#' },
+        { name: t('study.subjects.accounting'), path: '/study/exam?group=ssc&subject=accounting' },
+        { name: t('study.subjects.business'), path: '/study/exam?group=ssc&subject=business' },
+        { name: t('study.subjects.finance'), path: '/study/exam?group=ssc&subject=finance' },
+        { name: t('study.subjects.bgs'), path: '/study/exam?group=ssc&subject=bgs' },
       ]
     },
     {
       name: t('study.optional'),
       icon: '⭐',
       subjects: [
-        { name: t('study.subjects.highermath'), path: '#' },
-        { name: t('study.subjects.agriculture'), path: '#' },
-        { name: t('study.subjects.health'), path: '#' },
+        { name: t('study.subjects.highermath'), path: '/study/exam?group=ssc&subject=highermath' },
+        { name: t('study.subjects.agriculture'), path: '/study/exam?group=ssc&subject=agriculture' },
+        { name: t('study.subjects.health'), path: '/study/exam?group=ssc&subject=health' },
       ]
     }
   ]
-
-  const handleSubjectClick = (path, e) => {
-    e.preventDefault()
-    // This will open in a new tab/window
-    window.open('#', '_blank')
-    // You can replace '#' with actual links later
-  }
 
   return (
     <div className="min-h-screen bg-geometric-light dark:bg-geometric-dark py-16 px-4">
@@ -101,16 +94,17 @@ const SSCCorner = () => {
                 {/* Subjects List */}
                 <div className="p-4">
                   {group.subjects.map((subject, subIdx) => (
-                    <button
+                    <Link
                       key={subIdx}
-                      onClick={(e) => handleSubjectClick(subject.path, e)}
+                      to={subject.path}
+                      target="_self"
                       className="w-full text-left px-4 py-3 hover:bg-green-50 dark:hover:bg-gray-700 rounded-lg transition flex items-center justify-between group"
                     >
                       <span className="text-gray-700 dark:text-gray-300 group-hover:text-green-600 dark:group-hover:text-green-400">
                         {subject.name}
                       </span>
-                      <i className="fas fa-external-link-alt text-gray-400 group-hover:text-green-600 dark:group-hover:text-green-400 text-sm"></i>
-                    </button>
+                      <i className="fas fa-arrow-right text-gray-400 group-hover:text-green-600 dark:group-hover:text-green-400 text-sm"></i>
+                    </Link>
                   ))}
                 </div>
               </div>

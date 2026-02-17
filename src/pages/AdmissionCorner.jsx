@@ -11,11 +11,11 @@ const AdmissionCorner = () => {
       icon: '⚙️',
       color: 'bg-blue-600',
       subjects: [
-        { name: t('study.admission.physics'), path: '#' },
-        { name: t('study.admission.chemistry'), path: '#' },
-        { name: t('study.admission.math'), path: '#' },
-        { name: t('study.admission.highermath'), path: '#' },
-        { name: t('study.admission.english'), path: '#' },
+        { name: t('study.admission.physics'), path: '/study/exam?group=admission&subject=engineering-physics' },
+        { name: t('study.admission.chemistry'), path: '/study/exam?group=admission&subject=engineering-chemistry' },
+        { name: t('study.admission.math'), path: '/study/exam?group=admission&subject=engineering-math' },
+        { name: t('study.admission.highermath'), path: '/study/exam?group=admission&subject=engineering-highermath' },
+        { name: t('study.admission.english'), path: '/study/exam?group=admission&subject=engineering-english' },
       ]
     },
     {
@@ -23,11 +23,11 @@ const AdmissionCorner = () => {
       icon: '🏥',
       color: 'bg-red-600',
       subjects: [
-        { name: t('study.admission.physics'), path: '#' },
-        { name: t('study.admission.chemistry'), path: '#' },
-        { name: t('study.admission.biology'), path: '#' },
-        { name: t('study.admission.english'), path: '#' },
-        { name: t('study.admission.gk'), path: '#' },
+        { name: t('study.admission.physics'), path: '/study/exam?group=admission&subject=medical-physics' },
+        { name: t('study.admission.chemistry'), path: '/study/exam?group=admission&subject=medical-chemistry' },
+        { name: t('study.admission.biology'), path: '/study/exam?group=admission&subject=medical-biology' },
+        { name: t('study.admission.english'), path: '/study/exam?group=admission&subject=medical-english' },
+        { name: t('study.admission.gk'), path: '/study/exam?group=admission&subject=medical-gk' },
       ]
     },
     {
@@ -35,19 +35,14 @@ const AdmissionCorner = () => {
       icon: '🏛️',
       color: 'bg-purple-600',
       subjects: [
-        { name: t('study.admission.bangla'), path: '#' },
-        { name: t('study.admission.english'), path: '#' },
-        { name: t('study.admission.gk'), path: '#' },
-        { name: t('study.hsc.subjects.history'), path: '#' },
-        { name: t('study.hsc.subjects.economics'), path: '#' },
+        { name: t('study.admission.bangla'), path: '/study/exam?group=admission&subject=university-bangla' },
+        { name: t('study.admission.english'), path: '/study/exam?group=admission&subject=university-english' },
+        { name: t('study.admission.gk'), path: '/study/exam?group=admission&subject=university-gk' },
+        { name: t('study.hsc.subjects.history'), path: '/study/exam?group=admission&subject=university-history' },
+        { name: t('study.hsc.subjects.economics'), path: '/study/exam?group=admission&subject=university-economics' },
       ]
     }
   ]
-
-  const handleSubjectClick = (path, e) => {
-    e.preventDefault()
-    window.open('#', '_blank')
-  }
 
   return (
     <div className="min-h-screen bg-geometric-light dark:bg-geometric-dark py-16 px-4">
@@ -90,16 +85,17 @@ const AdmissionCorner = () => {
                      t('study.admission.university.subjects')}
                   </h3>
                   {category.subjects.map((subject, subIdx) => (
-                    <button
+                    <Link
                       key={subIdx}
-                      onClick={(e) => handleSubjectClick(subject.path, e)}
+                      to={subject.path}
+                      target="_self"
                       className="w-full text-left px-4 py-3 hover:bg-green-50 dark:hover:bg-gray-700 rounded-lg transition flex items-center justify-between group border-b border-gray-100 dark:border-gray-700 last:border-0"
                     >
                       <span className="text-gray-700 dark:text-gray-300 group-hover:text-green-600 dark:group-hover:text-green-400">
                         {subject.name}
                       </span>
-                      <i className="fas fa-external-link-alt text-gray-400 group-hover:text-green-600 dark:group-hover:text-green-400 text-sm"></i>
-                    </button>
+                      <i className="fas fa-arrow-right text-gray-400 group-hover:text-green-600 dark:group-hover:text-green-400 text-sm"></i>
+                    </Link>
                   ))}
                 </div>
 

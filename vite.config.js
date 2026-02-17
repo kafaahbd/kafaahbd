@@ -3,5 +3,12 @@ import react from '@vitejs/plugin-react'
 
 export default defineConfig({
   plugins: [react()],
-  base: '/kafaahbd/', // এই লাইনটি আগে ছিল, রাখুন
+  base: '/kafaahbd/',
+  build: {
+    rollupOptions: {
+      output: {
+        assetFileNames: 'assets/[name].[hash].[ext]' 
+      }
+    }
+  }
 })

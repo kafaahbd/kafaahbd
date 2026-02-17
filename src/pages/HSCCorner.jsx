@@ -10,49 +10,44 @@ const HSCCorner = () => {
       name: t('study.hsc.common'),
       icon: '📚',
       subjects: [
-        { name: t('study.hsc.subjects.bangla'), path: '#' },
-        { name: t('study.hsc.subjects.english'), path: 'https://kafaahbd.github.io/Eng2/' },
-        { name: t('study.hsc.subjects.ict'), path: '#' },
+        { name: t('study.hsc.subjects.bangla'), path: '/study/exam?group=hsc&subject=bangla' },
+        { name: t('study.hsc.subjects.english'), path: '/study/exam?group=hsc&subject=english' },
+        { name: t('study.hsc.subjects.ict'), path: '/study/exam?group=hsc&subject=ict' },
       ]
     },
     {
       name: t('study.hsc.science'),
       icon: '🔬',
       subjects: [
-        { name: t('study.hsc.subjects.physics'), path: '#' },
-        { name: t('study.hsc.subjects.chemistry'), path: '#' },
-        { name: t('study.hsc.subjects.biology'), path: '#' },
-        { name: t('study.hsc.subjects.highermath'), path: '#' },
+        { name: t('study.hsc.subjects.physics'), path: '/study/exam?group=hsc&subject=physics' },
+        { name: t('study.hsc.subjects.chemistry'), path: '/study/exam?group=hsc&subject=chemistry' },
+        { name: t('study.hsc.subjects.biology'), path: '/study/exam?group=hsc&subject=biology' },
+        { name: t('study.hsc.subjects.highermath'), path: '/study/exam?group=hsc&subject=highermath' },
       ]
     },
     {
       name: t('study.hsc.arts'),
       icon: '🎨',
       subjects: [
-        { name: t('study.hsc.subjects.history'), path: '#' },
-        { name: t('study.hsc.subjects.islamic'), path: '#' },
-        { name: t('study.hsc.subjects.civics'), path: '#' },
-        { name: t('study.hsc.subjects.economics'), path: '#' },
-        { name: t('study.hsc.subjects.geography'), path: '#' },
+        { name: t('study.hsc.subjects.history'), path: '/study/exam?group=hsc&subject=history' },
+        { name: t('study.hsc.subjects.islamic'), path: '/study/exam?group=hsc&subject=islamic' },
+        { name: t('study.hsc.subjects.civics'), path: '/study/exam?group=hsc&subject=civics' },
+        { name: t('study.hsc.subjects.economics'), path: '/study/exam?group=hsc&subject=economics' },
+        { name: t('study.hsc.subjects.geography'), path: '/study/exam?group=hsc&subject=geography' },
       ]
     },
     {
       name: t('study.hsc.commerce'),
       icon: '💼',
       subjects: [
-        { name: t('study.hsc.subjects.accounting'), path: '#' },
-        { name: t('study.hsc.subjects.management'), path: '#' },
-        { name: t('study.hsc.subjects.finance'), path: '#' },
-        { name: t('study.hsc.subjects.business'), path: '#' },
-        { name: t('study.hsc.subjects.marketing'), path: '#' },
+        { name: t('study.hsc.subjects.accounting'), path: '/study/exam?group=hsc&subject=accounting' },
+        { name: t('study.hsc.subjects.management'), path: '/study/exam?group=hsc&subject=management' },
+        { name: t('study.hsc.subjects.finance'), path: '/study/exam?group=hsc&subject=finance' },
+        { name: t('study.hsc.subjects.business'), path: '/study/exam?group=hsc&subject=business' },
+        { name: t('study.hsc.subjects.marketing'), path: '/study/exam?group=hsc&subject=marketing' },
       ]
     }
   ]
-
-  const handleSubjectClick = (path, e) => {
-    e.preventDefault()
-    window.open(path, '_blank')
-  }
 
   return (
     <div className="min-h-screen bg-geometric-light dark:bg-geometric-dark py-16 px-4">
@@ -90,16 +85,17 @@ const HSCCorner = () => {
                 {/* Subjects List */}
                 <div className="p-4">
                   {group.subjects.map((subject, subIdx) => (
-                    <button
+                    <Link
                       key={subIdx}
-                      onClick={(e) => handleSubjectClick(subject.path, e)}
+                      to={subject.path}
+                      target="_self"
                       className="w-full text-left px-4 py-3 hover:bg-green-50 dark:hover:bg-gray-700 rounded-lg transition flex items-center justify-between group border-b border-gray-100 dark:border-gray-700 last:border-0"
                     >
                       <span className="text-gray-700 dark:text-gray-300 group-hover:text-green-600 dark:group-hover:text-green-400">
                         {subject.name}
                       </span>
-                      <i className="fas fa-external-link-alt text-gray-400 group-hover:text-green-600 dark:group-hover:text-green-400 text-sm"></i>
-                    </button>
+                      <i className="fas fa-arrow-right text-gray-400 group-hover:text-green-600 dark:group-hover:text-green-400 text-sm"></i>
+                    </Link>
                   ))}
                 </div>
               </div>
