@@ -23,8 +23,8 @@ export const subjectChapters = {
     ],
     // Science
     physics: [
-      { name: 'পদার্থ ১ম পত্র অধ্যায় ৩', url: 'https://raw.githubusercontent.com/kafaahbd/nothing/refs/heads/main/hsc_physcis_chapter_3_1st_paper.json' },
-      { name: 'পদার্থ ১ম পত্র অধ্যায় ৪', url: 'https://raw.githubusercontent.com/kafaahbd/nothing/refs/heads/main/hsc_physcis_chapter_4_1st_paper.json' },
+      { name: 'পদার্থ ১ম পত্র অধ্যায় ৩', url: '#' },
+      { name: 'পদার্থ ১ম পত্র অধ্যায় ৪', url: '#' },
     ],
     chemistry: [
       { name: 'রসায়ন ১ম পত্র অধ্যায় ১', url: '#' },
@@ -86,6 +86,7 @@ export const subjectChapters = {
     ],
     chemistry: [
       { name: 'রসায়ন ১ম পত্র অধ্যায় ১', url: '#' },
+      { name: 'রসায়ন ১ম পত্র অধ্যায় ২', url: 'https://raw.githubusercontent.com/kafaahbd/nothing/refs/heads/main/hsc_chemistry_chapter_2_1st_paper.json' },
     ],
     biology: [
       { name: 'জীববিজ্ঞান ১ম পত্র অধ্যায় ১', url: '#' },

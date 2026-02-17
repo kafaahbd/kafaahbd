@@ -48,7 +48,7 @@ const Contact = () => {
 					<div className="bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-lg">
 						<div className="space-y-6">
 							<div className="flex items-center space-x-4">
-								<i className="fas fa-envelope text-green-600 dark:text-green-400 text-2xl"></i>
+								<i className="fas fa-envelope text-green-600 dark:text-blue-400 text-2xl"></i>
 								<div>
 									<h3 className="text-lg font-semibold text-gray-900 dark:text-white">
 										Email
@@ -59,7 +59,7 @@ const Contact = () => {
 								</div>
 							</div>
 							<div className="flex items-center space-x-4">
-								<i className="fas fa-map-marker-alt text-green-600 dark:text-green-400 text-2xl"></i>
+								<i className="fas fa-map-marker-alt text-green-600 dark:text-blue-400 text-2xl"></i>
 								<div>
 									<h3 className="text-lg font-semibold text-gray-900 dark:text-white">
 										{lang === "bn" ? "ঠিকানা" : "Address"}
@@ -68,7 +68,7 @@ const Contact = () => {
 								</div>
 							</div>
 							<div className="flex items-center space-x-4">
-								<i className="fas fa-phone text-green-600 dark:text-green-400 text-2xl"></i>
+								<i className="fas fa-phone text-green-600 dark:text-blue-400 text-2xl"></i>
 								<div>
 									<h3 className="text-lg font-semibold text-gray-900 dark:text-white">
 										Phone

@@ -75,14 +75,14 @@ const Study = () => {
 								onClick={(e) => handleClick(course.path, e)}
 								className="block bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-lg hover:shadow-xl transition transform hover:-translate-y-1 text-center group"
 							>
-								<div className="w-20 h-20 mx-auto bg-green-100 dark:bg-green-900 rounded-full flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+								<div className="w-20 h-20 mx-auto bg-green-100 dark:bg-blue-600/70 rounded-full flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
 									<span className="text-3xl">{course.icon}</span>
 								</div>
 								<h2 className="text-xl font-semibold text-gray-800 dark:text-gray-200">
 									{t(`study.${course.key}`)}
 								</h2>
 								{course.path === "#" && (
-									<p className="text-sm text-green-600 dark:text-green-400 mt-2">
+									<p className="text-sm text-green-600 dark:text-blue-400 mt-2">
 										{t("study.coming.soon")}
 									</p>
 								)}

@@ -79,7 +79,7 @@ const Home = () => {
 							<p className="text-xl text-gray-600 dark:text-gray-300 mb-8">
 								{t("home.mission.text")}
 							</p>
-							<p className="text-xl text-gray-100 dark:text-gray-100 mb-8">
+							<p className="text-xl text-gray-800 dark:text-gray-100 mb-8">
 								{t("home.slogan")}
 							</p>
 						</ScrollAnimation>
@@ -90,7 +90,7 @@ const Home = () => {
 				<section className="py-20 px-4">
 					<div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-12">
 						<ScrollAnimation className="bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-lg">
-							<h2 className="text-3xl font-bold mb-4 text-green-700 dark:text-green-400">
+							<h2 className="text-3xl font-bold mb-4 text-green-700 dark:text-blue-400">
 								{t("home.mission.title")}
 							</h2>
 							<p className="text-gray-700 dark:text-gray-300">
@@ -98,7 +98,7 @@ const Home = () => {
 							</p>
 						</ScrollAnimation>
 						<ScrollAnimation className="bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-lg">
-							<h2 className="text-3xl font-bold mb-4 text-green-700 dark:text-green-400">
+							<h2 className="text-3xl font-bold mb-4 text-green-700 dark:text-blue-400">
 								{t("home.vision.title")}
 							</h2>
 							<p className="text-gray-700 dark:text-gray-300">
@@ -137,7 +137,7 @@ const Home = () => {
 						<div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
 							{whyPoints.map((point, idx) => (
 								<ScrollAnimation key={idx}>
-									<div className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-md border-l-4 border-green-500">
+									<div className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-md border-l-4 border-green-500 dark:border-blue-400">
 										<p className="text-gray-800 dark:text-gray-200 font-medium">
 											{point}
 										</p>
@@ -149,7 +149,7 @@ const Home = () => {
 				</section>
 
 				{/* Call to Action */}
-				<section className="py-20 px-4 bg-green-600 dark:bg-green-700">
+				<section className="py-20 px-4 bg-green-600 dark:bg-blue-900">
 					<div className="max-w-4xl mx-auto text-center">
 						<h2 className="text-4xl font-bold text-white mb-6">
 							{t("home.cta.title")}
@@ -157,7 +157,7 @@ const Home = () => {
 						<Link
 							to="https://docs.google.com/forms/d/e/1FAIpQLScM3Usiy57D08kuVwDl__6vaR6YjRTCrIvGoCFH_U5wwF8kKw/viewform"
 							target="_blank"
-							className="inline-block bg-white text-green-600 px-8 py-4 rounded-lg text-xl font-semibold hover:bg-gray-100 transition"
+							className="inline-block bg-white text-green-600 dark:text-blue-400 px-8 py-4 rounded-lg text-xl font-semibold hover:bg-gray-300 transition"
 						>
 							{t("home.cta.button")}
 						</Link>

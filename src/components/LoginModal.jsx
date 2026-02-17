@@ -38,7 +38,7 @@ const LoginModal = ({ isOpen, onClose }) => {
             <input 
               type="email" 
               required
-              className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md dark:bg-gray-700 dark:text-white focus:outline-none focus:ring-2 focus:ring-green-500"
+              className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md dark:bg-gray-700 dark:text-white focus:outline-none focus:ring-2 focus:ring-green-500 dark:focus:ring-blue-500"
             />
           </div>
           
@@ -49,13 +49,13 @@ const LoginModal = ({ isOpen, onClose }) => {
             <input 
               type="password" 
               required
-              className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md dark:bg-gray-700 dark:text-white focus:outline-none focus:ring-2 focus:ring-green-500"
+              className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md dark:bg-gray-700 dark:text-white focus:outline-none focus:ring-2 focus:ring-green-500 dark:focus:ring-blue-500"
             />
           </div>
           
           <button 
             type="submit" 
-            className="w-full bg-green-600 text-white py-2 rounded-md hover:bg-green-700 transition font-medium"
+            className="w-full bg-green-600 dark:bg-blue-600 text-white py-2 rounded-md hover:bg-green-700 dark:hover:bg-blue-700 transition font-medium"
           >
             {lang === 'bn' ? 'লগইন করুন' : t('nav.login')}
           </button>
@@ -63,8 +63,8 @@ const LoginModal = ({ isOpen, onClose }) => {
 
         {/* Success/Info Message */}
         {showMessage && (
-          <div className="mt-4 p-3 bg-green-100 dark:bg-green-900/30 border border-green-500 rounded-md">
-            <p className="text-green-700 dark:text-green-400 text-center font-medium">
+          <div className="mt-4 p-3 bg-green-100 dark:bg-blue-900/30 border border-green-500 dark:border-blue-500 rounded-md">
+            <p className="text-green-700 dark:text-blue-400 text-center font-medium">
               <i className="fas fa-info-circle mr-2"></i>
               {lang === 'bn' 
                 ? 'এই ফিচার খুব শীঘ্রই আসছে ইনশাআল্লাহ!' 

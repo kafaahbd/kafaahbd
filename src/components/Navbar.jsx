@@ -51,7 +51,7 @@ const Navbar = () => {
                     href={link.path}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-gray-700 dark:text-gray-300 hover:text-green-600 dark:hover:text-green-400 transition"
+                    className="text-gray-700 dark:text-gray-300 hover:text-green-600 dark:hover:text-blue-400 transition"
                   >
                     {link.name}
                   </a>
@@ -59,8 +59,8 @@ const Navbar = () => {
                   <Link
                     key={link.name}
                     to={link.path}
-                    className={`text-gray-700 dark:text-gray-300 hover:text-green-600 dark:hover:text-green-400 transition ${
-                      location.pathname === link.path ? 'text-green-600 dark:text-green-400 font-semibold' : ''
+                    className={`text-gray-700 dark:text-gray-300 hover:text-green-600 dark:hover:text-blue-400 transition ${
+                      location.pathname === link.path ? 'text-green-600 dark:text-blue-400 font-semibold' : ''
                     }`}
                   >
                     {link.name}
@@ -75,7 +75,7 @@ const Navbar = () => {
               <ThemeToggle />
               <button
                 onClick={() => setShowLogin(true)}
-                className="px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition"
+                className="px-4 py-2 bg-green-600 dark:bg-blue-600 text-white rounded-lg hover:bg-green-700 dark:hover:bg-blue-700 transition"
               >
                 {t('nav.login')}
               </button>
@@ -83,7 +83,7 @@ const Navbar = () => {
 
             {/* Mobile menu button */}
             <div className="md:hidden flex items-center">
-              <button onClick={() => setIsOpen(!isOpen)} className="text-gray-700 dark:text-gray-300">
+              <button onClick={() => setIsOpen(!isOpen)} className="text-gray-700  dark:text-gray-300">
                 <i className={`fas ${isOpen ? 'fa-times' : 'fa-bars'} text-2xl`}></i>
               </button>
             </div>
@@ -99,7 +99,7 @@ const Navbar = () => {
                     href={link.path}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="block py-2 text-gray-700 dark:text-gray-300 hover:text-green-600"
+                    className="block py-2 text-gray-700 dark:text-gray-300 hover:text-green-600 dark:hover:text-blue-400"
                     onClick={() => setIsOpen(false)}
                   >
                     {link.name}
@@ -108,7 +108,7 @@ const Navbar = () => {
                   <Link
                     key={link.name}
                     to={link.path}
-                    className="block py-2 text-gray-700 dark:text-gray-300 hover:text-green-600"
+                    className="block py-2 text-gray-700 dark:text-gray-300 dark:hover:text-blue-400 hover:text-green-600 transition"
                     onClick={() => setIsOpen(false)}
                   >
                     {link.name}

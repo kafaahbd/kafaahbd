@@ -180,7 +180,7 @@ const ExamCenter = () => {
               ? 'এই সাবজেক্টের জন্য এখনো কোনো অধ্যায় সংযুক্ত করা হয়নি।' 
               : 'No chapters have been added for this subject yet.'}
           </p>
-          <button onClick={handleBack} className="bg-green-600 text-white px-6 py-2 rounded-lg">
+          <button onClick={handleBack} className="bg-green-600 dark:bg-blue-600 text-white px-6 py-2 rounded-lg">
             {lang === 'bn' ? 'স্টাডি কর্নারে ফিরে যান' : 'Back to Study Corner'}
           </button>
         </div>
@@ -206,7 +206,7 @@ const ExamCenter = () => {
         <div className="min-h-screen bg-geometric-light dark:bg-geometric-dark py-8 px-4">
           {/* হেডার */}
           <div className="max-w-4xl mx-auto flex items-center justify-between mb-8">
-            <button onClick={handleBack} className="text-green-600 hover:underline">
+            <button onClick={handleBack} className="text-green-600 dark:text-blue-400 hover:underline">
               <i className="fas fa-arrow-left mr-2"></i>
               {lang === 'bn' ? 'পেছনে' : 'Back'}
             </button>
@@ -228,7 +228,7 @@ const ExamCenter = () => {
               </h2>
               <div className="grid md:grid-cols-2 gap-3">
                 {chaptersForSubject.map((ch, index) => (
-                  <label key={index} className="flex items-center space-x-3 p-3 border rounded-lg hover:bg-green-50 dark:hover:bg-gray-700">
+                  <label key={index} className="flex items-center space-x-3 p-3 border rounded-lg hover:bg-green-50  dark:hover:bg-gray-700">
                     <input
                       type="checkbox"
                       value={ch.name}
@@ -240,7 +240,7 @@ const ExamCenter = () => {
                           setSelectedChapters(selectedChapters.filter(n => n !== ch.name));
                         }
                       }}
-                      className="w-4 h-4 text-green-600"
+                      className="w-4 h-4 text-green-600 dark:text-blue-600"
                       disabled={ch.url === '#'}
                     />
                     <span className={`text-gray-700 dark:text-gray-300 ${ch.url === '#' ? 'opacity-50' : ''}`}>
@@ -265,7 +265,7 @@ const ExamCenter = () => {
                       value={num}
                       checked={questionCount === num}
                       onChange={() => setQuestionCount(num)}
-                      className="w-4 h-4 text-green-600"
+                      className="w-4 h-4 text-green-600 dark:text-blue-600"
                     />
                     <span className="text-gray-700 dark:text-gray-300">{num}</span>
                   </label>
@@ -295,7 +295,7 @@ const ExamCenter = () => {
             <div className="mb-8 flex justify-between items-center">
               <button
                 onClick={() => setSelectedChapters(chaptersForSubject.filter(ch => ch.url !== '#').map(ch => ch.name))}
-                className="text-green-600 hover:underline"
+                className="text-green-600 dark:text-blue-400 hover:underline"
               >
                 {lang === 'bn' ? 'সমস্ত অধ্যায় নির্বাচন করুন' : 'Select All Chapters'}
               </button>
@@ -308,7 +308,7 @@ const ExamCenter = () => {
             <button
               onClick={loadQuestions}
               disabled={selectedChapters.length === 0}
-              className="w-full bg-green-600 text-white py-4 rounded-xl text-xl font-bold hover:bg-green-700 transition disabled:opacity-50"
+              className="w-full bg-green-600 dark:bg-blue-600 text-white py-4 rounded-xl text-xl font-bold hover:bg-green-700 dark:hover:bg-blue-700 transition disabled:opacity-50"
             >
               {lang === 'bn' ? 'পরীক্ষা শুরু করুন' : 'Start Exam'}
             </button>
@@ -334,7 +334,7 @@ const ExamCenter = () => {
         <div className="min-h-screen bg-geometric-light dark:bg-geometric-dark py-8 px-4">
           {/* হেডার */}
           <div className="max-w-4xl mx-auto flex items-center justify-between mb-8">
-            <button onClick={handleBack} className="text-green-600 hover:underline">
+            <button onClick={handleBack} className="text-green-600 dark:text-blue-400 hover:underline">
               <i className="fas fa-arrow-left mr-2"></i>
               {lang === 'bn' ? 'পেছনে' : 'Back'}
             </button>
@@ -350,7 +350,7 @@ const ExamCenter = () => {
               </span>
               <div className="w-64 bg-gray-200 rounded-full h-2.5">
                 <div
-                  className="bg-green-600 h-2.5 rounded-full"
+                  className="bg-green-600 dark:bg-blue-500 h-2.5 rounded-full"
                   style={{ width: `${((currentQuestionIndex + 1) / questions.length) * 100}%` }}
                 ></div>
               </div>
@@ -368,8 +368,8 @@ const ExamCenter = () => {
                   key={key}
                   className={`block p-4 border rounded-lg cursor-pointer transition ${
                     userAnswers[currentQuestion.id] === key
-                      ? 'border-green-500 bg-green-50 dark:bg-green-900/30'
-                      : 'border-gray-200 hover:border-green-300'
+                      ? 'border-green-500 dark:border-blue-500 bg-green-50 dark:bg-blue-900/30'
+                      : 'border-gray-200 dark:hover:border-blue-300 hover:border-green-300'
                   }`}
                 >
                   <div className="flex items-center">
@@ -379,7 +379,7 @@ const ExamCenter = () => {
                       value={key}
                       checked={userAnswers[currentQuestion.id] === key}
                       onChange={() => handleAnswerSelect(currentQuestion.id, key)}
-                      className="w-4 h-4 text-green-600"
+                      className="w-4 h-4 text-green-600 "
                     />
                     <span className="ml-3 text-gray-700 dark:text-gray-300">
                       {key}. {value}
@@ -402,14 +402,14 @@ const ExamCenter = () => {
               {currentQuestionIndex === questions.length - 1 ? (
                 <button
                   onClick={handleSubmit}
-                  className="px-6 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700"
+                  className="px-6 py-2 bg-green-600 dark:bg-blue-600 text-white rounded-lg hover:bg-green-700 dark:hover:bg-blue-700"
                 >
                   {lang === 'bn' ? 'জমা দিন' : 'Submit'}
                 </button>
               ) : (
                 <button
                   onClick={() => setCurrentQuestionIndex(prev => prev + 1)}
-                  className="px-6 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700"
+                  className="px-6 py-2 bg-green-600 dark:bg-blue-600 text-white rounded-lg dark:hover:bg-blue-700 hover:bg-green-700"
                 >
                   {lang === 'bn' ? 'পরবর্তী' : 'Next'}
                 </button>

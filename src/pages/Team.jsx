@@ -24,9 +24,9 @@ const Team = () => {
 			role: lang === "bn" ? "বিশ্লেষক" : "Catalyst",
 		},
 		{
-			name: "Team Member 4",
+			name: "Mueen Ahmad",
 			role:
-				lang === "bn" ? "ইসলামিক বিষয় বিশেষজ্ঞ" : "Islamic Content Specialist",
+				lang === "bn" ? "অ্যাপ নির্মাতা" : "App Developer",
 		},
 	];
 
@@ -73,7 +73,7 @@ const Team = () => {
 					{members.map((member, idx) => (
 						<ScrollAnimation key={idx}>
 							<div className="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-lg hover:shadow-xl transition text-center">
-								<i className="fas fa-user-circle text-6xl text-green-600 dark:text-green-400 mx-auto mb-4"></i>
+								<i className="fas fa-user-circle text-6xl text-green-600 dark:text-blue-400 mx-auto mb-4"></i>
 								<h3 className="text-xl font-semibold text-gray-900 dark:text-white">
 									{member.name}
 								</h3>

@@ -67,7 +67,7 @@ const Projects = () => {
 					{projects.map((project, idx) => (
 						<ScrollAnimation key={idx}>
 							<div className="bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-lg hover:shadow-xl transition">
-								<h2 className="text-2xl font-bold mb-4 text-green-700 dark:text-green-400">
+								<h2 className="text-2xl font-bold mb-4 text-green-700 dark:text-blue-400">
 									{project.title}
 								</h2>
 								<div className="mb-4">
