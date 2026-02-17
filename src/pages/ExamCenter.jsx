@@ -3,6 +3,7 @@ import { useNavigate, useSearchParams } from "react-router-dom";
 import { useLanguage } from "../contexts/LanguageContext";
 import { subjectChapters } from "../data/subjectChapters";
 import { Helmet } from "react-helmet-async";
+import html2pdf from "html2pdf.js";
 
 const ExamCenter = () => {
 	const navigate = useNavigate();
@@ -25,7 +26,7 @@ const ExamCenter = () => {
 
 	const [selectedChapters, setSelectedChapters] = useState([]);
 	const [duration, setDuration] = useState(20);
-	const [questionCount, setQuestionCount] = useState(20); // নতুন স্টেট: প্রশ্ন সংখ্যা
+	const [questionCount, setQuestionCount] = useState(20);
 	const [examState, setExamState] = useState("setup");
 	const [questions, setQuestions] = useState([]);
 	const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
@@ -144,7 +145,7 @@ const ExamCenter = () => {
 				alert(lang === "bn" ? "কোনো প্রশ্ন পাওয়া যায়নি" : "No questions found");
 				return;
 			}
-			// এলোমেলোভাবে নির্দিষ্ট সংখ্যক প্রশ্ন নির্বাচন (যদি পর্যাপ্ত না থাকে তাহলে সবগুলো)
+			// এলোমেলোভাবে নির্দিষ্ট সংখ্যক প্রশ্ন নির্বাচন
 			const shuffled = allQuestions.sort(() => 0.5 - Math.random());
 			const selected = shuffled.slice(
 				0,
@@ -170,7 +171,7 @@ const ExamCenter = () => {
 				setTimeLeft((prev) => {
 					if (prev <= 1) {
 						clearInterval(timer);
-						handleSubmit(); // সময় শেষ হলে স্বয়ংক্রিয় সাবমিট
+						handleSubmit();
 						return 0;
 					}
 					return prev - 1;
@@ -214,14 +215,95 @@ const ExamCenter = () => {
 	const handleBack = () => {
 		navigate("/study");
 	};
-	// ফলাফল ডাউনলোড ফাংশন
-	const downloadResult = () => {
-		// ফাইলের নাম তৈরি
+
+	// PDF ডাউনলোড ফাংশন
+	const downloadPDF = () => {
+		// অস্থায়ী HTML এলিমেন্ট তৈরি
+		const element = document.createElement("div");
+		element.style.padding = "20px";
+		element.style.fontFamily =
+			'Inter, "Noto Sans Bengali", "SolaimanLipi", sans-serif';
+		element.style.backgroundColor = "#ffffff";
+		element.style.color = "#000000";
+		element.style.maxWidth = "800px";
+		element.style.margin = "0 auto";
+
+		const date = new Date();
+		const dateStr = date.toLocaleDateString(lang === "bn" ? "bn-BD" : "en-US");
+		const percentage = Math.round((result.correct / result.total) * 100);
+
+		// HTML কন্টেন্ট তৈরি
+		let htmlContent = `
+			<div style="text-align: center; margin-bottom: 30px;">
+				<h1 style="color: #16a34a; font-size: 24px; margin-bottom: 10px;">${subjectName} - ${groupName}</h1>
+				<h2 style="color: #333; font-size: 20px;">${lang === "bn" ? "পরীক্ষার ফলাফল" : "Exam Result"}</h2>
+				<p style="color: #666; margin: 5px 0;">${lang === "bn" ? "তারিখ" : "Date"}: ${dateStr}</p>
+			</div>
+			
+			<div style="background-color: #f3f4f6; padding: 20px; border-radius: 10px; margin-bottom: 30px; text-align: center;">
+				<div style="font-size: 48px; font-weight: bold; color: #16a34a;">${result.correct}/${result.total}</div>
+				<div style="font-size: 18px; color: #4b5563; margin-top: 5px;">${percentage}%</div>
+				<div style="display: flex; justify-content: center; gap: 30px; margin-top: 15px;">
+					<div><span style="color: #4b5563;">${lang === "bn" ? "সঠিক" : "Correct"}:</span> <span style="color: #16a34a; font-weight: bold;">${result.correct}</span></div>
+					<div><span style="color: #4b5563;">${lang === "bn" ? "ভুল" : "Wrong"}:</span> <span style="color: #dc2626; font-weight: bold;">${result.total - result.correct}</span></div>
+				</div>
+			</div>
+		`;
+
+		// প্রশ্ন ও উত্তর
+		result.results.forEach((item, idx) => {
+			htmlContent += `
+				<div style="margin-bottom: 25px; padding-bottom: 15px; border-bottom: 1px solid #e5e7eb;">
+					<p style="font-weight: bold; margin-bottom: 10px; font-size: 16px;">${idx + 1}. ${item.question}</p>
+					<div style="margin-left: 20px;">
+						<p style="color: ${item.isCorrect ? "#16a34a" : "#dc2626"}; margin: 5px 0;">
+							${lang === "bn" ? "আপনার উত্তর:" : "Your answer:"} ${item.userAnswer}. ${item.options[item.userAnswer]}
+						</p>
+						${
+							!item.isCorrect
+								? `
+							<p style="color: #16a34a; margin: 5px 0;">
+								${lang === "bn" ? "সঠিক উত্তর:" : "Correct answer:"} ${item.correctAnswer}. ${item.options[item.correctAnswer]}
+							</p>
+						`
+								: ""
+						}
+						<p style="color: #6b7280; font-size: 14px; margin: 5px 0;">
+							<strong>${lang === "bn" ? "ব্যাখ্যা:" : "Explanation:"}</strong> ${item.explanation}
+						</p>
+					</div>
+				</div>
+			`;
+		});
+
+		// ফুটার
+		htmlContent += `
+			<div style="text-align: center; margin-top: 40px; color: #9ca3af; font-size: 12px;">
+				${lang === "bn" ? "ধন্যবাদ কাফআহ পরীক্ষা কেন্দ্র ব্যবহার করার জন্য" : "Thanks for using Kafa'ah Exam Center"}
+			</div>
+		`;
+
+		element.innerHTML = htmlContent;
+
+		// PDF অপশন
+		const opt = {
+			margin: [0.5, 0.5, 0.5, 0.5],
+			filename: `${subjectName}_${groupName}_result_${date.getTime()}.pdf`,
+			image: { type: "jpeg", quality: 0.98 },
+			html2canvas: { scale: 2, letterRendering: true, useCORS: true },
+			jsPDF: { unit: "in", format: "a4", orientation: "portrait" },
+		};
+
+		// PDF জেনারেট ও ডাউনলোড
+		html2pdf().set(opt).from(element).save();
+	};
+
+	// টেক্সট ডাউনলোড ফাংশন (ঐচ্ছিক)
+	const downloadTxt = () => {
 		const date = new Date();
 		const dateStr = `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`;
 		const fileName = `${subjectName}_${groupName}_result_${dateStr}.txt`;
 
-		// ফলাফল টেক্সট তৈরি
 		let content = `${subjectName} - ${groupName} ${lang === "bn" ? "পরীক্ষার ফলাফল" : "Exam Result"}\n`;
 		content += `${lang === "bn" ? "তারিখ" : "Date"}: ${date.toLocaleDateString("bn-BD")}\n`;
 		content += `${lang === "bn" ? "মোট প্রশ্ন" : "Total Questions"}: ${result.total}\n`;
@@ -230,21 +312,18 @@ const ExamCenter = () => {
 		content += `${lang === "bn" ? "নম্বর" : "Score"}: ${result.correct}/${result.total} (${Math.round((result.correct / result.total) * 100)}%)\n`;
 		content += `====================================\n\n`;
 
-		// প্রতিটি প্রশ্নের বিবরণ
 		result.results.forEach((item, idx) => {
 			content += `${idx + 1}. ${item.question}\n`;
 			content += `${lang === "bn" ? "আপনার উত্তর" : "Your answer"}: ${item.userAnswer}. ${item.options[item.userAnswer]}\n`;
 			if (!item.isCorrect) {
 				content += `${lang === "bn" ? "সঠিক উত্তর" : "Correct answer"}: ${item.correctAnswer}. ${item.options[item.correctAnswer]}\n`;
 			}
-			content += `${lang === "bn" ? "সঠিক ছিল" : "Correct"}: ${item.isCorrect ? (lang === "bn" ? "হ্যাঁ" : "Yes") : lang === "bn" ? "না" : "No"}\n`;
 			content += `${lang === "bn" ? "ব্যাখ্যা" : "Explanation"}: ${item.explanation}\n`;
 			content += `------------------------------------\n`;
 		});
 
 		content += `\n${lang === "bn" ? "ধন্যবাদ কাফআহ পরীক্ষা কেন্দ্র ব্যবহার করার জন্য" : "Thanks for using Kafa'ah Exam Center"}`;
 
-		// ফাইল ডাউনলোড
 		const blob = new Blob([content], { type: "text/plain;charset=utf-8" });
 		const url = URL.createObjectURL(blob);
 		const link = document.createElement("a");
@@ -255,6 +334,7 @@ const ExamCenter = () => {
 		document.body.removeChild(link);
 		URL.revokeObjectURL(url);
 	};
+
 	// যদি কোনো অধ্যায় না থাকে (যেমন ভুল সাবজেক্ট)
 	if (chaptersForSubject.length === 0) {
 		return (
@@ -377,7 +457,7 @@ const ExamCenter = () => {
 									: "Number of Questions"}
 							</h2>
 							<div className="flex flex-wrap gap-3">
-								{[15, 20, 25, 30 ,50].map((num) => (
+								{[15, 20, 25, 30, 50].map((num) => (
 									<label
 										key={num}
 										className="flex items-center space-x-2 p-3 border rounded-lg cursor-pointer hover:bg-green-50 dark:hover:bg-gray-700"
@@ -581,7 +661,6 @@ const ExamCenter = () => {
 	}
 
 	// ========== ফলাফল ==========
-	// ========== ফলাফল ==========
 	if (examState === "finished" && result) {
 		return (
 			<>
@@ -610,14 +689,21 @@ const ExamCenter = () => {
 							{lang === "bn" ? "ফলাফল" : "Result"}
 						</h1>
 
-						{/* ফলাফল ডাউনলোড বাটন */}
-						<div className="text-center mb-6">
+						{/* PDF ডাউনলোড বাটন */}
+						<div className="flex justify-center gap-4 mb-6 flex-wrap">
 							<button
-								onClick={downloadResult}
+								onClick={downloadPDF}
+								className="bg-red-600 text-white px-6 py-3 rounded-lg hover:bg-red-700 transition inline-flex items-center gap-2"
+							>
+								<i className="fas fa-file-pdf"></i>
+								{lang === "bn" ? "PDF ডাউনলোড" : "Download PDF"}
+							</button>
+							<button
+								onClick={downloadTxt}
 								className="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition inline-flex items-center gap-2"
 							>
-								<i className="fas fa-download"></i>
-								{lang === "bn" ? "ফলাফল ডাউনলোড করুন" : "Download Result"}
+								<i className="fas fa-file-alt"></i>
+								{lang === "bn" ? "TXT ডাউনলোড" : "Download TXT"}
 							</button>
 						</div>
 
