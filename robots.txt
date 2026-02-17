@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://kafaahbd.github.io/kafaahbd/sitemap.xml
