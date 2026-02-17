@@ -5,61 +5,70 @@ export default defineConfig({
 	plugins: [react()],
 	base: "/kafaahbd/",
 
-	// ===== সার্ভার অপশন (ডেভেলপমেন্ট) =====
+	// ===== সার্ভার অপশন =====
 	server: {
 		port: 5173,
-		open: false, // npm run dev দিলে স্বয়ংক্রিয়ভাবে ব্রাউজার খুলবে
+		open: false,
 	},
 
-	// ===== বিল্ড অপশন (প্রোডাকশন) =====
+	// ===== বিল্ড অপশন =====
 	build: {
-		// ১. ওয়ার্নিং লিমিট বাড়ানো (৫০০ kB থেকে ১০০০ kB)
+		// ওয়ার্নিং লিমিট বাড়ানো
 		chunkSizeWarningLimit: 1000,
 
-		// ২. সোর্সম্যাপ তৈরি করা (ডিবাগিংয়ের জন্য, প্রোডাকশনে false দেয়া ভালো)
+		// সোর্সম্যাপ বন্ধ (প্রোডাকশনের জন্য)
 		sourcemap: false,
 
-		// ৩. CSS কোড স্প্লিটিং
+		// CSS আলাদা ফাইল
 		cssCodeSplit: true,
 
-		// ৪. Rollup অপশন
 		rollupOptions: {
 			output: {
-				// অ্যাসেট ফাইল নামের ফরম্যাট (আপনার দেওয়া)
+				// আপনার দেওয়া asset ফাইল নামের ফরম্যাট
 				assetFileNames: "assets/[name].[hash].[ext]",
 
-				// ===== manualChunks: বড় লাইব্রেরি আলাদা করা =====
-				manualChunks: {
-					// React ইকোসিস্টেম আলাদা
-					"react-vendor": ["react", "react-dom", "react-router-dom"],
-
-					// PDF জেনারেশন লাইব্রেরি আলাদা
-					"pdf-generator": ["html2pdf.js"],
-
-					// হেলমেট ও অন্যান্য ইউটিলিটি
-					utils: ["react-helmet-async"],
-
-					// বাকি সব node_modules একসাথে
-					vendor: ["node_modules"],
+				// ✅ সঠিক manualChunks কনফিগারেশন (ফাংশন আকারে)
+				manualChunks: (id) => {
+					// node_modules থেকে আসা যেকোনো ইমপোর্ট আলাদা চাঙ্কে রাখবো
+					if (id.includes("node_modules")) {
+						// React related libraries
+						if (
+							id.includes("react") ||
+							id.includes("react-dom") ||
+							id.includes("react-router-dom")
+						) {
+							return "react-vendor";
+						}
+						// PDF related libraries
+						if (id.includes("html2pdf.js")) {
+							return "pdf-generator";
+						}
+						// Helmet related
+						if (id.includes("react-helmet-async")) {
+							return "utils";
+						}
+						// বাকি সব node_modules
+						return "vendor";
+					}
 				},
 
-				// ===== চাঙ্ক ফাইল নামের ফরম্যাট =====
+				// অন্যান্য ফাইল নামের ফরম্যাট
 				chunkFileNames: "assets/[name].[hash].js",
 				entryFileNames: "assets/[name].[hash].js",
 			},
 		},
 
-		// ৫. Terser অপশন (minify কাস্টমাইজ)
+		// Minify কনফিগারেশন
 		minify: "terser",
 		terserOptions: {
 			compress: {
-				drop_console: true, // কনসোল লগ বাদ দেওয়া
+				drop_console: true, // console.log বাদ দেওয়া
 				drop_debugger: true,
 			},
 		},
 	},
 
-	// ===== ডিপেন্ডেন্সি অপটিমাইজেশন (ডেভেলপমেন্ট) =====
+	// ===== ডিপেন্ডেন্সি অপটিমাইজেশন =====
 	optimizeDeps: {
 		include: ["react", "react-dom", "react-router-dom", "react-helmet-async"],
 	},
