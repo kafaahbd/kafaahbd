@@ -9,7 +9,7 @@ const Projects = () => {
 	const projects = [
 		{
 			title: t("projects.study.title"),
-			progress: "2%",
+			progress: "44%",
 			desc: t("projects.study.desc"),
 		},
 		{
