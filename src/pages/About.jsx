@@ -1,10 +1,12 @@
-import ScrollAnimation from '../components/ScrollAnimation'
-import { useLanguage } from '../contexts/LanguageContext'
+import { Helmet } from "react-helmet-async";
+import ScrollAnimation from "../components/ScrollAnimation";
+import { useLanguage } from "../contexts/LanguageContext";
 
 const About = () => {
-  // Full content as provided
-  const aboutText = {
-    bn: `About Us — Kafa’ah Islamic and Multiproject Company
+	const { lang } = useLanguage()
+	// Full content as provided
+	const aboutText = {
+		bn: `About Us — Kafa’ah Islamic and Multiproject Company
 
 Kafa’ah Islamic and Multiproject Company প্রতিষ্ঠিত হয় 1 January 2026 তারিখে, একটি মহান উদ্দেশ্য নিয়ে—ইসলামিক জ্ঞান বিশ্বব্যাপী ছড়িয়ে দেওয়া, শিক্ষাকে প্রযুক্তির মাধ্যমে সহজ ও আধুনিক করে তোলা, এবং মুসলিম উম্মাহর জন্য নিরাপদ, মানসম্মত ও authentic ডিজিটাল প্ল্যাটফর্ম তৈরি করা।
 
@@ -36,7 +38,7 @@ Our Partner
 আমরা বিশ্বাস করি, সঠিক জ্ঞান, সঠিক প্রযুক্তি এবং সঠিক নিয়ত একত্র হলে পৃথিবী বদলে যায়।
 
 Kafa’ah Islamic and Multiproject Company সেই পরিবর্তনের জন্যই কাজ করছে—In Sha Allah.`,
-    en: `About Us — Kafa’ah Islamic and Multiproject Company
+		en: `About Us — Kafa’ah Islamic and Multiproject Company
 
 Kafa’ah Islamic and Multiproject Company was established on January 1, 2026, with a great purpose—to spread Islamic knowledge globally, make education easy and modern through technology, and create safe, authentic digital platforms for the Muslim Ummah.
 
@@ -67,24 +69,61 @@ Currently, Doyox is working with us.
 
 We believe that when the right knowledge, the right technology, and the right intention come together, the world changes.
 
-Kafa’ah Islamic and Multiproject Company is working for that change—In Sha Allah.`
-  }
+Kafa’ah Islamic and Multiproject Company is working for that change—In Sha Allah.`,
+	};
 
-  return (
-    <div className="min-h-screen bg-geometric-light dark:bg-geometric-dark py-16 px-4">
-      <div className="max-w-4xl mx-auto bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-lg">
-        <ScrollAnimation>
-          <div className="prose prose-lg dark:prose-invert max-w-none">
-            {useLanguage().lang === 'bn' ? (
-              <p className="whitespace-pre-line text-gray-800 dark:text-gray-200">{aboutText.bn}</p>
-            ) : (
-              <p className="whitespace-pre-line text-gray-800 dark:text-gray-200">{aboutText.en}</p>
-            )}
-          </div>
-        </ScrollAnimation>
-      </div>
-    </div>
-  )
-}
+	return (
+		<div className="min-h-screen bg-geometric-light dark:bg-geometric-dark py-16 px-4">
+			<Helmet>
+				{lang === "bn" ? (
+					<>
+						<title>কাফআহ সম্পর্কে | ইসলামিক ও মাল্টিপ্রজেক্ট কোম্পানি</title>
+						<meta
+							name="description"
+							content="কাফআহ প্রতিষ্ঠিত হয় ২০২৬ সালে। আমাদের লক্ষ্য ইসলামিক জ্ঞান প্রসার, আধুনিক প্রযুক্তি ও ডিজিটাল প্ল্যাটফর্ম তৈরি।"
+						/>
+						<meta property="og:title" content="কাফআহ সম্পর্কে" />
+						<meta
+							property="og:description"
+							content="কাফআহ ইসলামিক ও মাল্টিপ্রজেক্ট কোম্পানির লক্ষ্য, দৃষ্টিভঙ্গি ও বিশেষত্ব।"
+						/>
+					</>
+				) : (
+					<>
+						<title>About Kafa'ah | Islamic & Multiproject Company</title>
+						<meta
+							name="description"
+							content="Kafa'ah was established in 2026. Our mission is to spread Islamic knowledge, modern technology, and create digital platforms."
+						/>
+						<meta property="og:title" content="About Kafa'ah" />
+						<meta
+							property="og:description"
+							content="The vision, mission, and uniqueness of Kafa'ah Islamic and Multiproject Company."
+						/>
+					</>
+				)}
+				<meta
+					property="og:url"
+					content="https://kafaahbd.github.io/kafaahbd/about"
+				/>
+			</Helmet>
+			<div className="max-w-4xl mx-auto bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-lg">
+				<ScrollAnimation>
+					<div className="prose prose-lg dark:prose-invert max-w-none">
+						{useLanguage().lang === "bn" ? (
+							<p className="whitespace-pre-line text-gray-800 dark:text-gray-200">
+								{aboutText.bn}
+							</p>
+						) : (
+							<p className="whitespace-pre-line text-gray-800 dark:text-gray-200">
+								{aboutText.en}
+							</p>
+						)}
+					</div>
+				</ScrollAnimation>
+			</div>
+		</div>
+	);
+};
 
-export default About
+export default About;

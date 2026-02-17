@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 
 const Home = () => {
-	const { t } = useLanguage();
+	const { t, lang } = useLanguage();
 
 	const services = [
 		t("home.services.software"),
@@ -26,15 +26,42 @@ const Home = () => {
 	return (
 		<>
 			<Helmet>
-				<title>Kafa'ah - Technology for Ummah | হোম</title>
+				{lang === "bn" ? (
+					<>
+						<title>কাফআহ - প্রযুক্তি উম্মাহর জন্য | হোম</title>
+						<meta
+							name="description"
+							content="কাফআহ ইসলামিক অ্যান্ড মাল্টিপ্রজেক্ট কোম্পানি। আমরা তৈরি করি ইসলামিক অ্যাপ, লার্নিং প্ল্যাটফর্ম ও সফটওয়্যার। ইনশাআল্লাহ প্রযুক্তির মাধ্যমে উম্মাহর সেবায়।"
+						/>
+						<meta
+							property="og:title"
+							content="কাফআহ - প্রযুক্তি উম্মাহর জন্য"
+						/>
+						<meta
+							property="og:description"
+							content="ইসলামিক অ্যাপ, এডুকেশন প্ল্যাটফর্ম, এসএসসি/এইচএসসি/এডমিশন পরীক্ষার ব্যবস্থা ইনশাআল্লাহ।"
+						/>
+					</>
+				) : (
+					<>
+						<title>Kafa'ah - Technology for Ummah | Home</title>
+						<meta
+							name="description"
+							content="Kafa'ah Islamic and Multiproject Company. We develop Islamic apps, learning platforms, and software. Serving the Ummah through technology, InshaAllah."
+						/>
+						<meta
+							property="og:title"
+							content="Kafa'ah - Technology for the Ummah"
+						/>
+						<meta
+							property="og:description"
+							content="Islamic apps, educational platforms, SSC/HSC/Admission exam preparation, InshaAllah."
+						/>
+					</>
+				)}
 				<meta
-					name="description"
-					content="কাফআহ ইসলামিক অ্যান্ড মাল্টিপ্রজেক্ট কোম্পানি। আমরা তৈরি করি ইসলামিক অ্যাপ, লার্নিং প্ল্যাটফর্ম ও সফটওয়্যার। ইনশাআল্লাহ প্রযুক্তির মাধ্যমে উম্মাহর সেবায়।"
-				/>
-				<meta property="og:title" content="Kafa'ah - Technology for Ummah" />
-				<meta
-					property="og:description"
-					content="কাফআহ: প্রযুক্তির মাধ্যমে উম্মাহর সেবায়। ইসলামিক অ্যাপ, এডুকেশন প্ল্যাটফর্ম ও পরীক্ষা ব্যবস্থা ইনশাআল্লাহ।"
+					property="og:image"
+					content="https://raw.githubusercontent.com/kafaahbd/kafaah/refs/heads/main/pics/kafaahlogo5.png"
 				/>
 				<meta
 					property="og:url"

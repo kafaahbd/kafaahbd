@@ -1,10 +1,10 @@
 import ScrollAnimation from "../components/ScrollAnimation";
 import { useLanguage } from "../contexts/LanguageContext";
 import { Link } from "react-router-dom";
-import { Helmet } from 'react-helmet-async';
+import { Helmet } from "react-helmet-async";
 
 const Study = () => {
-	const { t } = useLanguage();
+	const { t ,lang} = useLanguage();
 
 	const courses = [
 		{ key: "ssc", icon: "📘", path: "/study/ssc" },
@@ -25,15 +25,35 @@ const Study = () => {
 	return (
 		<div className="min-h-screen bg-geometric-light dark:bg-geometric-dark py-16 px-4">
 			<Helmet>
-				<title>Kafa'ah Study Corner | SSC, HSC, Admission প্রস্তুতি</title>
-				<meta
-					name="description"
-					content="কাফআহ স্টাডি কর্নারে SSC, HSC ও এডমিশন পরীক্ষার জন্য অনলাইন মডেল টেস্ট দিন। বাংলা ও ইংরেজি উভয় ভাষায় সম্পূর্ণ ফ্রি ইনশাআল্লাহ।"
-				/>
-				<meta
-					property="og:title"
-					content="Kafa'ah Study Corner - SSC, HSC, Admission প্রস্তুতি"
-				/>
+				{lang === "bn" ? (
+					<>
+						<title>কাফআহ স্টাডি কর্নার | SSC, HSC ও এডমিশন প্রস্তুতি</title>
+						<meta
+							name="description"
+							content="এসএসসি, এইচএসসি ও এডমিশন পরীক্ষার জন্য অনলাইন মডেল টেস্ট দিন। বাংলা ও ইংরেজি উভয় ভাষায় সম্পূর্ণ ফ্রি ইনশাআল্লাহ।"
+						/>
+						<meta property="og:title" content="কাফআহ স্টাডি কর্নার" />
+						<meta
+							property="og:description"
+							content="এসএসসি, এইচএসসি ও এডমিশন পরীক্ষার অনলাইন মডেল টেস্ট - সম্পূর্ণ ফ্রি।"
+						/>
+					</>
+				) : (
+					<>
+						<title>
+							Kafa'ah Study Corner | SSC, HSC & Admission Preparation
+						</title>
+						<meta
+							name="description"
+							content="Take online model tests for SSC, HSC, and Admission exams. Completely free in both Bangla and English, InshaAllah."
+						/>
+						<meta property="og:title" content="Kafa'ah Study Corner" />
+						<meta
+							property="og:description"
+							content="Online model tests for SSC, HSC, and Admission exams - completely free."
+						/>
+					</>
+				)}
 				<meta
 					property="og:url"
 					content="https://kafaahbd.github.io/kafaahbd/study"
