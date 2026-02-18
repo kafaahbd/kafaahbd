@@ -1,4 +1,4 @@
-import{j as e,e as i}from"./react-vendor.DKb2VKjd.js";import{S as a}from"./ScrollAnimation.BL6MQT6A.js";import{u as o}from"./index.DqvtBLgb.js";import"./vendor.C4s8j8ip.js";const m=()=>{const{lang:t}=o(),n={bn:`Kafa’ah Islamic and Multiproject Company — Joining Terms & Conditions
+import{j as e,e as i}from"./react-vendor.DKb2VKjd.js";import{S as a}from"./ScrollAnimation.BL6MQT6A.js";import{u as o}from"./index.DXMkRSa2.js";import"./vendor.C4s8j8ip.js";const m=()=>{const{lang:t}=o(),n={bn:`Kafa’ah Islamic and Multiproject Company — Joining Terms & Conditions
 
 1. Company Status (বর্তমান অবস্থা)
 
