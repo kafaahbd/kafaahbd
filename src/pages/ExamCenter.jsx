@@ -362,7 +362,7 @@ const ExamCenter = () => {
 					</button>
 				</div>
 				<div className="text-center text-xs text-gray-500 dark:text-gray-500 mt-8">
-					© ২০২৫ Kafa’ah Islamic and Multiproject Company. সর্বস্বত্ব সংরক্ষিত।
+					{lang === "bn" ? "প্রশ্ন বা উত্তরে ভুল পেলে দয়া করে আমাদের WhatsApp জানাবেন ।" : "Please let us know via WhatsApp if you find any mistakes in the questions or answers."}
 				</div>
 			</div>
 		);
@@ -531,8 +531,7 @@ const ExamCenter = () => {
 
 					{/* কপিরাইট */}
 					<div className="text-center text-xs text-gray-500 dark:text-gray-500 mt-8">
-						© ২০২৫ Kafa’ah Islamic and Multiproject Company. সর্বস্বত্ব
-						সংরক্ষিত।
+						{lang === "bn" ? "প্রশ্ন বা উত্তরে ভুল পেলে দয়া করে আমাদের WhatsApp জানাবেন ।" : "Please let us know via WhatsApp if you find any mistakes in the questions or answers."}
 					</div>
 				</div>
 			</>
@@ -652,8 +651,7 @@ const ExamCenter = () => {
 
 					{/* কপিরাইট */}
 					<div className="text-center text-xs text-gray-500 dark:text-gray-500 mt-8">
-						© ২০২৫ Kafa’ah Islamic and Multiproject Company. সর্বস্বত্ব
-						সংরক্ষিত।
+						{lang === "bn" ? "প্রশ্ন বা উত্তরে ভুল পেলে দয়া করে আমাদের WhatsApp জানাবেন ।" : "Please let us know via WhatsApp if you find any mistakes in the questions or answers."}
 					</div>
 				</div>
 			</>
@@ -766,10 +764,9 @@ const ExamCenter = () => {
 						</div>
 					</div>
 
-					{/* কপিরাইট */}
+					{/* wrong */}
 					<div className="text-center text-xs text-gray-500 dark:text-gray-500 mt-8">
-						© ২০২৫ Kafa’ah Islamic and Multiproject Company. সর্বস্বত্ব
-						সংরক্ষিত।
+						{lang === "bn" ? "প্রশ্ন বা উত্তরে ভুল পেলে দয়া করে আমাদের WhatsApp জানাবেন ।" : "Please let us know via WhatsApp if you find any mistakes in the questions or answers."}
 					</div>
 				</div>
 			</>

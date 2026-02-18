@@ -68,7 +68,7 @@ export const subjectChapters = {
   hsc: {
     // Common
     bangla: [
-      { name: 'বাংলা ১ম পত্র অধ্যায় ১', url: '#' },
+      { name: 'বাংলা ১ম পত্র গদ্য : অপরিচিতা', url: 'https://raw.githubusercontent.com/kafaahbd/nothing/refs/heads/main/hsc_bangla_1st_paper_oporichita.json' },
       { name: 'বাংলা ২য় পত্র অধ্যায় ১', url: '#' },
     ],
     english: [
