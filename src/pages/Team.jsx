@@ -21,7 +21,7 @@ const Team = () => {
 		},
 		{
 			name: "MD Rifat Al Mahmud",
-			role: lang === "bn" ? "বিশ্লেষক" : "Catalyst",
+			role: lang === "bn" ? "অনুঘটক" : "Catalyst",
 		},
 		{
 			name: "Mueen Ahmad",
