@@ -47,7 +47,7 @@ export const subjectChapters = {
 				url: "https://raw.githubusercontent.com/kafaahbd/nothing/refs/heads/main/hsc_bangla_1st_paper_bilasy.json",
 			},
 			{
-				name: "বাংলা ১ম পত্র গদ্য : ঋতু বর্ণন",
+				name: "বাংলা ১ম পত্র পদ্য : ঋতু বর্ণন",
 				url: "https://raw.githubusercontent.com/kafaahbd/nothing/refs/heads/main/hsc_bangla_1st_paper_ritubornon.json",
 			},
 			{ name: "বাংলা ২য় পত্র অধ্যায় ১", url: "#" },

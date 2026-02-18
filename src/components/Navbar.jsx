@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { useLanguage } from '../contexts/LanguageContext'
 import { useTheme } from '../contexts/ThemeContext'
@@ -12,6 +12,8 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false)
   const [showLogin, setShowLogin] = useState(false)
   const location = useLocation()
+  const menuRef = useRef(null) // মোবাইল মেনু রেফ
+  const buttonRef = useRef(null) // টগল বাটন রেফ
 
   const navLinks = [
     { name: t('nav.home'), path: '/' },
@@ -21,6 +23,24 @@ const Navbar = () => {
     { name: t('nav.about'), path: '/about' },
   ]
 
+  // ক্লিক আউটসাইড হ্যান্ডলার
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      // যদি মেনু খোলা থাকে এবং ক্লিক করা জায়গাটা মেনু বা বাটনের ভিতরে না হয়
+      if (isOpen && 
+          menuRef.current && 
+          !menuRef.current.contains(event.target) &&
+          buttonRef.current && 
+          !buttonRef.current.contains(event.target)) {
+        setIsOpen(false)
+      }
+    }
+
+    document.addEventListener('mousedown', handleClickOutside)
+    return () => document.removeEventListener('mousedown', handleClickOutside)
+  }, [isOpen])
+
+  // লিঙ্ক ক্লিক করলে মেনু বন্ধ হবে
   const handleNavClick = (link) => {
     if (link.external) {
       window.open(link.path, '_blank')
@@ -83,15 +103,25 @@ const Navbar = () => {
 
             {/* Mobile menu button */}
             <div className="md:hidden flex items-center">
-              <button onClick={() => setIsOpen(!isOpen)} className="text-gray-700  dark:text-gray-300">
-                <i className={`fas ${isOpen ? 'fa-times' : 'fa-bars'} text-2xl`}></i>
+              <button
+                ref={buttonRef}
+                onClick={() => setIsOpen(!isOpen)}
+                className="text-gray-700 dark:text-gray-300 p-2 focus:outline-none"
+                aria-label="Toggle menu"
+              >
+                <i className={`fas ${isOpen ? 'fa-times' : 'fa-bars'} text-2xl transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`}></i>
               </button>
             </div>
           </div>
 
-          {/* Mobile Menu */}
-          {isOpen && (
-            <div className="md:hidden pb-4">
+          {/* Mobile Menu - Slide Down Animation */}
+          <div
+            ref={menuRef}
+            className={`md:hidden overflow-hidden transition-all duration-300 ease-in-out ${
+              isOpen ? 'max-h-96 opacity-100 mb-4' : 'max-h-0 opacity-0'
+            }`}
+          >
+            <div className="py-2 space-y-2">
               {navLinks.map((link) => (
                 link.external ? (
                   <a
@@ -99,7 +129,7 @@ const Navbar = () => {
                     href={link.path}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="block py-2 text-gray-700 dark:text-gray-300 hover:text-green-600 dark:hover:text-blue-400"
+                    className="block py-2 px-4 text-gray-700 dark:text-gray-300 hover:text-green-600 dark:hover:text-blue-400 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg transition"
                     onClick={() => setIsOpen(false)}
                   >
                     {link.name}
@@ -108,14 +138,18 @@ const Navbar = () => {
                   <Link
                     key={link.name}
                     to={link.path}
-                    className="block py-2 text-gray-700 dark:text-gray-300 dark:hover:text-blue-400 hover:text-green-600 transition"
+                    className={`block py-2 px-4 text-gray-700 dark:text-gray-300 hover:text-green-600 dark:hover:text-blue-400 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg transition ${
+                      location.pathname === link.path ? 'text-green-600 dark:text-blue-400 font-semibold' : ''
+                    }`}
                     onClick={() => setIsOpen(false)}
                   >
                     {link.name}
                   </Link>
                 )
               ))}
-              <div className="flex items-center space-x-4 pt-4">
+              
+              {/* Mobile Toggles */}
+              <div className="flex items-center space-x-4 px-4 pt-4 border-t border-gray-200 dark:border-gray-700">
                 <LanguageToggle />
                 <ThemeToggle />
                 <button
@@ -123,13 +157,13 @@ const Navbar = () => {
                     setShowLogin(true)
                     setIsOpen(false)
                   }}
-                  className="px-4 py-2 bg-green-600 dark:bg-blue-600 text-white rounded-lg dark:hover:bg-blue-700 hover:bg-green-700"
+                  className="flex-1 px-4 py-2 bg-green-600 dark:bg-blue-600  text-white rounded-lg hover:bg-green-700 dark:hover:bg-blue-700 transition text-center"
                 >
                   {t('nav.login')}
                 </button>
               </div>
             </div>
-          )}
+          </div>
         </div>
       </nav>
       {/* Spacer */}
