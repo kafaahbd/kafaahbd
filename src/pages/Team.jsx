@@ -17,7 +17,7 @@ const Team = () => {
 		},
 		{
 			name: "Ahnaf Habib Ritom",
-			role: lang === "bn" ? "ব্যবস্থাপক" : "Manager",
+			role: lang === "bn" ? "উৎসেচক" : "Enzyme",
 		},
 		{
 			name: "MD Rifat Al Mahmud",

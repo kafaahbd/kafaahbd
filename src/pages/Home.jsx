@@ -120,7 +120,7 @@ const Home = () => {
         <section className="py-16 px-4 bg-white dark:bg-gray-900/50">
           <div className="max-w-4xl mx-auto">
             <ScrollAnimation>
-              <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-green-50 to-emerald-50 dark:from-gray-800 dark:to-gray-900 p-8 md:p-12 shadow-xl border border-green-100 dark:border-blue-900">
+              <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-green-50 to-emerald-50 dark:from-gray-800 dark:to-gray-900 p-8 md:p-12 shadow-xl border border-green-100 dark:border-green-900">
                 {/* ডেকোরেটিভ ইসলামিক প্যাটার্ন */}
                 <div className="absolute inset-0 opacity-5">
                   <div
@@ -134,14 +134,14 @@ const Home = () => {
 
                 {/* কন্টেন্ট */}
                 <div className="relative z-10 text-center">
-                  <h2 className="text-3xl md:text-4xl font-bold text-green-800 dark:text-blue-400 mb-2">
+                  <h2 className="text-3xl md:text-4xl font-bold text-green-800 dark:text-green-400 mb-2">
                     {lang === "bn" ? "আজকের আয়াত" : "Today's Ayat"}
                   </h2>
-                  <div className="w-24 h-1 bg-green-600 dark:bg-blue-500 mx-auto mb-8"></div>
+                  <div className="w-24 h-1 bg-green-600 dark:bg-green-500 mx-auto mb-8"></div>
 
                   {loading ? (
                     <div className="py-12">
-                      <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-green-600 dark:border-blue-600 mx-auto"></div>
+                      <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-green-600 dark:border-green-600 mx-auto"></div>
                       <p className="mt-4 text-gray-600 dark:text-gray-400">
                         {lang === "bn" ? "আয়াত লোড হচ্ছে..." : "Loading Ayat..."}
                       </p>
@@ -151,7 +151,7 @@ const Home = () => {
                       <p>{lang === "bn" ? "আয়াত লোড করা যায়নি" : "Failed to load ayat"}</p>
                       <button
                         onClick={fetchRandomAyat}
-                        className="mt-4 px-6 py-2 bg-green-600 dark:bg-blue-600 text-white rounded-lg hover:bg-green-700 dark:hover:bg-blue-700"
+                        className="mt-4 px-6 py-2 bg-green-600 dark:bg-green-600 text-white rounded-lg hover:bg-green-700 dark:hover:bg-green-700"
                       >
                         {lang === "bn" ? "আবার চেষ্টা করুন" : "Try Again"}
                       </button>
@@ -165,7 +165,7 @@ const Home = () => {
                         </p>
 
                         {/* সূরা ও আয়াত নম্বর */}
-                        <p className="text-lg text-green-700 dark:text-blue-400 font-medium">
+                        <p className="text-lg text-green-700 dark:text-green-400 font-medium">
                           {ayat.surah} - {ayat.ayat_number}
                         </p>
 
@@ -177,7 +177,7 @@ const Home = () => {
                         {/* নতুন আয়াত বাটন */}
                         <button
                           onClick={fetchRandomAyat}
-                          className="mt-6 px-8 py-3 bg-green-600 dark:bg-blue-600 text-white rounded-full dark:hover:bg-blue-700 hover:bg-green-700 transition transform hover:scale-105 inline-flex items-center gap-2 shadow-lg"
+                          className="mt-6 px-8 py-3 bg-green-600 dark:bg-green-600 text-white rounded-full dark:hover:bg-green-700 hover:bg-green-700 transition transform hover:scale-105 inline-flex items-center gap-2 shadow-lg"
                         >
                           <svg
                             className="w-5 h-5"

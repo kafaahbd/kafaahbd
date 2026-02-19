@@ -53,18 +53,33 @@ export const subjectChapters = {
 			{ name: "বাংলা ২য় পত্র অধ্যায় ১", url: "#" },
 		],
 		english: [
-			{ name: "English 1st Paper Chapter 1", url: "#" },
+			{
+				name: "English 2nd Paper : Changing Sentence",
+				url: "https://raw.githubusercontent.com/kafaahbd/nothing/refs/heads/main/hsc_english_2nd_paper_changing.json",
+			},
+			{
+				name: "English 2nd Paper : Right Form Of Verb",
+				url: "https://raw.githubusercontent.com/kafaahbd/nothing/refs/heads/main/hsc_english_2nd_paper_rightformofverb.json",
+			},
+			{
+				name: "English 2nd Paper : Synonym & Antonym",
+				url: "https://raw.githubusercontent.com/kafaahbd/nothing/refs/heads/main/hsc_english_2nd_paper_synanty.json",
+			},
+			{
+				name: "English 2nd Paper : Word Meaning",
+				url: "https://raw.githubusercontent.com/kafaahbd/nothing/refs/heads/main/hsc_english_2nd_paper_wordmeaning.json",
+			},
 			{ name: "English 2nd Paper Chapter 1", url: "#" },
 		],
 		ict: [{ name: "ICT অধ্যায় ১", url: "#" }],
 		// Science
 		physics: [
 			{
-				name: "পদার্থ ১ম পত্র অধ্যায় ৩",
+				name: "পদার্থ ১ম পত্র অধ্যায় ৩ : গতিবিদ্যা",
 				url: "https://raw.githubusercontent.com/kafaahbd/nothing/refs/heads/main/hsc_physcis_chapter_3_1st_paper.json",
 			},
 			{
-				name: "পদার্থ ১ম পত্র অধ্যায় ৪",
+				name: "পদার্থ ১ম পত্র অধ্যায় ৪ : নিউটনিয়ান বলবিদ্যা",
 				url: "https://raw.githubusercontent.com/kafaahbd/nothing/refs/heads/main/hsc_physcis_chapter_4_1st_paper.json",
 			},
 			// অন্যান্য অধ্যায়
@@ -72,11 +87,24 @@ export const subjectChapters = {
 		chemistry: [
 			{ name: "রসায়ন ১ম পত্র অধ্যায় ১", url: "#" },
 			{
-				name: "রসায়ন ১ম পত্র অধ্যায় ২",
+				name: "রসায়ন ১ম পত্র অধ্যায় ২ : গুনগত রসায়ন",
 				url: "https://raw.githubusercontent.com/kafaahbd/nothing/refs/heads/main/hsc_chemistry_chapter_2_1st_paper.json",
 			},
 		],
-		biology: [{ name: "জীববিজ্ঞান ১ম পত্র অধ্যায় ১", url: "#" }],
+		biology: [
+			{
+				name: "জীববিজ্ঞান ১ম পত্র অধ্যায় ১ : কোষ ও এর গঠন",
+				url: "https://raw.githubusercontent.com/kafaahbd/nothing/refs/heads/main/hsc_biology_chapter_1_1st_paper.json",
+			},
+			{
+				name: "জীববিজ্ঞান ১ম পত্র অধ্যায় ২ : কোষ বিভাজন",
+				url: "https://raw.githubusercontent.com/kafaahbd/nothing/refs/heads/main/hsc_biology_1st_paper_chapter_2.json",
+			},
+			{
+				name: "জীববিজ্ঞান ২য় পত্র অধ্যায় ১ : প্রাণির বিভিন্নতা ও শ্রেণি বিন্যাস",
+				url: "https://raw.githubusercontent.com/kafaahbd/nothing/refs/heads/main/hsc_biology_2nd_paper_chapter_1.json",
+			},
+		],
 		highermath: [{ name: "উচ্চতর গণিত ১ম পত্র অধ্যায় ১", url: "#" }],
 		// Arts
 		history: [{ name: "ইতিহাস অধ্যায় ১", url: "#" }],
