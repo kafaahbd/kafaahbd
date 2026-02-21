@@ -1,6 +1,6 @@
 import { useTheme } from '../contexts/ThemeContext'
 
-const ThemeToggle = () => {
+const ThemeToggle: React.FC = () => {
   const { darkMode, toggleTheme } = useTheme()
 
   return (

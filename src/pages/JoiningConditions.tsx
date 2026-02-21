@@ -2,11 +2,11 @@ import { Helmet } from "react-helmet-async";
 import ScrollAnimation from "../components/ScrollAnimation";
 import { useLanguage } from "../contexts/LanguageContext";
 
-const JoiningConditions = () => {
-	const { lang } = useLanguage();
+const JoiningConditions: React.FC = () => {
+  const { lang } = useLanguage();
 
-	const text = {
-		bn: `Kafa’ah Islamic and Multiproject Company — Joining Terms & Conditions
+  const text: { bn: string; en: string } = {
+    bn: `Kafa’ah Islamic and Multiproject Company — Joining Terms & Conditions
 
 1. Company Status (বর্তমান অবস্থা)
 
@@ -100,7 +100,7 @@ const JoiningConditions = () => {
 
 
 প্রয়োজন অনুযায়ী শর্ত পরিবর্তন করতে পারবে`,
-		en: `Kafa’ah Islamic and Multiproject Company — Joining Terms & Conditions
+    en: `Kafa’ah Islamic and Multiproject Company — Joining Terms & Conditions
 
 1. Company Status
 
@@ -178,54 +178,54 @@ Ongoing projects cannot be left incomplete.
 The company can remove any member if they violate the code of conduct or behave badly.
 
 Terms may be changed as needed.`,
-	};
+  };
 
-	return (
-		<div className="min-h-screen bg-geometric-light dark:bg-geometric-dark py-16 px-4">
-			<Helmet>
-				{lang === "bn" ? (
-					<>
-						<title>যোগদানের শর্তাবলী - কাফআহ</title>
-						<meta
-							name="description"
-							content="কাফআহ টিমে যোগ দিতে ইচ্ছুকদের জন্য শর্তাবলী: বেতন নীতি, কাজের ধরন, ইসলামিক আচরণবিধি ইত্যাদি।"
-						/>
-						<meta property="og:title" content="যোগদানের শর্তাবলী - কাফআহ" />
-						<meta
-							property="og:description"
-							content="কাফআহ টিমে যোগদানের শর্তাবলী ও নীতিমালা।"
-						/>
-					</>
-				) : (
-					<>
-						<title>Joining Conditions - Kafa'ah</title>
-						<meta
-							name="description"
-							content="Terms and conditions for joining Kafa'ah team: salary policy, work type, Islamic code of conduct, etc."
-						/>
-						<meta property="og:title" content="Joining Conditions - Kafa'ah" />
-						<meta
-							property="og:description"
-							content="Conditions and policies for joining Kafa'ah."
-						/>
-					</>
-				)}
-				<meta
-					property="og:url"
-					content="https://kafaahbd.github.io/kafaahbd/joining-conditions"
-				/>
-			</Helmet>
-			<div className="max-w-4xl mx-auto bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-lg">
-				<ScrollAnimation>
-					<div className="prose prose-lg dark:prose-invert max-w-none">
-						<p className="whitespace-pre-line text-gray-800 dark:text-gray-200">
-							{lang === "bn" ? text.bn : text.en}
-						</p>
-					</div>
-				</ScrollAnimation>
-			</div>
-		</div>
-	);
+  return (
+    <div className="min-h-screen bg-geometric-light dark:bg-geometric-dark py-16 px-4">
+      <Helmet>
+        {lang === "bn" ? (
+          <>
+            <title>যোগদানের শর্তাবলী - কাফআহ</title>
+            <meta
+              name="description"
+              content="কাফআহ টিমে যোগ দিতে ইচ্ছুকদের জন্য শর্তাবলী: বেতন নীতি, কাজের ধরন, ইসলামিক আচরণবিধি ইত্যাদি।"
+            />
+            <meta property="og:title" content="যোগদানের শর্তাবলী - কাফআহ" />
+            <meta
+              property="og:description"
+              content="কাফআহ টিমে যোগদানের শর্তাবলী ও নীতিমালা।"
+            />
+          </>
+        ) : (
+          <>
+            <title>Joining Conditions - Kafa'ah</title>
+            <meta
+              name="description"
+              content="Terms and conditions for joining Kafa'ah team: salary policy, work type, Islamic code of conduct, etc."
+            />
+            <meta property="og:title" content="Joining Conditions - Kafa'ah" />
+            <meta
+              property="og:description"
+              content="Conditions and policies for joining Kafa'ah."
+            />
+          </>
+        )}
+        <meta
+          property="og:url"
+          content="https://kafaahbd.github.io/kafaahbd/joining-conditions"
+        />
+      </Helmet>
+      <div className="max-w-4xl mx-auto bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-lg">
+        <ScrollAnimation>
+          <div className="prose prose-lg dark:prose-invert max-w-none">
+            <p className="whitespace-pre-line text-gray-800 dark:text-gray-200">
+              {lang === "bn" ? text.bn : text.en}
+            </p>
+          </div>
+        </ScrollAnimation>
+      </div>
+    </div>
+  );
 };
 
 export default JoiningConditions;

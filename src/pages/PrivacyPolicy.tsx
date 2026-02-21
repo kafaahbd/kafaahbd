@@ -2,11 +2,11 @@ import { Helmet } from "react-helmet-async";
 import ScrollAnimation from "../components/ScrollAnimation";
 import { useLanguage } from "../contexts/LanguageContext";
 
-const PrivacyPolicy = () => {
-	const { lang } = useLanguage();
+const PrivacyPolicy: React.FC = () => {
+  const { lang } = useLanguage();
 
-	const text = {
-		bn: `Privacy & Policy
+  const text: { bn: string; en: string } = {
+    bn: `Privacy & Policy
 
 Kafa’ah Islamic and Multiproject Company
 Effective Date: 1 December, 2025
@@ -85,7 +85,7 @@ Kafa’ah Islamic and Multiproject Company (“আমরা”, “আমাদ�
 📧 Email: tanvirishrak04@gmail.com
 📍 Address: Rajshahi
 📞 Phone: 01770676700`,
-		en: `Privacy & Policy
+    en: `Privacy & Policy
 
 Kafa’ah Islamic and Multiproject Company
 Effective Date: December 1, 2025
@@ -161,54 +161,54 @@ If you have any questions about this Privacy Policy, please contact us:
 📧 Email: tanvirishrak04@gmail.com
 📍 Address: Rajshahi
 📞 Phone: 01770676700`,
-	};
+  };
 
-	return (
-		<div className="min-h-screen bg-geometric-light dark:bg-geometric-dark py-16 px-4">
-			<Helmet>
-				{lang === "bn" ? (
-					<>
-						<title>গোপনীয়তা নীতি - কাফআহ</title>
-						<meta
-							name="description"
-							content="কাফআহ ওয়েবসাইট ও অ্যাপের গোপনীয়তা নীতি। আপনার তথ্য কীভাবে সংগ্রহ ও ব্যবহার করা হয় তা জানুন।"
-						/>
-						<meta property="og:title" content="গোপনীয়তা নীতি - কাফআহ" />
-						<meta
-							property="og:description"
-							content="কাফআহ-এর গোপনীয়তা নীতি ও শর্তাবলী।"
-						/>
-					</>
-				) : (
-					<>
-						<title>Privacy Policy - Kafa'ah</title>
-						<meta
-							name="description"
-							content="Privacy policy of Kafa'ah website and app. Learn how we collect and use your information."
-						/>
-						<meta property="og:title" content="Privacy Policy - Kafa'ah" />
-						<meta
-							property="og:description"
-							content="Kafa'ah's privacy policy and terms."
-						/>
-					</>
-				)}
-				<meta
-					property="og:url"
-					content="https://kafaahbd.github.io/kafaahbd/privacy-policy"
-				/>
-			</Helmet>
-			<div className="max-w-4xl mx-auto bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-lg">
-				<ScrollAnimation>
-					<div className="prose prose-lg dark:prose-invert max-w-none">
-						<p className="whitespace-pre-line text-gray-800 dark:text-gray-200">
-							{lang === "bn" ? text.bn : text.en}
-						</p>
-					</div>
-				</ScrollAnimation>
-			</div>
-		</div>
-	);
+  return (
+    <div className="min-h-screen bg-geometric-light dark:bg-geometric-dark py-16 px-4">
+      <Helmet>
+        {lang === "bn" ? (
+          <>
+            <title>গোপনীয়তা নীতি - কাফআহ</title>
+            <meta
+              name="description"
+              content="কাফআহ ওয়েবসাইট ও অ্যাপের গোপনীয়তা নীতি। আপনার তথ্য কীভাবে সংগ্রহ ও ব্যবহার করা হয় তা জানুন।"
+            />
+            <meta property="og:title" content="গোপনীয়তা নীতি - কাফআহ" />
+            <meta
+              property="og:description"
+              content="কাফআহ-এর গোপনীয়তা নীতি ও শর্তাবলী।"
+            />
+          </>
+        ) : (
+          <>
+            <title>Privacy Policy - Kafa'ah</title>
+            <meta
+              name="description"
+              content="Privacy policy of Kafa'ah website and app. Learn how we collect and use your information."
+            />
+            <meta property="og:title" content="Privacy Policy - Kafa'ah" />
+            <meta
+              property="og:description"
+              content="Kafa'ah's privacy policy and terms."
+            />
+          </>
+        )}
+        <meta
+          property="og:url"
+          content="https://kafaahbd.github.io/kafaahbd/privacy-policy"
+        />
+      </Helmet>
+      <div className="max-w-4xl mx-auto bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-lg">
+        <ScrollAnimation>
+          <div className="prose prose-lg dark:prose-invert max-w-none">
+            <p className="whitespace-pre-line text-gray-800 dark:text-gray-200">
+              {lang === "bn" ? text.bn : text.en}
+            </p>
+          </div>
+        </ScrollAnimation>
+      </div>
+    </div>
+  );
 };
 
 export default PrivacyPolicy;

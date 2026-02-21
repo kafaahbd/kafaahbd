@@ -2,11 +2,11 @@ import { Helmet } from "react-helmet-async";
 import ScrollAnimation from "../components/ScrollAnimation";
 import { useLanguage } from "../contexts/LanguageContext";
 
-const TermsConditions = () => {
-	const { lang } = useLanguage();
+const TermsConditions: React.FC = () => {
+  const { lang } = useLanguage();
 
-	const text = {
-		bn: `টার্মস অ্যান্ড কন্ডিশনস
+  const text: { bn: string; en: string } = {
+    bn: `টার্মস অ্যান্ড কন্ডিশনস
 
 Kafa’ah Islamic & Multiproject Company (এই শর্তাবলী আমাদের ওয়েবসাইট, অ্যাপ ও সকল ডিজিটাল সেবার ক্ষেত্রে প্রযোজ্য)
 
@@ -122,7 +122,7 @@ Kafa’ah Islamic & Multiproject Company-এর মালিকানা
 যেকোনো সহায়তা, অভিযোগ বা আইনি প্রশ্নে যোগাযোগ করুন:
 📧 ইমেইল: tanvirishrak04@gmail.com
 🌐 ওয়েবসাইট: kafaah.com`,
-		en: `Terms and Conditions
+    en: `Terms and Conditions
 
 Kafa’ah Islamic & Multiproject Company (These terms apply to our website, app, and all digital services)
 
@@ -237,54 +237,54 @@ Email (if possible)
 For any support, complaints, or legal inquiries, contact us:
 📧 Email: tanvirishrak04@gmail.com
 🌐 Website: kafaah.com`,
-	};
+  };
 
-	return (
-		<div className="min-h-screen bg-geometric-light dark:bg-geometric-dark py-16 px-4">
-			<Helmet>
-				{lang === "bn" ? (
-					<>
-						<title>ব্যবহারের শর্তাবলী - কাফআহ</title>
-						<meta
-							name="description"
-							content="কাফআহ ওয়েবসাইট ও অ্যাপ ব্যবহারের শর্তাবলী। ইউজার অ্যাকাউন্ট, তথ্যের নিরাপত্তা, মেধাস্বত্ব সংক্রান্ত তথ্য।"
-						/>
-						<meta property="og:title" content="ব্যবহারের শর্তাবলী - কাফআহ" />
-						<meta
-							property="og:description"
-							content="কাফআহ সেবা ব্যবহারের শর্তাবলী।"
-						/>
-					</>
-				) : (
-					<>
-						<title>Terms & Conditions - Kafa'ah</title>
-						<meta
-							name="description"
-							content="Terms and conditions for using Kafa'ah website and app. User account, data security, intellectual property."
-						/>
-						<meta property="og:title" content="Terms & Conditions - Kafa'ah" />
-						<meta
-							property="og:description"
-							content="Terms of service for Kafa'ah."
-						/>
-					</>
-				)}
-				<meta
-					property="og:url"
-					content="https://kafaahbd.github.io/kafaahbd/terms-conditions"
-				/>
-			</Helmet>
-			<div className="max-w-4xl mx-auto bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-lg">
-				<ScrollAnimation>
-					<div className="prose prose-lg dark:prose-invert max-w-none">
-						<p className="whitespace-pre-line text-gray-800 dark:text-gray-200">
-							{lang === "bn" ? text.bn : text.en}
-						</p>
-					</div>
-				</ScrollAnimation>
-			</div>
-		</div>
-	);
+  return (
+    <div className="min-h-screen bg-geometric-light dark:bg-geometric-dark py-16 px-4">
+      <Helmet>
+        {lang === "bn" ? (
+          <>
+            <title>ব্যবহারের শর্তাবলী - কাফআহ</title>
+            <meta
+              name="description"
+              content="কাফআহ ওয়েবসাইট ও অ্যাপ ব্যবহারের শর্তাবলী। ইউজার অ্যাকাউন্ট, তথ্যের নিরাপত্তা, মেধাস্বত্ব সংক্রান্ত তথ্য।"
+            />
+            <meta property="og:title" content="ব্যবহারের শর্তাবলী - কাফআহ" />
+            <meta
+              property="og:description"
+              content="কাফআহ সেবা ব্যবহারের শর্তাবলী।"
+            />
+          </>
+        ) : (
+          <>
+            <title>Terms & Conditions - Kafa'ah</title>
+            <meta
+              name="description"
+              content="Terms and conditions for using Kafa'ah website and app. User account, data security, intellectual property."
+            />
+            <meta property="og:title" content="Terms & Conditions - Kafa'ah" />
+            <meta
+              property="og:description"
+              content="Terms of service for Kafa'ah."
+            />
+          </>
+        )}
+        <meta
+          property="og:url"
+          content="https://kafaahbd.github.io/kafaahbd/terms-conditions"
+        />
+      </Helmet>
+      <div className="max-w-4xl mx-auto bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-lg">
+        <ScrollAnimation>
+          <div className="prose prose-lg dark:prose-invert max-w-none">
+            <p className="whitespace-pre-line text-gray-800 dark:text-gray-200">
+              {lang === "bn" ? text.bn : text.en}
+            </p>
+          </div>
+        </ScrollAnimation>
+      </div>
+    </div>
+  );
 };
 
 export default TermsConditions;

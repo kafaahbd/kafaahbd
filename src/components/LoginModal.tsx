@@ -1,13 +1,18 @@
 import { useState } from 'react'
 import { useLanguage } from '../contexts/LanguageContext'
 
-const LoginModal = ({ isOpen, onClose }) => {
+interface LoginModalProps {
+  isOpen: boolean;
+  onClose: () => void;
+}
+
+const LoginModal: React.FC<LoginModalProps> = ({ isOpen, onClose }) => {
   const { t, lang } = useLanguage()
-  const [showMessage, setShowMessage] = useState(false)
+  const [showMessage, setShowMessage] = useState<boolean>(false)
 
   if (!isOpen) return null
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     setShowMessage(true)
     // Auto hide after 3 seconds

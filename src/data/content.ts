@@ -1,5 +1,5 @@
 // Contains all translatable text
-export const content = {
+export const content: Record<string, Record<string, string>> = {
 	en: {
 		// Navbar
 		"nav.home": "Home",

@@ -6,16 +6,23 @@ import LanguageToggle from './LanguageToggle'
 import ThemeToggle from './ThemeToggle'
 import LoginModal from './LoginModal'
 
-const Navbar = () => {
+// নেভ লিংকের টাইপ
+interface NavLink {
+  name: string;
+  path: string;
+  external?: boolean;
+}
+
+const Navbar: React.FC = () => {
   const { t } = useLanguage()
   const { darkMode } = useTheme()
-  const [isOpen, setIsOpen] = useState(false)
-  const [showLogin, setShowLogin] = useState(false)
+  const [isOpen, setIsOpen] = useState<boolean>(false)
+  const [showLogin, setShowLogin] = useState<boolean>(false)
   const location = useLocation()
-  const menuRef = useRef(null) // মোবাইল মেনু রেফ
-  const buttonRef = useRef(null) // টগল বাটন রেফ
+  const menuRef = useRef<HTMLDivElement>(null) // মোবাইল মেনু রেফ
+  const buttonRef = useRef<HTMLButtonElement>(null) // টগল বাটন রেফ
 
-  const navLinks = [
+  const navLinks: NavLink[] = [
     { name: t('nav.home'), path: '/' },
     { name: t('nav.projects'), path: '/projects' },
     { name: t('nav.join'), path: 'https://docs.google.com/forms/d/e/1FAIpQLScM3Usiy57D08kuVwDl__6vaR6YjRTCrIvGoCFH_U5wwF8kKw/viewform', external: true },
@@ -25,13 +32,13 @@ const Navbar = () => {
 
   // ক্লিক আউটসাইড হ্যান্ডলার
   useEffect(() => {
-    const handleClickOutside = (event) => {
+    const handleClickOutside = (event: MouseEvent) => {
       // যদি মেনু খোলা থাকে এবং ক্লিক করা জায়গাটা মেনু বা বাটনের ভিতরে না হয়
       if (isOpen && 
           menuRef.current && 
-          !menuRef.current.contains(event.target) &&
+          !menuRef.current.contains(event.target as Node) &&
           buttonRef.current && 
-          !buttonRef.current.contains(event.target)) {
+          !buttonRef.current.contains(event.target as Node)) {
         setIsOpen(false)
       }
     }
@@ -41,7 +48,7 @@ const Navbar = () => {
   }, [isOpen])
 
   // লিঙ্ক ক্লিক করলে মেনু বন্ধ হবে
-  const handleNavClick = (link) => {
+  const handleNavClick = (link: NavLink) => {
     if (link.external) {
       window.open(link.path, '_blank')
     }

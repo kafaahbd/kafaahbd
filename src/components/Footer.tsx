@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 import { useLanguage } from '../contexts/LanguageContext'
 
-const Footer = () => {
+const Footer: React.FC = () => {
   const { t, lang } = useLanguage()
 
   return (

@@ -1,7 +1,12 @@
 import { useEffect, useRef } from 'react'
 
-const ScrollAnimation = ({ children, className = '' }) => {
-  const ref = useRef(null)
+interface ScrollAnimationProps {
+  children: React.ReactNode;
+  className?: string;
+}
+
+const ScrollAnimation: React.FC<ScrollAnimationProps> = ({ children, className = '' }) => {
+  const ref = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     const observer = new IntersectionObserver(

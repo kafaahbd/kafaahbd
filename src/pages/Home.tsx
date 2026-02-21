@@ -4,16 +4,25 @@ import { useLanguage } from "../contexts/LanguageContext";
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 
-const Home = () => {
+// আয়াতের ডাটা টাইপ
+interface Ayat {
+  id: number;
+  surah: string;
+  ayat_number: number;
+  arabic: string;
+  bangla: string;
+}
+
+const Home: React.FC = () => {
   const { t, lang } = useLanguage();
 
   // কুরআনের আয়াতের state
-  const [ayat, setAyat] = useState(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+  const [ayat, setAyat] = useState<Ayat | null>(null);
+  const [loading, setLoading] = useState<boolean>(true);
+  const [error, setError] = useState<string | null>(null);
 
   // র‍্যান্ডম আয়াত ফেচ করার ফাংশন
-  const fetchRandomAyat = async () => {
+  const fetchRandomAyat = async (): Promise<void> => {
     setLoading(true);
     setError(null);
     try {
@@ -21,11 +30,11 @@ const Home = () => {
         "https://raw.githubusercontent.com/kafaahbd/nothing/refs/heads/main/ayat.json"
       );
       if (!response.ok) throw new Error("Failed to fetch");
-      const data = await response.json();
+      const data: Ayat[] = await response.json();
       const randomIndex = Math.floor(Math.random() * data.length);
       setAyat(data[randomIndex]);
     } catch (err) {
-      setError(err.message);
+      setError(err instanceof Error ? err.message : "Unknown error");
     } finally {
       setLoading(false);
     }
@@ -35,7 +44,7 @@ const Home = () => {
     fetchRandomAyat();
   }, []);
 
-  const services = [
+  const services: string[] = [
     t("home.services.software"),
     t("home.services.islamicapps"),
     t("home.services.learning"),
@@ -43,7 +52,7 @@ const Home = () => {
     t("home.services.ecommerce"),
   ];
 
-  const whyPoints = [
+  const whyPoints: string[] = [
     t("home.why.authentic"),
     t("home.why.quality"),
     t("home.why.performance"),
