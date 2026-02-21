@@ -6,6 +6,7 @@ import { ThemeProvider } from "./contexts/ThemeContext";
 import App from "./App";
 import "./index.css";
 import { HelmetProvider } from "react-helmet-async";
+import 'katex/dist/katex.min.css';
 
 // ===== যোগ করুন: GitHub Pages redirect handling =====
 (function handleRedirect() {

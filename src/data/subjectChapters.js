@@ -71,15 +71,20 @@ export const subjectChapters = {
 			},
 			{ name: "English 2nd Paper Chapter 1", url: "#" },
 		],
-		ict: [{ name: "ICT অধ্যায় ১", url: "#" }],
+		ict: [
+			{
+				name: "ICT অধ্যায় ৫",
+				url: "https://raw.githubusercontent.com/kafaahbd/Question/refs/heads/main/ict_hsc_5.json",
+			},
+		],
 		// Science
 		physics: [
 			{
-				name: "পদার্থ ১ম পত্র অধ্যায় ৩ : গতিবিদ্যা",
+				name: "পদার্থ ১ম পত্র অধ্যায় ৩ ",
 				url: "https://raw.githubusercontent.com/kafaahbd/nothing/refs/heads/main/hsc_physcis_chapter_3_1st_paper.json",
 			},
 			{
-				name: "পদার্থ ১ম পত্র অধ্যায় ৪ : নিউটনিয়ান বলবিদ্যা",
+				name: "পদার্থ ১ম পত্র অধ্যায় ৪ ",
 				url: "https://raw.githubusercontent.com/kafaahbd/nothing/refs/heads/main/hsc_physcis_chapter_4_1st_paper.json",
 			},
 			// অন্যান্য অধ্যায়
@@ -87,25 +92,34 @@ export const subjectChapters = {
 		chemistry: [
 			{ name: "রসায়ন ১ম পত্র অধ্যায় ১", url: "#" },
 			{
-				name: "রসায়ন ১ম পত্র অধ্যায় ২ : গুনগত রসায়ন",
+				name: "রসায়ন ১ম পত্র অধ্যায় ২ ",
 				url: "https://raw.githubusercontent.com/kafaahbd/nothing/refs/heads/main/hsc_chemistry_chapter_2_1st_paper.json",
 			},
 		],
 		biology: [
 			{
-				name: "জীববিজ্ঞান ১ম পত্র অধ্যায় ১ : কোষ ও এর গঠন",
+				name: "জীববিজ্ঞান ১ম পত্র অধ্যায় ১ ",
 				url: "https://raw.githubusercontent.com/kafaahbd/nothing/refs/heads/main/hsc_biology_chapter_1_1st_paper.json",
 			},
 			{
-				name: "জীববিজ্ঞান ১ম পত্র অধ্যায় ২ : কোষ বিভাজন",
+				name: "জীববিজ্ঞান ১ম পত্র অধ্যায় ২ ",
 				url: "https://raw.githubusercontent.com/kafaahbd/nothing/refs/heads/main/hsc_biology_1st_paper_chapter_2.json",
 			},
 			{
-				name: "জীববিজ্ঞান ২য় পত্র অধ্যায় ১ : প্রাণির বিভিন্নতা ও শ্রেণি বিন্যাস",
+				name: "জীববিজ্ঞান ১ম পত্র অধ্যায় ৩ ",
+				url: "https://raw.githubusercontent.com/kafaahbd/Question/refs/heads/main/Botany-3.json",
+			},
+			{
+				name: "জীববিজ্ঞান ২য় পত্র অধ্যায় ১ ",
 				url: "https://raw.githubusercontent.com/kafaahbd/nothing/refs/heads/main/hsc_biology_2nd_paper_chapter_1.json",
 			},
 		],
-		highermath: [{ name: "উচ্চতর গণিত ১ম পত্র অধ্যায় ১", url: "#" }],
+		highermath: [
+			{
+				name: "উচ্চতর গণিত ১ম পত্র অধ্যায় ৭",
+				url: "https://raw.githubusercontent.com/kafaahbd/Question/refs/heads/main/trigonometry_hsc_7.json",
+			},
+		],
 		// Arts
 		history: [{ name: "ইতিহাস অধ্যায় ১", url: "#" }],
 		islamic: [{ name: "ইসলামের ইতিহাস অধ্যায় ১", url: "#" }],
@@ -133,7 +147,7 @@ export const subjectChapters = {
 		],
 		"engineering-math": [{ name: "গণিত (ইঞ্জিনিয়ারিং) অধ্যায় ১", url: "#" }],
 		"engineering-highermath": [
-			{ name: "উচ্চতর গণিত (ইঞ্জিনিয়ারিং) অধ্যায় ১", url: "#" },
+			{ name: "উচ্চতর গণিত (ইঞ্জিনিয়ারিং) অধ্যায় ৭", url: "https://raw.githubusercontent.com/kafaahbd/Question/refs/heads/main/engineering_hm_7.json" },
 		],
 		"medical-physics": [{ name: "পদার্থ (মেডিকেল) অধ্যায় ১", url: "#" }],
 		"medical-chemistry": [{ name: "রসায়ন (মেডিকেল) অধ্যায় ১", url: "#" }],
