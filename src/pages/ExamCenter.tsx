@@ -128,17 +128,36 @@ const ExamCenter: React.FC = () => {
     },
   };
 
-  const subjectName =
-    subjectNames[lang as keyof typeof subjectNames][subject as keyof typeof subjectNames.bn] ||
-    subjectNames.en[subject as keyof typeof subjectNames.en] ||
-    subject;
-
-  // গ্রুপের নাম বাংলায়/ইংরেজিতে
-  const groupName =
-    {
+  // সেফ গ্রুপ নাম ফাংশন
+  const getGroupName = (): string => {
+    if (!group) return '';
+    const groupMap = {
       bn: { ssc: "এসএসসি", hsc: "এইচএসসি", admission: "এডমিশন" },
       en: { ssc: "SSC", hsc: "HSC", admission: "Admission" },
-    }[lang as "bn" | "en"][group as "ssc" | "hsc" | "admission"] || group;
+    };
+    const langKey = lang as 'bn' | 'en';
+    if (group === "ssc" || group === "hsc" || group === "admission") {
+      return groupMap[langKey][group];
+    }
+    return group;
+  };
+
+  // সেফ সাবজেক্ট নাম ফাংশন
+  const getSubjectName = (): string => {
+    if (!subject) return "";
+    const bnKeys = subjectNames.bn as Record<string, string>;
+    if (subject in bnKeys) {
+      return bnKeys[subject];
+    }
+    const enKeys = subjectNames.en as Record<string, string>;
+    if (subject in enKeys) {
+      return enKeys[subject];
+    }
+    return subject;
+  };
+
+  const subjectName = getSubjectName();
+  const groupName = getGroupName();
 
   // পৃষ্ঠার মেটা ট্যাগের জন্য
   const pageTitle = `${subjectName} - ${groupName} | ${lang === "bn" ? "কাফআহ পরীক্ষা কেন্দ্র" : "Kafa'ah Exam Center"}`;
@@ -504,7 +523,7 @@ const ExamCenter: React.FC = () => {
             </div>
 
             {/* প্রশ্ন */}
-            <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">
+            <h2 className="text-xl font-bold text-gray-900 dark:text-white mb-6">
               <Latex>{currentQuestion?.question}</Latex>
             </h2>
 
@@ -631,41 +650,48 @@ const ExamCenter: React.FC = () => {
 
             {/* উত্তর ও ব্যাখ্যা */}
             <div className="space-y-6">
-              {result.results.map((item, idx) => (
-                <div
-                  key={idx}
-                  className="border-b border-gray-200 dark:border-gray-700 pb-4 "
-                >
-                  <p className="text-xl font-medium mb-6 ">
-                    {idx + 1}.<Latex>{item.question}</Latex>
-                  </p>
-                  <div className="ml-4">
-                    <p
-                      className={`text-xl ${item.isCorrect ? "text-green-600" : "text-red-600"}`}
-                    >
-                      {lang === "bn" ? "আপনার উত্তর:" : "Your answer:"}{" "}
-                      <Latex>
-                        {item.userAnswer}. {item.options[item.userAnswer]}
-                      </Latex>
+              {result.results.map((item, idx) => {
+                // নিরাপদে অপশন পাওয়া (সবসময় স্ট্রিং নিশ্চিত)
+                const userOptionText: string = item.userAnswer && item.options[item.userAnswer] 
+                  ? item.options[item.userAnswer] 
+                  : '';
+                const correctOptionText: string = item.options[item.correctAnswer] || '';
+                
+                return (
+                  <div
+                    key={idx}
+                    className="border-b border-gray-200 dark:border-gray-700 pb-4"
+                  >
+                    <p className="text-xl font-medium mb-6">
+                      {idx + 1}. <Latex>{item.question}</Latex>
                     </p>
-                    {!item.isCorrect && (
-                      <p className=" mt-4 text-xl text-green-600">
-                        {lang === "bn" ? "সঠিক উত্তর:" : "Correct answer:"}{" "}
+                    <div className="ml-4">
+                      <p
+                        className={`text-xl ${item.isCorrect ? "text-green-600" : "text-red-600"}`}
+                      >
+                        {lang === "bn" ? "আপনার উত্তর:" : "Your answer:"}{" "}
                         <Latex>
-                          {item.correctAnswer}.{" "}
-                          {item.options[item.correctAnswer]}
+                          {item.userAnswer ?? ''}. {userOptionText}
                         </Latex>
                       </p>
-                    )}
-                    <p className="text-xl text-gray-800 dark:text-gray-300 mt-6">
-                      <span className="font-medium">
-                        {lang === "bn" ? "ব্যাখ্যা:" : "Explanation:"}
-                      </span>{" "}
-                      <Latex>{item.explanation}</Latex>
-                    </p>
+                      {!item.isCorrect && (
+                        <p className="mt-4 text-xl text-green-600">
+                          {lang === "bn" ? "সঠিক উত্তর:" : "Correct answer:"}{" "}
+                          <Latex>
+                            {item.correctAnswer}. {correctOptionText}
+                          </Latex>
+                        </p>
+                      )}
+                      <p className="text-xl text-gray-800 dark:text-gray-300 mt-6">
+                        <span className="font-medium">
+                          {lang === "bn" ? "ব্যাখ্যা:" : "Explanation:"}
+                        </span>{" "}
+                        <Latex>{item.explanation}</Latex>
+                      </p>
+                    </div>
                   </div>
-                </div>
-              ))}
+                );
+              })}
             </div>
 
             {/* আবার পরীক্ষা দেওয়ার বাটন */}
@@ -684,7 +710,7 @@ const ExamCenter: React.FC = () => {
             </div>
           </div>
 
-          {/* wrong */}
+          {/* কপিরাইট */}
           <div className="text-center text-xs text-gray-500 dark:text-gray-500 mt-8">
             {lang === "bn"
               ? "প্রশ্ন বা উত্তরে ভুল পেলে দয়া করে আমাদের WhatsApp জানাবেন ।"

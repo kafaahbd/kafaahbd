@@ -15,10 +15,24 @@ export const subjectChapters: SubjectChapters = {
     // Common Subjects
     bangla: [
       // TODO: বাংলার JSON URL যোগ করুন
-      { name: "বাংলা ১ম পত্র অধ্যায় ১", url: "#" },
+      { name: "বাংলা ১ম পত্র নাটক : বহিপীর", url: "https://raw.githubusercontent.com/kafaahbd/Question/refs/heads/main/ssc_bohipir.json" },
       { name: "বাংলা ১ম পত্র অধ্যায় ২", url: "#" },
     ],
-    english: [{ name: "English 1st Paper Chapter 1", url: "#" }],
+    english: [
+      { name: "English 1st Paper Chapter 1", url: "#" },
+      {
+        name: "English 2nd Paper : Changing Sentence",
+        url: "https://raw.githubusercontent.com/kafaahbd/nothing/refs/heads/main/hsc_english_2nd_paper_changing.json",
+      },
+      {
+        name: "English 2nd Paper : Right Form Of Verb",
+        url: "https://raw.githubusercontent.com/kafaahbd/nothing/refs/heads/main/hsc_english_2nd_paper_rightformofverb.json",
+      },
+      {
+        name: "English 2nd Paper : Word Meaning",
+        url: "https://raw.githubusercontent.com/kafaahbd/nothing/refs/heads/main/hsc_english_2nd_paper_wordmeaning.json",
+      },
+    ],
     ict: [{ name: "ICT অধ্যায় ১", url: "#" }],
     math: [{ name: "সাধারণ গণিত অধ্যায় ১", url: "#" }],
     islam: [{ name: "ইসলাম শিক্ষা অধ্যায় ১", url: "#" }],
