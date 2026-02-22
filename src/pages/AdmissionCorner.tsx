@@ -12,7 +12,8 @@ interface Subject {
 interface Category {
   name: string;
   icon: string;
-  color: string;
+  color: string;           // ব্যাকগ্রাউন্ড ক্লাস (যেমন bg-blue-600)
+  hoverColor: string;       // হোভার টেক্সট ক্লাস (যেমন hover:text-blue-600 dark:hover:text-blue-400)
   subjects: Subject[];
 }
 
@@ -24,6 +25,7 @@ const AdmissionCorner: React.FC = () => {
       name: t("study.admission.engineering"),
       icon: "⚙️",
       color: "bg-blue-600",
+      hoverColor: "hover:text-blue-600 dark:hover:text-blue-400",
       subjects: [
         {
           name: t("study.admission.physics"),
@@ -33,10 +35,7 @@ const AdmissionCorner: React.FC = () => {
           name: t("study.admission.chemistry"),
           path: "/study/exam?group=admission&subject=engineering-chemistry",
         },
-        {
-          name: t("study.admission.math"),
-          path: "/study/exam?group=admission&subject=engineering-math",
-        },
+        // Math বাদ দেওয়া হয়েছে
         {
           name: t("study.admission.highermath"),
           path: "/study/exam?group=admission&subject=engineering-highermath",
@@ -51,6 +50,7 @@ const AdmissionCorner: React.FC = () => {
       name: t("study.admission.medical"),
       icon: "🏥",
       color: "bg-red-600",
+      hoverColor: "hover:text-red-600 dark:hover:text-red-400",
       subjects: [
         {
           name: t("study.admission.physics"),
@@ -78,6 +78,7 @@ const AdmissionCorner: React.FC = () => {
       name: t("study.admission.university"),
       icon: "🏛️",
       color: "bg-purple-600",
+      hoverColor: "hover:text-purple-600 dark:hover:text-purple-400",
       subjects: [
         {
           name: t("study.admission.bangla"),
@@ -187,12 +188,12 @@ const AdmissionCorner: React.FC = () => {
                       key={subIdx}
                       to={subject.path}
                       target="_self"
-                      className="w-full text-left px-4 py-3 hover:bg-green-50 dark:hover:bg-gray-700 rounded-lg transition flex items-center justify-between group border-b border-gray-100 dark:border-gray-700 last:border-0"
+                      className={`w-full text-left px-4 py-3 hover:bg-green-50 dark:hover:bg-gray-700 rounded-lg transition flex items-center justify-between group border-b border-gray-100 dark:border-gray-700 last:border-0 ${category.hoverColor}`}
                     >
-                      <span className="text-gray-700 dark:text-gray-300 group-hover:text-green-600 dark:group-hover:text-green-400">
+                      <span className="text-gray-700 dark:text-gray-300 group-hover:text-inherit">
                         {subject.name}
                       </span>
-                      <i className="fas fa-arrow-right text-gray-400 group-hover:text-green-600 dark:group-hover:text-green-400 text-sm"></i>
+                      <i className="fas fa-arrow-right text-gray-400 group-hover:text-inherit text-sm"></i>
                     </Link>
                   ))}
                 </div>
@@ -213,8 +214,8 @@ const AdmissionCorner: React.FC = () => {
 
         {/* Features Section */}
         <div className="mt-12 grid md:grid-cols-3 gap-6">
-          <div className="bg-green-50 dark:bg-green-900/20 p-6 rounded-xl text-center">
-            <i className="fas fa-calendar-alt text-green-600 dark:text-green-400 text-3xl mb-3"></i>
+          <div className="bg-green-50 dark:bg-blue-900/20 p-6 rounded-xl text-center">
+            <i className="fas fa-calendar-alt text-green-600 dark:text-blue-400 text-3xl mb-3"></i>
             <h3 className="font-semibold text-gray-900 dark:text-white mb-2">
               {lang === "bn" ? "এডমিশন ক্যালেন্ডার" : "Admission Calendar"}
             </h3>
@@ -222,8 +223,8 @@ const AdmissionCorner: React.FC = () => {
               {lang === "bn" ? "শীঘ্রই আসছে" : "Coming soon"}
             </p>
           </div>
-          <div className="bg-green-50 dark:bg-green-900/20 p-6 rounded-xl text-center">
-            <i className="fas fa-question-circle text-green-600 dark:text-green-400 text-3xl mb-3"></i>
+          <div className="bg-green-50 dark:bg-blue-900/20 p-6 rounded-xl text-center">
+            <i className="fas fa-question-circle text-green-600 dark:text-blue-400 text-3xl mb-3"></i>
             <h3 className="font-semibold text-gray-900 dark:text-white mb-2">
               {lang === "bn" ? "মডেল টেস্ট" : "Model Tests"}
             </h3>
@@ -231,8 +232,8 @@ const AdmissionCorner: React.FC = () => {
               {lang === "bn" ? "শীঘ্রই আসছে" : "Coming soon"}
             </p>
           </div>
-          <div className="bg-green-50 dark:bg-green-900/20 p-6 rounded-xl text-center">
-            <i className="fas fa-chart-line text-green-600 dark:text-green-400 text-3xl mb-3"></i>
+          <div className="bg-green-50 dark:bg-blue-900/20 p-6 rounded-xl text-center">
+            <i className="fas fa-chart-line text-green-600 dark:text-blue-400 text-3xl mb-3"></i>
             <h3 className="font-semibold text-gray-900 dark:text-white mb-2">
               {lang === "bn" ? "রেজাল্ট অ্যানালাইসিস" : "Result Analysis"}
             </h3>
@@ -243,8 +244,8 @@ const AdmissionCorner: React.FC = () => {
         </div>
 
         {/* Info Box */}
-        <div className="mt-12 bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 rounded-2xl p-6 text-center">
-          <i className="fas fa-info-circle text-green-600 dark:text-green-400 text-3xl mb-3"></i>
+        <div className="mt-12 bg-green-50 dark:bg-blue-900/20 border border-green-200 dark:border-blue-800 rounded-2xl p-6 text-center">
+          <i className="fas fa-info-circle text-green-600 dark:text-blue-400 text-3xl mb-3"></i>
           <p className="text-gray-700 dark:text-gray-300">
             {lang === "bn"
               ? "ইঞ্জিনিয়ারিং, মেডিকেল ও ইউনিভার্সিটি এডমিশনের জন্য সম্পূর্ণ প্রস্তুতি খুব শীঘ্রই আসছে ইনশাআল্লাহ। বর্তমানে লিঙ্কগুলো খালি আছে, যা পরবর্তীতে আপডেট করা হবে ।"
