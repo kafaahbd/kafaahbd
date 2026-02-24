@@ -3,7 +3,7 @@ import { Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import { useLanguage } from './contexts/LanguageContext';
-import StudyCornerRedirect from './pages/StudyCornerRedirect'; // নতুন কম্পোনেন্ট ইম্পোর্ট
+ // নতুন কম্পোনেন্ট ইম্পোর্ট
 
 // অন্যান্য পৃষ্ঠা লেজি লোড
 const Home = lazy(() => import('./pages/Home'));
@@ -14,6 +14,7 @@ const JoiningConditions = lazy(() => import('./pages/JoiningConditions'));
 const TermsConditions = lazy(() => import('./pages/TermsConditions'));
 const Contact = lazy(() => import('./pages/Contact'));
 const Team = lazy(() => import('./pages/Team'));
+const StudyCornerRedirect = lazy(() => import('./pages/StudyCornerRedirect'));
 
 // Study সংক্রান্ত পুরনো পৃষ্ঠাগুলো সরিয়ে ফেলা হয়েছে (এগুলো এখন আলাদা অ্যাপে)
 
@@ -43,7 +44,7 @@ const App: React.FC = () => {
             <Route path="/" element={<Home />} />
             <Route path="/projects" element={<Projects />} />
             {/* Study এর সব রাউট এখন একটি কম্পোনেন্টে */}
-            <Route path="/study/*" element={<StudyCornerRedirect />} />
+            <Route path="/study" element={<StudyCornerRedirect />} />
             <Route path="/about" element={<About />} />
             <Route path="/privacy-policy" element={<PrivacyPolicy />} />
             <Route path="/joining-conditions" element={<JoiningConditions />} />
