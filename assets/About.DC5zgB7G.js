@@ -1,4 +1,4 @@
-import{j as a,e as n}from"./react-vendor.BBKQW-ti.js";import{S as o}from"./ScrollAnimation.B_w85C6T.js";import{u as i}from"./index.Dm2hIk0w.js";import"./vendor.Dm6m6Bww.js";const h=()=>{const{lang:e}=i(),t={bn:`About Us — Kafa’ah Islamic and Multiproject Company
+import{j as a,H as n}from"./react-vendor.Cm6wxsC8.js";import{S as o}from"./ScrollAnimation.D3I56tZf.js";import{u as i}from"./index.B0amzKub.js";import"./vendor.Gp2JNBb7.js";const h=()=>{const{lang:e}=i(),t={bn:`About Us — Kafa’ah Islamic and Multiproject Company
 
 Kafa’ah Islamic and Multiproject Company প্রতিষ্ঠিত হয় 1 January 2026 তারিখে, একটি মহান উদ্দেশ্য নিয়ে—ইসলামিক জ্ঞান বিশ্বব্যাপী ছড়িয়ে দেওয়া, শিক্ষাকে প্রযুক্তির মাধ্যমে সহজ ও আধুনিক করে তোলা, এবং মুসলিম উম্মাহর জন্য নিরাপদ, মানসম্মত ও authentic ডিজিটাল প্ল্যাটফর্ম তৈরি করা।
 
