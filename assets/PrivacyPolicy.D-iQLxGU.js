@@ -1,4 +1,4 @@
-import{j as e,d as t}from"./react-vendor.DpIp4ypX.js";import{S as i}from"./ScrollAnimation.BSJo7J5w.js";import{u as r}from"./index.CAEp_tRF.js";import"./vendor.1InCdCzI.js";const d=()=>{const{lang:o}=r(),a={bn:`Privacy & Policy
+import{j as e,d as t}from"./react-vendor.DpIp4ypX.js";import{S as i}from"./ScrollAnimation.BSJo7J5w.js";import{u as r}from"./index.BgiCCu8V.js";import"./vendor.1InCdCzI.js";const d=()=>{const{lang:o}=r(),a={bn:`Privacy & Policy
 
 Kafa’ah Islamic and Multiproject Company
 Effective Date: 1 December, 2025
