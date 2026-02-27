@@ -21,7 +21,7 @@ const StudyCornerRedirect: React.FC = () => {
             : 'Study Corner has been moved to a separate platform. Click the button below to go to the new Study Corner.'}
         </p>
         <a
-          href="https://kafaahbd.github.io/study-corner" // ← এখানে আপনার নতুন অ্যাপের URL দিন
+          href="https://kafaahbd.github.io/study" // ← এখানে আপনার নতুন অ্যাপের URL দিন
           target="_blank"
           rel="noopener noreferrer"
           className="inline-block bg-green-600 dark:bg-blue-600 text-white px-8 py-4 rounded-xl text-xl font-semibold hover:bg-green-700 dark:hover:bg-blue-700 transition transform hover:scale-105 shadow-lg"
@@ -30,8 +30,8 @@ const StudyCornerRedirect: React.FC = () => {
         </a>
         <p className="text-sm text-gray-500 dark:text-gray-400 mt-6">
           {lang === 'bn'
-            ? 'নতুন ঠিকানা: https://kafaahbd.github.io/study-corner'
-            : 'New address: https://kafaahbd.github.io/study-corner'}
+            ? 'নতুন ঠিকানা: https://kafaahbd.github.io/study'
+            : 'New address: https://kafaahbd.github.io/study'}
         </p>
       </div>
     </div>
