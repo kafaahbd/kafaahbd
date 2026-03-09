@@ -18,7 +18,7 @@ const Footer: React.FC = () => {
             <a href="https://www.facebook.com/kafaahbd" target="_blank" rel="noopener noreferrer" className="text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-500">
               <i className="fab fa-facebook-f text-2xl"></i>
             </a>
-            <a href="https://wa.me/8801837103985" target="_blank" rel="noopener noreferrer" className="text-gray-600 dark:text-gray-400 hover:text-green-600 dark:hover:text-green-600">
+            <a href="https://wa.me/+8801837103985" target="_blank" rel="noopener noreferrer" className="text-gray-600 dark:text-gray-400 hover:text-green-600 dark:hover:text-green-600">
               <i className="fab fa-whatsapp text-2xl"></i>
             </a>
             <a href="#" className="text-gray-600 dark:text-gray-400 hover:text-red-600 dark:hover:text-red-600">
