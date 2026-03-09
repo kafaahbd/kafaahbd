@@ -53,7 +53,7 @@ const Footer: React.FC = () => {
             <div className="flex space-x-4">
               {[
                 { icon: <Facebook size={18} />, url: "https://www.facebook.com/kafaahbd", color: "hover:bg-blue-600" },
-                { icon: <MessageCircle size={18} />, url: "https://wa.me/+8801837103985", color: "hover:bg-green-600" },
+                { icon: <MessageCircle size={18} />, url: "https://wa.me/8801837103985", color: "hover:bg-green-600" },
                 { icon: <Youtube size={18} />, url: "#", color: "hover:bg-red-600" }
               ].map((social, i) => (
                 <a 
