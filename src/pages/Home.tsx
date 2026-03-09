@@ -181,6 +181,8 @@ const Home: React.FC = () => {
             <img 
               src="https://kafaahbd.com/home.jpg" 
               alt="Kafaah Vision" 
+              width="800"
+              height="450"
               className="w-full h-auto object-cover hover:scale-105 transition-transform duration-1000"
             />
           </motion.div>

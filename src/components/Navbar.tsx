@@ -69,6 +69,8 @@ const Navbar: React.FC = () => {
                 whileHover={{ scale: 1.05 }}
                 src="https://raw.githubusercontent.com/kafaahbd/kafaah/refs/heads/main/pics/kafaah.png" 
                 alt="Kafa'ah" 
+                width="160"
+                height="48"
                 className="h-10 md:h-12 w-auto"
               />
             </Link>
@@ -111,6 +113,7 @@ const Navbar: React.FC = () => {
               <button
                 ref={buttonRef}
                 onClick={() => setIsOpen(!isOpen)}
+                aria-label="Toggle menu"
                 className="lg:hidden p-2.5 rounded-xl bg-green-600 text-white shadow-lg shadow-green-500/30 transition-transform active:scale-90"
               >
                 {isOpen ? <X size={24} /> : <Menu size={24} />}

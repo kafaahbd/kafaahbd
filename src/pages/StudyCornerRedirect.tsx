@@ -47,6 +47,8 @@ const StudyCornerRedirect: React.FC = () => {
            <img 
             src="https://kafaahbd.com/stufy.jpg" 
             alt="Study Corner" 
+            width="400"
+            height="400"
             className="relative z-10 max-w-xs md:max-w-md h-auto object-cover rounded-[2rem] shadow-2xl border-4 border-white dark:border-gray-800 transform group-hover:scale-105 transition-transform duration-500"
            />
         </div>

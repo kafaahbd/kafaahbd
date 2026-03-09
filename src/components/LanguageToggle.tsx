@@ -10,6 +10,7 @@ const LanguageToggle: React.FC = () => {
       whileHover={{ scale: 1.02 }}
       whileTap={{ scale: 0.95 }}
       onClick={toggleLanguage}
+      aria-label="Toggle Language"
       className={`relative flex items-center gap-2 px-4 py-2 md:px-5 md:py-2.5 rounded-2xl font-bold text-sm transition-all duration-300 shadow-sm overflow-hidden
         ${lang === 'en' 
           ? 'bg-emerald-50 text-emerald-700 border border-emerald-100 dark:bg-emerald-500/10 dark:text-emerald-400 dark:border-emerald-500/20' 
