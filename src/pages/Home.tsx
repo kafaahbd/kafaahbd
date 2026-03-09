@@ -137,7 +137,7 @@ const Home: React.FC = () => {
 
                 <AnimatePresence mode="wait">
                   {loading ? (
-                    <motion.div key="loader" animate={{ rotate: 360 }} transition={{ repeat: Infinity, duration: 2 }} className="flex justify-center py-10">
+                    <motion.div key="loader" animate={{ rotate: 360 }} transition={{ repeat: Infinity, duration: 2 }} className="flex justify-center py-10 min-h-[300px]">
                       <RefreshCw className="text-green-600" />
                     </motion.div>
                   ) : (
@@ -145,7 +145,7 @@ const Home: React.FC = () => {
                       key={ayat?.id}
                       initial={{ opacity: 0, y: 10 }}
                       animate={{ opacity: 1, y: 0 }}
-                      className="space-y-6 md:space-y-10"
+                      className="space-y-6 md:space-y-10 min-h-[300px]"
                     >
                       <p className="text-2xl md:text-5xl text-gray-900 dark:text-white leading-loose font-arabic" dir="rtl">
                         {ayat?.arabic}
@@ -183,7 +183,8 @@ const Home: React.FC = () => {
               alt="Kafaah Vision" 
               width="800"
               height="450"
-              className="w-full h-auto object-cover hover:scale-105 transition-transform duration-1000"
+              loading="lazy"
+              className="w-full h-auto object-cover hover:scale-105 transition-transform duration-1000 aspect-video"
             />
           </motion.div>
         </section>
