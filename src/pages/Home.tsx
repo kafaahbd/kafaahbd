@@ -82,7 +82,7 @@ const Home: React.FC = () => {
         title={lang === "bn" ? "হোম" : "Home"}
         description={lang === "bn" ? "কাফআহ ইসলামিক অ্যান্ড মাল্টিপ্রজেক্ট কোম্পানি..." : "Kafa'ah Islamic..."}
         url="https://kafaahbd.com/"
-        image="https://raw.githubusercontent.com/kafaahbd/kafaah/refs/heads/main/home.jpg"
+        image="https://kafaahbd.com/home.jpg"
       />
 
       <div className="bg-slate-50 dark:bg-[#05070a] transition-colors duration-500 overflow-hidden">
@@ -179,7 +179,7 @@ const Home: React.FC = () => {
             className="max-w-4xl w-full rounded-3xl overflow-hidden shadow-2xl border-4 border-white dark:border-white/5"
           >
             <img 
-              src="https://raw.githubusercontent.com/kafaahbd/kafaah/refs/heads/main/home.jpg" 
+              src="https://kafaahbd.com/home.jpg" 
               alt="Kafaah Vision" 
               className="w-full h-auto object-cover hover:scale-105 transition-transform duration-1000"
             />

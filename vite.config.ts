@@ -6,43 +6,35 @@ export default defineConfig({
   base: "/",
   server: { port: 5173, open: false },
   build: {
-    chunkSizeWarningLimit: 1000, // সতর্কতা সীমা বাড়ানো
+    chunkSizeWarningLimit: 1500, // সীমা আরেকটু বাড়িয়ে দিলাম
     sourcemap: false,
     cssCodeSplit: true,
+    minify: "esbuild", 
     rollupOptions: {
       output: {
-        assetFileNames: "assets/[name].[hash].[ext]",
-        // ✅ উন্নত manualChunks: React আলাদা, বড় লাইব্রেরি আলাদা
+        // সিরিয়াল ঠিক রাখতে এবং এরর কমাতে সহজ ম্যানুয়াল চাস্কিং
         manualChunks(id) {
           if (id.includes("node_modules")) {
-            // React ইকোসিস্টেম (সবচেয়ে বড়)
-            if (
-              id.includes("react") ||
-              id.includes("react-dom") ||
-              id.includes("react-router-dom") ||
-              id.includes("scheduler")
-            ) {
-              return "react-vendor";
+            // ১. খুব বড় লাইব্রেরিগুলো আলাদা করুন (পিডিএফ এবং অন্যান্য)
+            if (id.includes("html2pdf.js") || id.includes("jspdf") || id.includes("html2canvas")) {
+              return "pdf-engine";
             }
-            // html2pdf.js (বড় পিডিএফ লাইব্রেরি)
-            if (id.includes("html2pdf.js")) {
-              return "pdf-generator";
+            if (id.includes("framer-motion") || id.includes("lucide-react")) {
+              return "ui-libs";
             }
-            // অন্যান্য লাইব্রেরি (যেমন react-helmet-async)
-            if (id.includes("react-helmet-async")) {
-              return "utils";
-            }
-            // বাকি সব node_modules
+            // ২. রিঅ্যাক্ট এবং কোর লাইব্রেরিগুলোকে একটি কমন ভেন্ডরে রাখুন
+            // এদের আলাদা আলাদা চাস্কে ভাগ করলে অনেক সময় একে অপরকে খুঁজে পায় না
             return "vendor";
           }
         },
+        assetFileNames: "assets/[name].[hash].[ext]",
         chunkFileNames: "assets/[name].[hash].js",
         entryFileNames: "assets/[name].[hash].js",
       },
     },
-    minify: "esbuild", // দ্রুত মিনিফাই
   },
+  // এন্টারপ্রাইজ লেভেল অপটিমাইজেশন
   optimizeDeps: {
-    include: ["react", "react-dom", "react-router-dom", "react-helmet-async"],
+    include: ["react", "react-dom", "react-router-dom", "react-helmet-async", "framer-motion"],
   },
 });

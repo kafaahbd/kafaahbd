@@ -11,7 +11,7 @@ interface SEOProps {
 const SEO: React.FC<SEOProps> = ({ 
   title, 
   description, 
-  image = 'https://raw.githubusercontent.com/kafaahbd/kafaah/refs/heads/main/home.jpg', 
+  image = 'https://kafaahbd.com/home.jpg', 
   url = 'https://kafaahbd.com',
   keywords = 'study, kafaah, islam, bd, education, islamic technology, ssc, hsc, admission, bangladesh'
 }) => {

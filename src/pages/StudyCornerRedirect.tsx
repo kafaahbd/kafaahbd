@@ -13,7 +13,7 @@ const StudyCornerRedirect: React.FC = () => {
         title={isBn ? 'কাফআহ স্টাডি কর্নার' : 'Kafaah Study Corner'}
         description={isBn ? 'আপনার একাডেমিক প্রস্তুতিকে আরও সহজ ও কার্যকর করতে আমাদের বিশেষ লার্নিং প্ল্যাটফর্ম।' : 'Our specialized learning platform to make your academic preparation easier and more effective.'}
         url="https://kafaahbd.com/study"
-        image="https://raw.githubusercontent.com/kafaahbd/kafaah/refs/heads/main/home.jpg"
+        image="https://kafaahbd.com/stufy.jpg"
       />
 
       {/* Background Glows */}
@@ -45,7 +45,7 @@ const StudyCornerRedirect: React.FC = () => {
         <div className="mb-10 flex justify-center relative group">
            <div className="absolute inset-0 bg-emerald-500/20 blur-2xl group-hover:bg-emerald-500/30 transition-all rounded-full" />
            <img 
-            src="https://raw.githubusercontent.com/kafaahbd/Eng2/refs/heads/main/stufy.jpg" 
+            src="https://kafaahbd.com/stufy.jpg" 
             alt="Study Corner" 
             className="relative z-10 max-w-xs md:max-w-md h-auto object-cover rounded-[2rem] shadow-2xl border-4 border-white dark:border-gray-800 transform group-hover:scale-105 transition-transform duration-500"
            />
