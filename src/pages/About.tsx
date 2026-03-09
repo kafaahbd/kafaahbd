@@ -1,4 +1,4 @@
-import { Helmet } from "react-helmet-async";
+import SEO from "../components/SEO";
 import ScrollAnimation from "../components/ScrollAnimation";
 import { useLanguage } from "../contexts/LanguageContext";
 
@@ -75,39 +75,11 @@ Kafa’ah Islamic and Multiproject Company is working for that change—In Sha A
 
   return (
     <div className="min-h-screen bg-geometric-light dark:bg-geometric-dark py-16 px-4">
-      <Helmet>
-        {lang === "bn" ? (
-          <>
-            <title>কাফআহ সম্পর্কে | ইসলামিক ও মাল্টিপ্রজেক্ট কোম্পানি</title>
-            <meta
-              name="description"
-              content="কাফআহ প্রতিষ্ঠিত হয় ২০২৬ সালে। আমাদের লক্ষ্য ইসলামিক জ্ঞান প্রসার, আধুনিক প্রযুক্তি ও ডিজিটাল প্ল্যাটফর্ম তৈরি।"
-            />
-            <meta property="og:title" content="কাফআহ সম্পর্কে" />
-            <meta
-              property="og:description"
-              content="কাফআহ ইসলামিক ও মাল্টিপ্রজেক্ট কোম্পানির লক্ষ্য, দৃষ্টিভঙ্গি ও বিশেষত্ব।"
-            />
-          </>
-        ) : (
-          <>
-            <title>About Kafa'ah | Islamic & Multiproject Company</title>
-            <meta
-              name="description"
-              content="Kafa'ah was established in 2026. Our mission is to spread Islamic knowledge, modern technology, and create digital platforms."
-            />
-            <meta property="og:title" content="About Kafa'ah" />
-            <meta
-              property="og:description"
-              content="The vision, mission, and uniqueness of Kafa'ah Islamic and Multiproject Company."
-            />
-          </>
-        )}
-        <meta
-          property="og:url"
-          content="https://kafaahbd.github.io/kafaahbd/about"
-        />
-      </Helmet>
+      <SEO 
+        title={lang === "bn" ? "আমাদের সম্পর্কে" : "About Us"}
+        description={lang === "bn" ? "কাফআহ প্রতিষ্ঠিত হয় ২০২৬ সালে। আমাদের লক্ষ্য ইসলামিক জ্ঞান প্রসার, আধুনিক প্রযুক্তি ও ডিজিটাল প্ল্যাটফর্ম তৈরি।" : "Kafa'ah was established in 2026. Our mission is to spread Islamic knowledge, modern technology, and create digital platforms."}
+        url="https://kafaahbd.com/about"
+      />
       <div className="max-w-4xl mx-auto bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-lg">
         <ScrollAnimation>
           <div className="prose prose-lg dark:prose-invert max-w-none">

@@ -1,4 +1,4 @@
-import { Helmet } from "react-helmet-async";
+import SEO from "../components/SEO";
 import ScrollAnimation from "../components/ScrollAnimation";
 import { useLanguage } from "../contexts/LanguageContext";
 
@@ -7,39 +7,11 @@ const Contact: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-geometric-light dark:bg-geometric-dark py-16 px-4">
-      <Helmet>
-        {lang === "bn" ? (
-          <>
-            <title>যোগাযোগ - কাফআহ</title>
-            <meta
-              name="description"
-              content="কাফআহ-এর সাথে যোগাযোগ করুন। ইমেইল, ফোন ও ঠিকানা।"
-            />
-            <meta property="og:title" content="যোগাযোগ - কাফআহ" />
-            <meta
-              property="og:description"
-              content="কাফআহ-এর যোগাযোগের তথ্য।"
-            />
-          </>
-        ) : (
-          <>
-            <title>Contact - Kafa'ah</title>
-            <meta
-              name="description"
-              content="Contact Kafa'ah. Email, phone and address."
-            />
-            <meta property="og:title" content="Contact - Kafa'ah" />
-            <meta
-              property="og:description"
-              content="Contact information of Kafa'ah."
-            />
-          </>
-        )}
-        <meta
-          property="og:url"
-          content="https://kafaahbd.github.io/kafaahbd/contact"
-        />
-      </Helmet>
+      <SEO 
+        title={lang === "bn" ? "যোগাযোগ" : "Contact"}
+        description={lang === "bn" ? "কাফআহ-এর সাথে যোগাযোগ করুন। ইমেইল, ফোন ও ঠিকানা।" : "Contact Kafa'ah. Email, phone and address."}
+        url="https://kafaahbd.com/contact"
+      />
       <div className="max-w-4xl mx-auto">
         <h1 className="text-4xl font-bold text-center mb-12 text-gray-900 dark:text-white">
           {lang === "bn" ? "যোগাযোগ" : "Contact"}

@@ -1,7 +1,7 @@
 import ScrollAnimation from "../components/ScrollAnimation";
 import ProgressBar from "../components/ProgressBar";
 import { useLanguage } from "../contexts/LanguageContext";
-import { Helmet } from "react-helmet-async";
+import SEO from "../components/SEO";
 
 // প্রোজেক্ট আইটেমের টাইপ
 interface ProjectItem {
@@ -33,39 +33,11 @@ const Projects: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-geometric-light dark:bg-geometric-dark py-16 px-4">
-      <Helmet>
-        {lang === "bn" ? (
-          <>
-            <title>কাফআহ প্রকল্পসমূহ | কুরআন ও ইংলিশ লার্নিং অ্যাপ</title>
-            <meta
-              name="description"
-              content="কাফআহর চলমান প্রকল্প: কুরআন লার্নিং অ্যাপ ও ইংলিশ লার্নিং অ্যাপ। ডয়োসফট-এর সহযোগিতায় তৈরি হচ্ছে ইনশাআল্লাহ।"
-            />
-            <meta property="og:title" content="কাফআহ প্রকল্পসমূহ" />
-            <meta
-              property="og:description"
-              content="কুরআন লার্নিং অ্যাপ ও ইংলিশ লার্নিং অ্যাপ - ডয়োসফট-এর সহযোগিতায়।"
-            />
-          </>
-        ) : (
-          <>
-            <title>Kafa'ah Projects | Quran & English Learning Apps</title>
-            <meta
-              name="description"
-              content="Kafa'ah's ongoing projects: Quran Learning App and English Learning App, in collaboration with Doyosoft, InshaAllah."
-            />
-            <meta property="og:title" content="Kafa'ah Projects" />
-            <meta
-              property="og:description"
-              content="Quran Learning App and English Learning App - in collaboration with Doyosoft."
-            />
-          </>
-        )}
-        <meta
-          property="og:url"
-          content="https://kafaahbd.github.io/kafaahbd/projects"
-        />
-      </Helmet>
+      <SEO 
+        title={lang === "bn" ? "প্রকল্পসমূহ" : "Projects"}
+        description={lang === "bn" ? "কাফআহর চলমান প্রকল্প: কুরআন লার্নিং অ্যাপ ও ইংলিশ লার্নিং অ্যাপ। ডয়োসফট-এর সহযোগিতায় তৈরি হচ্ছে ইনশাআল্লাহ।" : "Kafa'ah's ongoing projects: Quran Learning App and English Learning App, in collaboration with Doyosoft, InshaAllah."}
+        url="https://kafaahbd.com/projects"
+      />
       <div className="max-w-4xl mx-auto">
         <h1 className="text-4xl font-bold text-center mb-12 text-gray-900 dark:text-white">
           Our Projects

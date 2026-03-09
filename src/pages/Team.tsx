@@ -1,4 +1,4 @@
-import { Helmet } from "react-helmet-async";
+import SEO from "../components/SEO";
 import ScrollAnimation from "../components/ScrollAnimation";
 import { useLanguage } from "../contexts/LanguageContext";
 
@@ -37,39 +37,11 @@ const Team: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-geometric-light dark:bg-geometric-dark py-16 px-4">
-      <Helmet>
-        {lang === "bn" ? (
-          <>
-            <title>আমাদের টিম - কাফআহ</title>
-            <meta
-              name="description"
-              content="কাফআহ টিমের সদস্যগণ। দক্ষ ও নিবেদিত পেশাজীবী ইনশাআল্লাহ।"
-            />
-            <meta property="og:title" content="আমাদের টিম - কাফআহ" />
-            <meta
-              property="og:description"
-              content="কাফআহ টিমের সদস্যদের পরিচিতি।"
-            />
-          </>
-        ) : (
-          <>
-            <title>Our Team - Kafa'ah</title>
-            <meta
-              name="description"
-              content="Members of Kafa'ah team. Skilled and dedicated professionals, InshaAllah."
-            />
-            <meta property="og:title" content="Our Team - Kafa'ah" />
-            <meta
-              property="og:description"
-              content="Meet the Kafa'ah team members."
-            />
-          </>
-        )}
-        <meta
-          property="og:url"
-          content="https://kafaahbd.github.io/kafaahbd/team"
-        />
-      </Helmet>
+      <SEO 
+        title={lang === "bn" ? "আমাদের টিম" : "Our Team"}
+        description={lang === "bn" ? "কাফআহ টিমের সদস্যগণ। দক্ষ ও নিবেদিত পেশাজীবী ইনশাআল্লাহ।" : "Members of Kafa'ah team. Skilled and dedicated professionals, InshaAllah."}
+        url="https://kafaahbd.com/team"
+      />
       <div className="max-w-6xl mx-auto">
         <h1 className="text-4xl font-bold text-center mb-12 text-gray-900 dark:text-white">
           {lang === "bn" ? "আমাদের টিম" : "Our Team"}

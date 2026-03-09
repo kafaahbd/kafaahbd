@@ -1,4 +1,4 @@
-import { Helmet } from "react-helmet-async";
+import SEO from "../components/SEO";
 import ScrollAnimation from "../components/ScrollAnimation";
 import { useLanguage } from "../contexts/LanguageContext";
 
@@ -241,39 +241,11 @@ For any support, complaints, or legal inquiries, contact us:
 
   return (
     <div className="min-h-screen bg-geometric-light dark:bg-geometric-dark py-16 px-4">
-      <Helmet>
-        {lang === "bn" ? (
-          <>
-            <title>ব্যবহারের শর্তাবলী - কাফআহ</title>
-            <meta
-              name="description"
-              content="কাফআহ ওয়েবসাইট ও অ্যাপ ব্যবহারের শর্তাবলী। ইউজার অ্যাকাউন্ট, তথ্যের নিরাপত্তা, মেধাস্বত্ব সংক্রান্ত তথ্য।"
-            />
-            <meta property="og:title" content="ব্যবহারের শর্তাবলী - কাফআহ" />
-            <meta
-              property="og:description"
-              content="কাফআহ সেবা ব্যবহারের শর্তাবলী।"
-            />
-          </>
-        ) : (
-          <>
-            <title>Terms & Conditions - Kafa'ah</title>
-            <meta
-              name="description"
-              content="Terms and conditions for using Kafa'ah website and app. User account, data security, intellectual property."
-            />
-            <meta property="og:title" content="Terms & Conditions - Kafa'ah" />
-            <meta
-              property="og:description"
-              content="Terms of service for Kafa'ah."
-            />
-          </>
-        )}
-        <meta
-          property="og:url"
-          content="https://kafaahbd.github.io/kafaahbd/terms-conditions"
-        />
-      </Helmet>
+      <SEO 
+        title={lang === "bn" ? "ব্যবহারের শর্তাবলী" : "Terms & Conditions"}
+        description={lang === "bn" ? "কাফআহ ওয়েবসাইট ও অ্যাপ ব্যবহারের শর্তাবলী। ইউজার অ্যাকাউন্ট, তথ্যের নিরাপত্তা, মেধাস্বত্ব সংক্রান্ত তথ্য।" : "Terms and conditions for using Kafa'ah website and app. User account, data security, intellectual property."}
+        url="https://kafaahbd.com/terms-conditions"
+      />
       <div className="max-w-4xl mx-auto bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-lg">
         <ScrollAnimation>
           <div className="prose prose-lg dark:prose-invert max-w-none">
