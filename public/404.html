@@ -3,13 +3,21 @@
   <head>
     <meta charset="utf-8">
     <title>Redirecting...</title>
-    <script>
-      // SPA route redirect for GitHub Pages
-      const path = window.location.pathname + window.location.search + window.location.hash;
-      window.location.replace("/index.html?p=" + path.replace(/\//g,'~and~'));
+    <script type="text/javascript">
+      // GitHub Pages SPA রিডাইরেক্ট লজিক
+      var pathSegmentsToKeep = 0; // যদি সাব-ফোল্ডারে হোস্ট না করেন তবে ০ থাকবে
+
+      var l = window.location;
+      l.replace(
+        l.protocol + '//' + l.hostname + (l.port ? ':' + l.port : '') +
+        l.pathname.split('/').slice(0, 1 + pathSegmentsToKeep).join('/') + '/?/' +
+        l.pathname.slice(1 + pathSegmentsToKeep).replace(/&/g, '~and~') +
+        (l.search ? '&' + l.search.slice(1).replace(/&/g, '~and~') : '') +
+        l.hash
+      );
     </script>
   </head>
   <body>
-    <p>Redirecting...</p>
+    Redirecting...
   </body>
 </html>

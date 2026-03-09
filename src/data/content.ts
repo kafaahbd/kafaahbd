@@ -141,6 +141,12 @@ export const content: Record<string, Record<string, string>> = {
 		"study.admission.english": "English",
 		"study.admission.gk": "General Knowledge",
 		"study.admission.bangla": "Bangla",
+
+		//not found
+		"notFound.title": "Page Not Found",
+		"notFound.message":
+			"The page you are looking for does not exist or has been moved.",
+		"notFound.goHome": "Go Home",
 	},
 	bn: {
 		// Navbar
@@ -160,6 +166,12 @@ export const content: Record<string, Record<string, string>> = {
 		"footer.privacy": "গোপনীয়তা নীতি",
 		"footer.joining": "যোগদানের শর্তাবলী",
 		"footer.terms": "ব্যবহারের শর্তাবলী",
+
+		//not found
+		"notFound.title": "পৃষ্ঠা পাওয়া যায়নি",
+		"notFound.message":
+			"আপনি যে পৃষ্ঠাটি খুঁজছেন তা বিদ্যমান নয় বা স্থানান্তরিত হয়েছে।",
+		"notFound.goHome": "হোম পৃষ্ঠায় যান",
 
 		// Home
 		"home.hero.tagline": "প্রযুক্তি উম্মাহর জন্য – ইন শা আল্লাহ",

@@ -3,6 +3,7 @@ import { Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import { useLanguage } from './contexts/LanguageContext';
+import NotFound from './pages/NotFound';
  // নতুন কম্পোনেন্ট ইম্পোর্ট
 
 // অন্যান্য পৃষ্ঠা লেজি লোড
@@ -51,6 +52,7 @@ const App: React.FC = () => {
             <Route path="/terms-conditions" element={<TermsConditions />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/team" element={<Team />} />
+            <Route path="/*" element={<NotFound />} />
           </Routes>
         </Suspense>
       </main>
