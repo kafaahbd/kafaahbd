@@ -19,18 +19,30 @@
     <meta name="twitter:description" content="প্রযুক্তির মাধ্যমে উম্মাহর সেবায়।" />
     <meta name="twitter:image" content="https://kafaahbd.com/home.jpg" />
 
-    <script type="text/javascript">
-      // GitHub Pages SPA রিডাইরেক্ট লজিক
-      var pathSegmentsToKeep = 0; 
+     <script>
+      (function() {
+        // কাস্টম ডোমেইনের জন্য pathSegmentsToKeep = 0
+        var pathSegmentsToKeep = 0;
 
-      var l = window.location;
-      l.replace(
-        l.protocol + '//' + l.hostname + (l.port ? ':' + l.port : '') +
-        l.pathname.split('/').slice(0, 1 + pathSegmentsToKeep).join('/') + '/?/' +
-        l.pathname.slice(1 + pathSegmentsToKeep).replace(/&/g, '~and~') +
-        (l.search ? '&' + l.search.slice(1).replace(/&/g, '~and~') : '') +
-        l.hash
-      );
+        var l = window.location;
+        var repoPath = l.pathname.split('/').slice(0, 1 + pathSegmentsToKeep).join('/');
+        
+        var originalPath = l.pathname.slice(1 + pathSegmentsToKeep) || '';
+        var query = l.search || '';
+        var hash = l.hash || '';
+
+        // '/' এবং '&' কে ~and~ দিয়ে প্রতিস্থাপন
+        var encodedPath = encodeURIComponent(
+          originalPath.replace(/\//g, '~and~') + 
+          (query ? '?' + query.slice(1).replace(/&/g, '~and~') : '') + 
+          hash
+        );
+
+        var newUrl = l.protocol + '//' + l.hostname + (l.port ? ':' + l.port : '') +
+                     repoPath + '/?/' + encodedPath;
+
+        l.replace(newUrl);
+      })();
     </script>
   </head>
   <body>
