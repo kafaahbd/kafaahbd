@@ -1,4 +1,4 @@
-import{j as e}from"./react-vendor.8gLIJ72E.js";import{S as i}from"./SEO.BxqAuMqC.js";import{S as o}from"./ScrollAnimation.qWyu6FVp.js";import{u as s}from"./index.Bo3D_HRN.js";import"./vendor.DsbV9AKH.js";const u=()=>{const{lang:a}=s(),t={bn:`টার্মস অ্যান্ড কন্ডিশনস
+import{j as e}from"./react-vendor.Bbij9VJV.js";import{S as i}from"./SEO.BsB9VG9F.js";import{S as o}from"./ScrollAnimation.B3kqn4gp.js";import{u as s}from"./index.C9cTYGmD.js";import"./vendor.DPtWTE78.js";const u=()=>{const{lang:a}=s(),t={bn:`টার্মস অ্যান্ড কন্ডিশনস
 
 Kafa’ah Islamic & Multiproject Company (এই শর্তাবলী আমাদের ওয়েবসাইট, অ্যাপ ও সকল ডিজিটাল সেবার ক্ষেত্রে প্রযোজ্য)
 
