@@ -2,7 +2,7 @@ import React from 'react';
 import { Helmet } from 'react-helmet-async';
 
 interface SEOProps {
-  title: string;
+  title: string; 
   description: string;
   image?: string;
   url?: string;
@@ -12,12 +12,17 @@ interface SEOProps {
 const SEO: React.FC<SEOProps> = ({ 
   title, 
   description, 
-  // ইমেজ সব সময় আপনার ডোমেইন থেকে লোড হবে
+  // ডিফল্ট ইমেজ পাথ
   image = 'https://kafaahbd.com/home.jpg', 
-  url = 'https://kafaahbd.com',
+  // পাথ ডাইনামিক করার জন্য মেইন ডোমেইন রাখা হলো
+  url = '',
   keywords = 'study, kafaah, islam, bd, education, islamic technology, ssc, hsc, admission, bangladesh, kafaahbd'
 }) => {
   const siteTitle = `${title} | Kafa'ah - Islamic & Multiproject Company`;
+  
+  // ডাইনামিক ইউআরএল কনস্ট্রাকশন (যদি url প্রপস না থাকে তবে মেইন ডোমেইন বসবে)
+  const siteBase = "https://kafaahbd.com";
+  const finalUrl = url ? (url.startsWith('http') ? url : `${siteBase}${url}`) : siteBase;
 
   return (
     <Helmet>
@@ -29,7 +34,7 @@ const SEO: React.FC<SEOProps> = ({
       
       {/* Open Graph / Facebook */}
       <meta property="og:type" content="website" />
-      <meta property="og:url" content={url} />
+      <meta property="og:url" content={finalUrl} />
       <meta property="og:title" content={siteTitle} />
       <meta property="og:description" content={description} />
       <meta property="og:image" content={image} />
@@ -37,18 +42,18 @@ const SEO: React.FC<SEOProps> = ({
       <meta property="og:image:width" content="1200" />
       <meta property="og:image:height" content="630" />
       <meta property="og:image:type" content="image/jpeg" />
+      <meta property="og:image:alt" content={title} />
 
       {/* Twitter */}
       <meta name="twitter:card" content="summary_large_image" />
-      <meta name="twitter:url" content={url} />
+      <meta name="twitter:url" content={finalUrl} />
       <meta name="twitter:title" content={siteTitle} />
       <meta name="twitter:description" content={description} />
       <meta name="twitter:image" content={image} />
-      <meta property="og:image:alt" content="Kafa'ah Image" />
       <meta name="twitter:site" content="@kafaahbd" />
       
       {/* Canonical Link */}
-      <link rel="canonical" href={url} />
+      <link rel="canonical" href={finalUrl} />
     </Helmet>
   );
 };
