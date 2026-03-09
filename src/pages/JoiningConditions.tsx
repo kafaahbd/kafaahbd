@@ -87,7 +87,7 @@ const JoiningConditions: React.FC = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-slate-50 dark:bg-[#05070a] py-20 px-4">
+    <div className="min-h-screen bg-slate-50 dark:bg-[#05070a] py-10 md:py-20 px-4">
       <SEO 
         title={isBn ? "যোগদানের শর্তাবলী" : "Joining Conditions"}
         description="Kafa'ah Joining Terms and Conditions"
@@ -96,12 +96,12 @@ const JoiningConditions: React.FC = () => {
 
       <div className="max-w-5xl mx-auto">
         {/* Header Section */}
-        <div className="text-center mb-16">
+        <div className="text-center mb-8 md:mb-16">
           <ScrollAnimation>
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-100 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-400 text-xs font-bold uppercase tracking-widest mb-6">
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-100 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-400 text-xs font-bold uppercase tracking-widest mb-4 md:mb-6">
               <Clock size={14} /> {isBn ? "আপডেট করা হয়েছে: ২০২৬" : "Updated: 2026"}
             </div>
-            <h1 className="text-3xl md:text-5xl font-black text-gray-900 dark:text-white mb-6">
+            <h1 className="text-3xl md:text-5xl font-black text-gray-900 dark:text-white mb-4 md:mb-6">
               {isBn ? "টিমে যোগদানের শর্তাবলী" : "Joining Terms & Conditions"}
             </h1>
             <p className="text-gray-500 dark:text-gray-400 max-w-2xl mx-auto italic">
@@ -113,16 +113,16 @@ const JoiningConditions: React.FC = () => {
         </div>
 
         {/* Conditions Grid */}
-        <div className="grid md:grid-cols-2 gap-6">
+        <div className="grid md:grid-cols-2 gap-4 md:gap-6">
           {conditions.map((item, idx) => (
             <ScrollAnimation key={item.id} delay={idx * 0.05} direction={idx % 2 === 0 ? "right" : "left"}>
-              <div className="group h-full p-6 md:p-8 bg-white dark:bg-[#0d1117] border border-gray-100 dark:border-white/5 rounded-3xl shadow-sm hover:shadow-md transition-all">
+              <div className="group h-full p-4 md:p-8 bg-white dark:bg-[#0d1117] border border-gray-100 dark:border-white/5 rounded-3xl shadow-sm hover:shadow-md transition-all">
                 <div className="flex items-start gap-4">
                   <div className="p-3 bg-gray-50 dark:bg-white/5 rounded-2xl group-hover:scale-110 transition-transform duration-300">
                     {item.icon}
                   </div>
                   <div>
-                    <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-3">
+                    <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-2 md:mb-3">
                       {item.title}
                     </h3>
                     <p className="text-sm md:text-base text-gray-600 dark:text-gray-400 leading-relaxed">
@@ -136,8 +136,8 @@ const JoiningConditions: React.FC = () => {
         </div>
 
         {/* Warning/Rights Footer */}
-        <ScrollAnimation direction="up" className="mt-12">
-          <div className="bg-amber-50 dark:bg-amber-900/10 border border-amber-100 dark:border-amber-900/20 p-6 rounded-3xl flex gap-4 items-center">
+        <ScrollAnimation direction="up" className="mt-6 md:mt-12">
+          <div className="bg-amber-50 dark:bg-amber-900/10 border border-amber-100 dark:border-amber-900/20 p-4 md:p-6 rounded-3xl flex gap-4 items-center">
             <AlertCircle className="text-amber-600 shrink-0" size={24} />
             <p className="text-sm text-amber-800 dark:text-amber-400 font-medium">
               {isBn 
@@ -146,11 +146,11 @@ const JoiningConditions: React.FC = () => {
             </p>
           </div>
           
-          <div className="mt-12 text-center">
+          <div className="mt-6 md:mt-12 text-center">
             <a 
               href="https://docs.google.com/forms/..." 
               target="_blank" 
-              className="inline-flex items-center gap-3 px-10 py-4 bg-emerald-600 hover:bg-emerald-500 text-white font-black rounded-2xl shadow-lg shadow-emerald-500/20 transition-all active:scale-95"
+              className="inline-flex items-center gap-3 px-6 py-3 md:px-10 md:py-4 bg-emerald-600 hover:bg-emerald-500 text-white font-black rounded-2xl shadow-lg shadow-emerald-500/20 transition-all active:scale-95"
             >
               {isBn ? "আমি রাজি, আবেদন করব" : "I Agree, Apply Now"}
               <UserPlus size={20} />

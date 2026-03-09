@@ -96,39 +96,39 @@ const PrivacyPolicy: React.FC = () => {
       />
 
       {/* Header */}
-      <div className="bg-slate-50 dark:bg-white/5 py-20 border-b border-gray-100 dark:border-white/5">
+      <div className="bg-slate-50 dark:bg-white/5 py-10 md:py-20 border-b border-gray-100 dark:border-white/5">
         <div className="max-w-4xl mx-auto px-6 text-center">
           <ScrollAnimation>
-            <ShieldCheck size={64} className="mx-auto text-emerald-600 mb-6" />
-            <h1 className="text-4xl md:text-5xl font-black text-gray-900 dark:text-white mb-4">
+            <ShieldCheck size={48} className="mx-auto text-emerald-600 mb-4" />
+            <h1 className="text-3xl md:text-5xl font-black text-gray-900 dark:text-white mb-2">
               {isBn ? "গোপনীয়তা নীতি" : "Privacy Policy"}
             </h1>
-            <p className="text-gray-500 dark:text-gray-400 font-medium">
+            <p className="text-gray-500 dark:text-gray-400 font-medium text-sm">
               {isBn ? "কার্যকরী তারিখ: ১ ডিসেম্বর, ২০২৫" : "Effective Date: December 1, 2025"}
             </p>
           </ScrollAnimation>
         </div>
       </div>
 
-      <div className="max-w-4xl mx-auto px-6 py-16">
-        <div className="space-y-12">
+      <div className="max-w-4xl mx-auto px-6 py-8 md:py-16">
+        <div className="space-y-6 md:space-y-12">
           {sections.map((section, idx) => (
             <ScrollAnimation key={section.id} delay={idx * 0.05}>
-              <div className="flex gap-6 group">
+              <div className="flex gap-4 md:gap-6 group">
                 <div className="hidden sm:flex flex-col items-center">
-                  <div className="w-12 h-12 rounded-2xl bg-emerald-50 dark:bg-emerald-500/10 flex items-center justify-center text-emerald-600 dark:text-emerald-400 group-hover:scale-110 transition-transform">
+                  <div className="w-10 h-10 md:w-12 md:h-12 rounded-2xl bg-emerald-50 dark:bg-emerald-500/10 flex items-center justify-center text-emerald-600 dark:text-emerald-400 group-hover:scale-110 transition-transform">
                     {section.icon}
                   </div>
                   {idx !== sections.length - 1 && (
-                    <div className="w-px h-full bg-gray-100 dark:bg-white/5 my-4" />
+                    <div className="w-px h-full bg-gray-100 dark:bg-white/5 my-2 md:my-4" />
                   )}
                 </div>
                 <div className="flex-1">
-                  <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-4 flex items-center gap-3">
+                  <h3 className="text-lg md:text-xl font-bold text-gray-900 dark:text-white mb-2 md:mb-4 flex items-center gap-3">
                     <span className="sm:hidden text-emerald-600">{section.icon}</span>
                     {section.title}
                   </h3>
-                  <p className="text-gray-600 dark:text-gray-400 leading-relaxed md:text-lg">
+                  <p className="text-sm md:text-lg text-gray-600 dark:text-gray-400 leading-relaxed">
                     {section.content}
                   </p>
                 </div>
@@ -138,18 +138,18 @@ const PrivacyPolicy: React.FC = () => {
         </div>
 
         {/* Contact Footer */}
-        <ScrollAnimation className="mt-20 pt-12 border-t border-gray-100 dark:border-white/5">
-          <div className="bg-blue-50 dark:bg-blue-500/5 p-8 rounded-[2.5rem] border border-blue-100 dark:border-blue-500/20">
-            <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-6 flex items-center gap-2">
-              <Mail size={24} className="text-blue-600" />
+        <ScrollAnimation className="mt-10 md:mt-20 pt-6 md:pt-12 border-t border-gray-100 dark:border-white/5">
+          <div className="bg-blue-50 dark:bg-blue-500/5 p-6 md:p-8 rounded-[2rem] md:rounded-[2.5rem] border border-blue-100 dark:border-blue-500/20">
+            <h3 className="text-lg md:text-xl font-bold text-gray-900 dark:text-white mb-4 md:mb-6 flex items-center gap-2">
+              <Mail size={20} className="text-blue-600" />
               {isBn ? "যোগাযোগ" : "Contact Us"}
             </h3>
-            <div className="grid sm:grid-cols-2 gap-6 text-sm md:text-base">
-              <div className="space-y-2">
+            <div className="grid sm:grid-cols-2 gap-4 md:gap-6 text-sm md:text-base">
+              <div className="space-y-1">
                 <p className="text-gray-400 uppercase tracking-widest text-[10px] font-bold">Email</p>
                 <p className="text-gray-700 dark:text-gray-300 font-medium">tanvirishrak04@gmail.com</p>
               </div>
-              <div className="space-y-2">
+              <div className="space-y-1">
                 <p className="text-gray-400 uppercase tracking-widest text-[10px] font-bold">Phone</p>
                 <p className="text-gray-700 dark:text-gray-300 font-medium">01770676700</p>
               </div>

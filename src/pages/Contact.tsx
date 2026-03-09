@@ -49,7 +49,7 @@ const Contact: React.FC = () => {
       />
 
       {/* Hero Header */}
-      <section className="pt-24 pb-12 px-4 text-center">
+      <section className="pt-12 pb-8 md:pt-24 md:pb-12 px-4 text-center">
         <ScrollAnimation>
           <h1 className="text-4xl md:text-6xl font-black text-gray-900 dark:text-white mb-4">
             {isBn ? "যোগাযোগ করুন" : "Get In Touch"}
@@ -62,21 +62,21 @@ const Contact: React.FC = () => {
         </ScrollAnimation>
       </section>
 
-      <div className="max-w-6xl mx-auto px-4 pb-24">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div className="max-w-6xl mx-auto px-4 pb-12 md:pb-24">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
           {contactInfo.map((item, idx) => (
             <ScrollAnimation key={idx} delay={idx * 0.1} direction="up">
               <motion.a
                 href={item.link}
                 whileHover={{ y: -10 }}
-                className="group block p-8 bg-white dark:bg-[#0d1117] border border-gray-100 dark:border-white/5 rounded-[2.5rem] shadow-sm hover:shadow-xl hover:border-emerald-500/30 transition-all duration-300 h-full"
+                className="group block p-6 md:p-8 bg-white dark:bg-[#0d1117] border border-gray-100 dark:border-white/5 rounded-[2rem] md:rounded-[2.5rem] shadow-sm hover:shadow-xl hover:border-emerald-500/30 transition-all duration-300 h-full"
               >
-                <div className={`w-16 h-16 ${item.color} rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-500`}>
+                <div className={`w-12 h-12 md:w-16 md:h-16 ${item.color} rounded-2xl flex items-center justify-center mb-4 md:mb-6 group-hover:scale-110 transition-transform duration-500`}>
                   {item.icon}
                 </div>
-                <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-2">{item.title}</h3>
-                <p className="text-gray-500 dark:text-gray-400 font-medium break-all">{item.value}</p>
-                <div className="mt-6 flex items-center text-sm font-bold text-emerald-600 dark:text-emerald-400 gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-1 md:mb-2">{item.title}</h3>
+                <p className="text-gray-500 dark:text-gray-400 font-medium break-all text-sm md:text-base">{item.value}</p>
+                <div className="mt-4 md:mt-6 flex items-center text-sm font-bold text-emerald-600 dark:text-emerald-400 gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
                   {isBn ? "যোগাযোগ করুন" : "Contact Now"} <Send size={14} />
                 </div>
               </motion.a>

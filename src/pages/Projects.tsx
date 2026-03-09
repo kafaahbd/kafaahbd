@@ -58,16 +58,16 @@ const Projects: React.FC = () => {
       />
 
       {/* Header Section */}
-      <section className="pt-24 pb-16 px-4 text-center relative overflow-hidden">
+      <section className="pt-12 pb-8 md:pt-24 md:pb-16 px-4 text-center relative overflow-hidden">
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-64 bg-emerald-500/5 blur-[120px] -z-10" />
         <ScrollAnimation>
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-100 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-400 text-xs font-bold uppercase tracking-[0.2em] mb-6">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-100 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-400 text-xs font-bold uppercase tracking-[0.2em] mb-4 md:mb-6">
             <Layers size={14} /> {isBn ? "আমাদের কর্মযজ্ঞ" : "Innovation Hub"}
           </div>
-          <h1 className="text-4xl md:text-6xl font-black text-gray-900 dark:text-white mb-6">
+          <h1 className="text-3xl md:text-6xl font-black text-gray-900 dark:text-white mb-4 md:mb-6">
             {isBn ? "চলমান প্রকল্পসমূহ" : "Our Projects"}
           </h1>
-          <p className="text-gray-500 dark:text-gray-400 max-w-2xl mx-auto leading-relaxed">
+          <p className="text-gray-500 dark:text-gray-400 max-w-2xl mx-auto leading-relaxed text-sm md:text-base">
             {isBn 
               ? "প্রযুক্তির সঠিক ব্যবহারের মাধ্যমে আমরা এমন কিছু প্রজেক্ট তৈরি করছি যা ইনশাআল্লাহ মানুষের জীবনকে সহজ এবং বরকতময় করবে।" 
               : "Through the right use of technology, we are building projects that will, InshaAllah, make lives easier and blessed."}
@@ -76,19 +76,19 @@ const Projects: React.FC = () => {
       </section>
 
       {/* Projects Grid */}
-      <div className="max-w-6xl mx-auto px-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div className="max-w-6xl mx-auto px-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8">
         {projects.map((project, idx) => (
           <ScrollAnimation key={idx} delay={idx * 0.1} direction="up">
             <motion.div 
               whileHover={{ y: -8 }}
-              className="relative group h-full bg-white dark:bg-[#0d1117] border border-gray-100 dark:border-white/5 rounded-[2.5rem] p-8 shadow-sm hover:shadow-2xl transition-all duration-500"
+              className="relative group h-full bg-white dark:bg-[#0d1117] border border-gray-100 dark:border-white/5 rounded-[2rem] md:rounded-[2.5rem] p-6 md:p-8 shadow-sm hover:shadow-2xl transition-all duration-500"
             >
               {/* Background Glow */}
-              <div className={`absolute inset-0 bg-gradient-to-br ${project.color} opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-[2.5rem]`} />
+              <div className={`absolute inset-0 bg-gradient-to-br ${project.color} opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-[2rem] md:rounded-[2.5rem]`} />
 
               <div className="relative z-10 flex flex-col h-full">
-                <div className="flex justify-between items-start mb-8">
-                  <div className="w-14 h-14 bg-gray-50 dark:bg-white/5 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-500">
+                <div className="flex justify-between items-start mb-6 md:mb-8">
+                  <div className="w-12 h-12 md:w-14 md:h-14 bg-gray-50 dark:bg-white/5 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-500">
                     {project.icon}
                   </div>
                   <div className="px-3 py-1 bg-emerald-50 dark:bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 text-[10px] font-bold rounded-lg uppercase tracking-wider">
@@ -96,11 +96,11 @@ const Projects: React.FC = () => {
                   </div>
                 </div>
 
-                <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-4 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">
+                <h2 className="text-xl md:text-2xl font-bold text-gray-900 dark:text-white mb-3 md:mb-4 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors">
                   {project.title}
                 </h2>
 
-                <p className="text-gray-500 dark:text-gray-400 text-sm leading-relaxed mb-8 flex-grow">
+                <p className="text-gray-500 dark:text-gray-400 text-sm leading-relaxed mb-6 md:mb-8 flex-grow">
                   {project.desc}
                 </p>
 
@@ -108,7 +108,7 @@ const Projects: React.FC = () => {
                    <ProgressBar progress={project.progress} />
                 </div>
 
-                <div className="mt-6 pt-6 border-t border-gray-50 dark:border-white/5 flex justify-between items-center">
+                <div className="mt-4 md:mt-6 pt-4 md:pt-6 border-t border-gray-50 dark:border-white/5 flex justify-between items-center">
                   <span className="text-[10px] font-bold text-gray-400 uppercase tracking-widest italic">
                     In Sha Allah
                   </span>
