@@ -1,14 +1,16 @@
 import { useState, useEffect, useRef } from 'react'
 import { Link, useLocation } from 'react-router-dom'
+import { motion, AnimatePresence } from 'framer-motion' // Animation
+import { Menu, X, ExternalLink, Home, Briefcase, GraduationCap, Info, UserPlus } from 'lucide-react' // Icons
 import { useLanguage } from '../contexts/LanguageContext'
 import { useTheme } from '../contexts/ThemeContext'
 import LanguageToggle from './LanguageToggle'
 import ThemeToggle from './ThemeToggle'
 
-// নেভ লিংকের টাইপ
 interface NavLink {
   name: string;
   path: string;
+  icon: React.ReactNode;
   external?: boolean;
 }
 
@@ -16,146 +18,154 @@ const Navbar: React.FC = () => {
   const { t } = useLanguage()
   const { darkMode } = useTheme()
   const [isOpen, setIsOpen] = useState<boolean>(false)
+  const [scrolled, setScrolled] = useState<boolean>(false)
 
   const location = useLocation()
-  const menuRef = useRef<HTMLDivElement>(null) // মোবাইল মেনু রেফ
-  const buttonRef = useRef<HTMLButtonElement>(null) // টগল বাটন রেফ
+  const menuRef = useRef<HTMLDivElement>(null)
+  const buttonRef = useRef<HTMLButtonElement>(null)
 
   const navLinks: NavLink[] = [
-    { name: t('nav.home'), path: '/' },
-    { name: t('nav.projects'), path: '/projects' },
-    { name: t('nav.join'), path: 'https://docs.google.com/forms/d/e/1FAIpQLScM3Usiy57D08kuVwDl__6vaR6YjRTCrIvGoCFH_U5wwF8kKw/viewform', external: true },
-    { name: t('nav.study'), path: '/study' },
-    { name: t('nav.about'), path: '/about' },
+    { name: t('nav.home'), path: '/', icon: <Home size={18} /> },
+    { name: t('nav.projects'), path: '/projects', icon: <Briefcase size={18} /> },
+    { name: t('nav.join'), path: 'https://docs.google.com/forms/...', icon: <UserPlus size={18} />, external: true },
+    { name: t('nav.study'), path: '/study', icon: <GraduationCap size={18} /> },
+    { name: t('nav.about'), path: '/about', icon: <Info size={18} /> },
   ]
+
+  // স্ক্রল করলে নেভবারের স্টাইল পরিবর্তন হবে
+  useEffect(() => {
+    const handleScroll = () => setScrolled(window.scrollY > 20)
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
 
   // ক্লিক আউটসাইড হ্যান্ডলার
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
-      // যদি মেনু খোলা থাকে এবং ক্লিক করা জায়গাটা মেনু বা বাটনের ভিতরে না হয়
-      if (isOpen && 
-          menuRef.current && 
-          !menuRef.current.contains(event.target as Node) &&
-          buttonRef.current && 
-          !buttonRef.current.contains(event.target as Node)) {
+      if (isOpen && menuRef.current && !menuRef.current.contains(event.target as Node) &&
+          buttonRef.current && !buttonRef.current.contains(event.target as Node)) {
         setIsOpen(false)
       }
     }
-
     document.addEventListener('mousedown', handleClickOutside)
     return () => document.removeEventListener('mousedown', handleClickOutside)
   }, [isOpen])
 
-  // লিঙ্ক ক্লিক করলে মেনু বন্ধ হবে
-  const handleNavClick = (link: NavLink) => {
-    if (link.external) {
-      window.open(link.path, '_blank')
-    }
-    setIsOpen(false)
-  }
-
   return (
     <>
-      <nav className={`fixed top-0 w-full z-50 backdrop-blur-md bg-white/80 dark:bg-gray-900/80 border-b border-gray-200 dark:border-gray-700`}>
+      <nav 
+        className={`fixed top-0 w-full z-[100] transition-all duration-500 ${
+          scrolled 
+          ? 'py-2 bg-white/90 dark:bg-[#05070a]/90 backdrop-blur-xl shadow-lg border-b border-gray-100 dark:border-white/5' 
+          : 'py-4 bg-transparent'
+        }`}
+      >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
-            {/* Logo */}
-            <Link to="/" className="flex-shrink-0">
-              <img 
+            
+            {/* Logo Section */}
+            <Link to="/" className="relative z-10 group">
+              <motion.img 
+                whileHover={{ scale: 1.05 }}
                 src="https://raw.githubusercontent.com/kafaahbd/kafaah/refs/heads/main/pics/kafaah.png" 
                 alt="Kafa'ah" 
-                className="h-10 w-auto"
+                className="h-10 md:h-12 w-auto"
               />
             </Link>
 
-            {/* Desktop Menu */}
-            <div className="hidden md:flex items-center space-x-8">
-              {navLinks.map((link) => (
-                link.external ? (
-                  <a
-                    key={link.name}
-                    href={link.path}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-gray-700 dark:text-gray-300 hover:text-green-600 dark:hover:text-blue-400 transition"
-                  >
-                    {link.name}
-                  </a>
-                ) : (
+            {/* Desktop Menu Links */}
+            <div className="hidden lg:flex items-center bg-gray-100/50 dark:bg-white/5 px-6 py-2 rounded-full border border-gray-200/50 dark:border-white/5 backdrop-blur-md">
+              <div className="flex items-center space-x-1">
+                {navLinks.map((link) => (
                   <Link
                     key={link.name}
                     to={link.path}
-                    className={`text-gray-700 dark:text-gray-300 hover:text-green-600 dark:hover:text-blue-400 transition ${
-                      location.pathname === link.path ? 'text-green-600 dark:text-blue-400 font-semibold' : ''
+                    target={link.external ? "_blank" : "_self"}
+                    className={`relative px-4 py-2 text-sm font-bold transition-all duration-300 rounded-full flex items-center gap-2 ${
+                      location.pathname === link.path 
+                      ? 'text-green-600 dark:text-green-400' 
+                      : 'text-gray-600 dark:text-gray-400 hover:text-green-600 dark:hover:text-green-400'
                     }`}
                   >
-                    {link.name}
+                    {location.pathname === link.path && (
+                      <motion.div 
+                        layoutId="nav-active"
+                        className="absolute inset-0 bg-green-500/10 dark:bg-green-500/20 rounded-full"
+                      />
+                    )}
+                    <span className="relative z-10">{link.name}</span>
+                    {link.external && <ExternalLink size={12} className="opacity-50" />}
                   </Link>
-                )
-              ))}
+                ))}
+              </div>
             </div>
 
-            {/* Right side: toggles and login (Desktop) */}
-            <div className="hidden md:flex items-center space-x-4">
-              <LanguageToggle />
-              <ThemeToggle />
-            </div>
+            {/* Toggles & Actions */}
+            <div className="flex items-center space-x-3">
+              <div className="hidden sm:flex items-center space-x-2 bg-gray-100 dark:bg-white/5 p-1 rounded-full border border-gray-200 dark:border-white/5">
+                <LanguageToggle />
+                <ThemeToggle />
+              </div>
 
-            {/* Mobile menu button and toggles */}
-            <div className="md:hidden flex items-center space-x-2">
-              <LanguageToggle />
-              <ThemeToggle />
+              {/* Mobile Menu Toggle */}
               <button
                 ref={buttonRef}
                 onClick={() => setIsOpen(!isOpen)}
-                className="text-gray-700 dark:text-gray-300 p-2 focus:outline-none"
-                aria-label="Toggle menu"
+                className="lg:hidden p-2.5 rounded-xl bg-green-600 text-white shadow-lg shadow-green-500/30 transition-transform active:scale-90"
               >
-                <i className={`fas ${isOpen ? 'fa-times' : 'fa-bars'} text-2xl transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`}></i>
+                {isOpen ? <X size={24} /> : <Menu size={24} />}
               </button>
             </div>
           </div>
+        </div>
 
-          {/* Mobile Menu - Slide Down Animation */}
-          <div
-            ref={menuRef}
-            className={`md:hidden overflow-hidden transition-all duration-300 ease-in-out ${
-              isOpen ? 'max-h-96 opacity-100 mb-4' : 'max-h-0 opacity-0'
-            }`}
-          >
-            <div className="py-2 space-y-2">
-              {navLinks.map((link) => (
-                link.external ? (
-                  <a
-                    key={link.name}
-                    href={link.path}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="block py-2 px-4 text-gray-700 dark:text-gray-300 hover:text-green-600 dark:hover:text-blue-400 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg transition"
-                    onClick={() => setIsOpen(false)}
-                  >
-                    {link.name}
-                  </a>
-                ) : (
+        {/* Mobile Menu Overlay */}
+        <AnimatePresence>
+          {isOpen && (
+            <motion.div
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: 'auto' }}
+              exit={{ opacity: 0, height: 0 }}
+              ref={menuRef}
+              className="lg:hidden bg-white dark:bg-[#0d1117] border-b border-gray-100 dark:border-white/5 overflow-hidden"
+            >
+              <div className="px-4 pt-2 pb-6 space-y-1">
+                {navLinks.map((link) => (
                   <Link
                     key={link.name}
                     to={link.path}
-                    className={`block py-2 px-4 text-gray-700 dark:text-gray-300 hover:text-green-600 dark:hover:text-blue-400 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg transition ${
-                      location.pathname === link.path ? 'text-green-600 dark:text-blue-400 font-semibold' : ''
-                    }`}
+                    target={link.external ? "_blank" : "_self"}
                     onClick={() => setIsOpen(false)}
+                    className={`flex items-center gap-4 px-4 py-4 rounded-2xl text-base font-bold transition-all ${
+                      location.pathname === link.path
+                      ? 'bg-green-50 dark:bg-green-500/10 text-green-600 dark:text-green-400'
+                      : 'text-gray-600 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-white/5'
+                    }`}
                   >
+                    <span className={`p-2 rounded-lg ${location.pathname === link.path ? 'bg-white dark:bg-green-500/20 shadow-sm' : 'bg-gray-100 dark:bg-white/5'}`}>
+                      {link.icon}
+                    </span>
                     {link.name}
+                    {link.external && <ExternalLink size={14} className="ml-auto opacity-30" />}
                   </Link>
-                )
-              ))}
-              {/* Removed duplicate toggles from inside the dropdown */}
-            </div>
-          </div>
-        </div>
+                ))}
+                
+                {/* Mobile Specific Toggles */}
+                <div className="flex sm:hidden justify-between items-center p-4 mt-4 bg-gray-50 dark:bg-white/5 rounded-2xl">
+                  <span className="text-sm font-bold text-gray-500 uppercase tracking-widest">Settings</span>
+                  <div className="flex gap-2">
+                    <LanguageToggle />
+                    <ThemeToggle />
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </nav>
-      {/* Spacer */}
-      <div className="h-16"></div>
+
+      {/* Hero Section এর জন্য স্পেসার */}
+      <div className="h-20 md:h-24"></div>
     </>
   )
 }

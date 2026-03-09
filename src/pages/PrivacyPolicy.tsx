@@ -1,181 +1,159 @@
+import React from 'react';
 import SEO from "../components/SEO";
 import ScrollAnimation from "../components/ScrollAnimation";
 import { useLanguage } from "../contexts/LanguageContext";
+import { 
+  ShieldCheck, 
+  Database, 
+  Eye, 
+  Lock, 
+  Share2, 
+  Cookie, 
+  Link2, 
+  Baby, 
+  RefreshCcw, 
+  Mail,
+  FileText
+} from 'lucide-react';
 
 const PrivacyPolicy: React.FC = () => {
   const { lang } = useLanguage();
-
-  const text: { bn: string; en: string } = {
-    bn: `Privacy & Policy
-
-Kafa’ah Islamic and Multiproject Company
-Effective Date: 1 December, 2025
-
-1. ভূমিকা
-
-Kafa’ah Islamic and Multiproject Company (“আমরা”, “আমাদের”, “প্রতিষ্ঠান”) আমাদের ব্যবহারকারীদের ব্যক্তিগত তথ্যের গোপনীয়তা রক্ষা করতে প্রতিশ্রুতিবদ্ধ।
-এই নীতিমালা আমাদের ওয়েবসাইট, অ্যাপ, প্রকল্প এবং সংশ্লিষ্ট সেবাগুলোর ব্যবহার সম্পর্কিত আপনার তথ্য সংগ্রহ, ব্যবহার ও সুরক্ষার পদ্ধতি ব্যাখ্যা করে।
-
----
-
-2. তথ্য সংগ্রহ
-
-আমরা নিম্নলিখিত ধরণের তথ্য সংগ্রহ করতে পারি:
-ব্যক্তিগত তথ্য: যেমন নাম, ইমেইল, ফোন নম্বর, ঠিকানা, বা পেমেন্ট সংক্রান্ত তথ্য।
-প্রযুক্তিগত তথ্য: যেমন IP ঠিকানা, ব্রাউজার ধরন, ডিভাইস তথ্য, লগ ডাটা ইত্যাদি।
-ইন্টারঅ্যাকশন ডেটা: আপনি কীভাবে আমাদের ওয়েবসাইট বা অ্যাপ ব্যবহার করেন তার তথ্য (যেমন পেজ ভিজিট, ক্লিক, সময়কাল ইত্যাদি)।
-
-
----
-
-3. তথ্যের ব্যবহার
-
-আমরা আপনার তথ্য নিম্নলিখিত উদ্দেশ্যে ব্যবহার করি:
-আমাদের সেবা উন্নত করা ও সঠিকভাবে প্রদান করা।
-ব্যবহারকারীদের অভিজ্ঞতা ব্যক্তিগতকরণ করা।
-গুরুত্বপূর্ণ নোটিফিকেশন বা আপডেট পাঠানো।
-নিরাপত্তা ও প্রতারণা প্রতিরোধের উদ্দেশ্যে।
-আইনগত বা প্রশাসনিক প্রয়োজন পূরণের জন্য।
-
-
----
-
-4. তথ্যের সুরক্ষা
-
-আমরা আপনার তথ্যের নিরাপত্তা নিশ্চিত করতে আধুনিক প্রযুক্তি ও সুরক্ষা ব্যবস্থা ব্যবহার করি। তবে, ইন্টারনেটের মাধ্যমে তথ্য প্রেরণ শতভাগ নিরাপদ নয় — তাই কোনো অনাকাঙ্ক্ষিত ক্ষতির জন্য প্রতিষ্ঠান দায়ী নয়। ইনশাল্লাহ আমরা আপনার তথ্য সুরক্ষার সর্বোচ্চ চেষ্টা করবো।
-
----
-
-5. তথ্য শেয়ারিং
-
-আমরা আপনার ব্যক্তিগত তথ্য তৃতীয় পক্ষের কাছে বিক্রি, বিনিময় বা প্রকাশ করি না, তবে নিম্নলিখিত ক্ষেত্রে তথ্য শেয়ার করা হতে পারে:
-আইনগত প্রয়োজনীয়তার কারণে।
-আমাদের সেবা পরিচালনায় সহায়তা করা বিশ্বস্ত অংশীদারদের সাথে (যারা আমাদের Privacy Policy অনুসরণ করে)।
-
-
----
-
-6. কুকিজ ও ট্র্যাকিং প্রযুক্তি
-
-আমরা কুকিজ ব্যবহার করে ব্যবহারকারীর পছন্দ, ওয়েব ট্রাফিক বিশ্লেষণ, এবং অভিজ্ঞতা উন্নত করি। আপনি চাইলে ব্রাউজারের সেটিংস থেকে কুকিজ নিষ্ক্রিয় করতে পারেন।
-
----
-
-7. তৃতীয় পক্ষের লিংক
-
-আমাদের ওয়েবসাইটে তৃতীয় পক্ষের লিংক থাকবে না ইনশাল্লাহ।
-
----
-
-8. শিশুদের গোপনীয়তা
-
-আমাদের সেবা ৩ বছরের কম বয়সী শিশুদের জন্য নয়। আমরা সচেতনভাবে কোনো শিশুর ব্যক্তিগত তথ্য সংগ্রহ করি না।
-
----
-
-9. নীতিমালা পরিবর্তন
-
-আমরা সময় সময় এই Privacy Policy পরিবর্তন করতে পারি। পরিবর্তন হলে “Effective Date” আপডেট করা হবে। ব্যবহারকারীকে পরিবর্তন সম্পর্কে জানানো হবে।
-
----
-
-10. যোগাযোগ
-
-যদি আমাদের Privacy Policy সম্পর্কে কোনো প্রশ্ন থাকে, তাহলে যোগাযোগ করুন:
-📧 Email: tanvirishrak04@gmail.com
-📍 Address: Rajshahi
-📞 Phone: 01770676700`,
-    en: `Privacy & Policy
-
-Kafa’ah Islamic and Multiproject Company
-Effective Date: December 1, 2025
-
-1. Introduction
-
-Kafa’ah Islamic and Multiproject Company ("we", "our", "the Company") is committed to protecting the privacy of our users.
-This policy explains how we collect, use, and protect your information in connection with our website, apps, projects, and related services.
-
----
-
-2. Information Collection
-
-We may collect the following types of information:
-Personal Information: such as name, email, phone number, address, or payment details.
-Technical Information: such as IP address, browser type, device information, log data, etc.
-Interaction Data: information about how you use our website or app (e.g., page visits, clicks, time spent).
-
----
-
-3. Use of Information
-
-We use your information for the following purposes:
-To improve and properly deliver our services.
-To personalize user experience.
-To send important notifications or updates.
-For security and fraud prevention.
-To fulfill legal or administrative requirements.
-
----
-
-4. Data Security
-
-We use modern technology and security measures to ensure the safety of your information. However, no method of transmission over the Internet is 100% secure — therefore, we cannot guarantee absolute security. InshaAllah, we will do our utmost to protect your data.
-
----
-
-5. Information Sharing
-
-We do not sell, exchange, or disclose your personal information to third parties, except in the following cases:
-When required by law.
-With trusted partners who assist us in operating our services (and who adhere to this Privacy Policy).
-
----
-
-6. Cookies and Tracking Technologies
-
-We use cookies to analyze user preferences, web traffic, and improve experience. You can disable cookies through your browser settings.
-
----
-
-7. Third-Party Links
-
-Our website will not contain third-party links, InshaAllah.
-
----
-
-8. Children's Privacy
-
-Our services are not intended for children under 3 years of age. We do not knowingly collect personal information from children.
-
----
-
-9. Changes to This Policy
-
-We may update this Privacy Policy from time to time. Changes will be reflected by an updated "Effective Date". Users will be notified of any changes.
-
----
-
-10. Contact
-
-If you have any questions about this Privacy Policy, please contact us:
-📧 Email: tanvirishrak04@gmail.com
-📍 Address: Rajshahi
-📞 Phone: 01770676700`,
-  };
+  const isBn = lang === "bn";
+
+  const sections = [
+    {
+      id: "intro",
+      icon: <FileText size={20} />,
+      title: isBn ? "১. ভূমিকা" : "1. Introduction",
+      content: isBn 
+        ? "Kafa’ah Islamic and Multiproject Company আমাদের ব্যবহারকারীদের ব্যক্তিগত তথ্যের গোপনীয়তা রক্ষা করতে প্রতিশ্রুতিবদ্ধ।" 
+        : "Kafa’ah Islamic and Multiproject Company is committed to protecting the privacy of our users."
+    },
+    {
+      id: "collection",
+      icon: <Database size={20} />,
+      title: isBn ? "২. তথ্য সংগ্রহ" : "2. Information Collection",
+      content: isBn 
+        ? "আমরা ব্যক্তিগত তথ্য (নাম, ইমেইল), প্রযুক্তিগত তথ্য (IP ঠিকানা) এবং ইন্টারঅ্যাকশন ডেটা সংগ্রহ করি।" 
+        : "We collect personal info (name, email), technical info (IP address), and interaction data."
+    },
+    {
+      id: "usage",
+      icon: <Eye size={20} />,
+      title: isBn ? "৩. তথ্যের ব্যবহার" : "3. Use of Information",
+      content: isBn 
+        ? "সেবা উন্নত করা, অভিজ্ঞতা ব্যক্তিগতকরণ এবং নিরাপত্তা নিশ্চিত করার উদ্দেশ্যে আপনার তথ্য ব্যবহার করা হয়।" 
+        : "Your information is used to improve services, personalize experience, and ensure security."
+    },
+    {
+      id: "security",
+      icon: <Lock size={20} />,
+      title: isBn ? "৪. তথ্যের সুরক্ষা" : "4. Data Security",
+      content: isBn 
+        ? "আমরা আধুনিক প্রযুক্তি ব্যবহার করি। ইনশাআল্লাহ আমরা আপনার তথ্য সুরক্ষার সর্বোচ্চ চেষ্টা করবো।" 
+        : "We use modern technology. InshaAllah, we will do our utmost to protect your data."
+    },
+    {
+      id: "sharing",
+      icon: <Share2 size={20} />,
+      title: isBn ? "৫. তথ্য শেয়ারিং" : "5. Information Sharing",
+      content: isBn 
+        ? "আমরা তথ্য বিক্রি করি না। কেবল আইনগত প্রয়োজনে বা বিশ্বস্ত অংশীদারদের সাথে শেয়ার করা হতে পারে।" 
+        : "We do not sell data. It may only be shared for legal reasons or with trusted partners."
+    },
+    {
+      id: "cookies",
+      icon: <Cookie size={20} />,
+      title: isBn ? "৬. কুকিজ" : "6. Cookies",
+      content: isBn 
+        ? "ব্যবহারকারীর পছন্দ ও ট্রাফিক বিশ্লেষণের জন্য আমরা কুকিজ ব্যবহার করি।" 
+        : "We use cookies to analyze user preferences and web traffic."
+    },
+    {
+      id: "children",
+      icon: <Baby size={20} />,
+      title: isBn ? "৭. শিশুদের গোপনীয়তা" : "7. Children's Privacy",
+      content: isBn 
+        ? "আমাদের সেবা ৩ বছরের কম বয়সী শিশুদের জন্য নয়।" 
+        : "Our services are not intended for children under 3 years of age."
+    },
+    {
+      id: "changes",
+      icon: <RefreshCcw size={20} />,
+      title: isBn ? "৮. নীতিমালা পরিবর্তন" : "8. Changes",
+      content: isBn 
+        ? "আমরা সময় সময় এই নীতিমালা পরিবর্তন করতে পারি। পরিবর্তনের ক্ষেত্রে আপনাকে জানানো হবে।" 
+        : "We may update this policy from time to time. You will be notified of changes."
+    }
+  ];
 
   return (
-    <div className="min-h-screen bg-geometric-light dark:bg-geometric-dark py-16 px-4">
+    <div className="min-h-screen bg-white dark:bg-[#05070a] transition-colors duration-500">
       <SEO 
-        title={lang === "bn" ? "গোপনীয়তা নীতি" : "Privacy Policy"}
-        description={lang === "bn" ? "কাফআহ ওয়েবসাইট ও অ্যাপের গোপনীয়তা নীতি। আপনার তথ্য কীভাবে সংগ্রহ ও ব্যবহার করা হয় তা জানুন।" : "Privacy policy of Kafa'ah website and app. Learn how we collect and use your information."}
+        title={isBn ? "গোপনীয়তা নীতি" : "Privacy Policy"}
+        description="Privacy policy of Kafa'ah Islamic and Multiproject Company"
         url="https://kafaahbd.com/privacy-policy"
       />
-      <div className="max-w-4xl mx-auto bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-lg">
-        <ScrollAnimation>
-          <div className="prose prose-lg dark:prose-invert max-w-none">
-            <p className="whitespace-pre-line text-gray-800 dark:text-gray-200">
-              {lang === "bn" ? text.bn : text.en}
+
+      {/* Header */}
+      <div className="bg-slate-50 dark:bg-white/5 py-20 border-b border-gray-100 dark:border-white/5">
+        <div className="max-w-4xl mx-auto px-6 text-center">
+          <ScrollAnimation>
+            <ShieldCheck size={64} className="mx-auto text-emerald-600 mb-6" />
+            <h1 className="text-4xl md:text-5xl font-black text-gray-900 dark:text-white mb-4">
+              {isBn ? "গোপনীয়তা নীতি" : "Privacy Policy"}
+            </h1>
+            <p className="text-gray-500 dark:text-gray-400 font-medium">
+              {isBn ? "কার্যকরী তারিখ: ১ ডিসেম্বর, ২০২৫" : "Effective Date: December 1, 2025"}
             </p>
+          </ScrollAnimation>
+        </div>
+      </div>
+
+      <div className="max-w-4xl mx-auto px-6 py-16">
+        <div className="space-y-12">
+          {sections.map((section, idx) => (
+            <ScrollAnimation key={section.id} delay={idx * 0.05}>
+              <div className="flex gap-6 group">
+                <div className="hidden sm:flex flex-col items-center">
+                  <div className="w-12 h-12 rounded-2xl bg-emerald-50 dark:bg-emerald-500/10 flex items-center justify-center text-emerald-600 dark:text-emerald-400 group-hover:scale-110 transition-transform">
+                    {section.icon}
+                  </div>
+                  {idx !== sections.length - 1 && (
+                    <div className="w-px h-full bg-gray-100 dark:bg-white/5 my-4" />
+                  )}
+                </div>
+                <div className="flex-1">
+                  <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-4 flex items-center gap-3">
+                    <span className="sm:hidden text-emerald-600">{section.icon}</span>
+                    {section.title}
+                  </h3>
+                  <p className="text-gray-600 dark:text-gray-400 leading-relaxed md:text-lg">
+                    {section.content}
+                  </p>
+                </div>
+              </div>
+            </ScrollAnimation>
+          ))}
+        </div>
+
+        {/* Contact Footer */}
+        <ScrollAnimation className="mt-20 pt-12 border-t border-gray-100 dark:border-white/5">
+          <div className="bg-blue-50 dark:bg-blue-500/5 p-8 rounded-[2.5rem] border border-blue-100 dark:border-blue-500/20">
+            <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-6 flex items-center gap-2">
+              <Mail size={24} className="text-blue-600" />
+              {isBn ? "যোগাযোগ" : "Contact Us"}
+            </h3>
+            <div className="grid sm:grid-cols-2 gap-6 text-sm md:text-base">
+              <div className="space-y-2">
+                <p className="text-gray-400 uppercase tracking-widest text-[10px] font-bold">Email</p>
+                <p className="text-gray-700 dark:text-gray-300 font-medium">tanvirishrak04@gmail.com</p>
+              </div>
+              <div className="space-y-2">
+                <p className="text-gray-400 uppercase tracking-widest text-[10px] font-bold">Phone</p>
+                <p className="text-gray-700 dark:text-gray-300 font-medium">01770676700</p>
+              </div>
+            </div>
           </div>
         </ScrollAnimation>
       </div>

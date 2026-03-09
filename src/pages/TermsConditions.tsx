@@ -1,257 +1,155 @@
+import React from 'react';
 import SEO from "../components/SEO";
 import ScrollAnimation from "../components/ScrollAnimation";
 import { useLanguage } from "../contexts/LanguageContext";
+import { 
+  Gavel, 
+  CheckCircle2, 
+  Settings, 
+  UserCircle, 
+  Lock, 
+  CreditCard, 
+  AlertTriangle, 
+  Copyright, 
+  Ban, 
+  Mail,
+  Scale
+} from 'lucide-react';
 
 const TermsConditions: React.FC = () => {
   const { lang } = useLanguage();
-
-  const text: { bn: string; en: string } = {
-    bn: `টার্মস অ্যান্ড কন্ডিশনস
-
-Kafa’ah Islamic & Multiproject Company (এই শর্তাবলী আমাদের ওয়েবসাইট, অ্যাপ ও সকল ডিজিটাল সেবার ক্ষেত্রে প্রযোজ্য)
-
-
----
-
-
-১. শর্তাবলী গ্রহণ
-
-আমাদের ওয়েবসাইট, অ্যাপ বা যেকোনো ইসলামিক ও এডুকেশনাল সফটওয়্যার ব্যবহার করলে, আপনি স্বাভাবিকভাবেই এই শর্তাবলী মেনে নিচ্ছেন।
-
-
-যদি শর্তাবলীতে সম্মতি না থাকে, তবে অনুগ্রহ করে আমাদের সেবা ব্যবহার করবেন না।
-
----
-
-
-২. আমাদের সেবা
-
-আমরা প্রদান করি:
-ইসলামিক সফটওয়্যার
-এডুকেশনাল সফটওয়্যার
-
-এগুলো ফ্রি এবং পেইড — উভয়ভাবে পাওয়া যাবে।
-আমরা যেকোনো সময় সেবা সংযোজন, পরিবর্তন বা বন্ধ করতে পারি।
-
----
-
-৩. ইউজার অ্যাকাউন্ট
-
-আমাদের সম্পূর্ণ ফিচার ব্যবহার করতে হলে আপনাকে অবশ্যই একটি অ্যাকাউন্ট তৈরি করতে হবে, যেখানে ব্যবহার হবে:
-ইমেইল অথবা ফোন নম্বর
-
-আপনি নিজের অ্যাকাউন্টের:
-নিরাপত্তা
-পাসওয়ার্ড
-ব্যবহারের জন্য পুরোপুরি দায়ী থাকবেন।
-
-শর্ত লঙ্ঘন করলে আমরা অ্যাকাউন্ট স্থগিত বা বন্ধ করার অধিকার রাখি।
-
----
-
-৪. তথ্যের নিরাপত্তা ও গোপনীয়তা
-
-আপনার ব্যক্তিগত তথ্য আমাদের কাছে নিরাপদে সংরক্ষিত থাকবে — InShaAllah।
-আমরা:
-আপনার ডাটা বিক্রি করি না
-আপনার অনুমতি ছাড়া শেয়ার করি না
-
-(আমাদের Privacy Policy-তে বিস্তারিত ব্যাখ্যা থাকবে)
-
----
-
-৫. ফ্রি ও পেইড এক্সেস
-
-আমাদের সেবার কিছু অংশ:
-সম্পূর্ণ ফ্রি
-আবার কিছু পেইড (এককালীন বা সাবস্ক্রিপশন)
-
-আমরা যেকোনও সময় মূল্য বা অ্যাক্সেস পলিসি পরিবর্তন করতে পারি — প্রয়োজনে নোটিশ দিয়ে।
-পেমেন্ট হয়ে গেলে সাধারণত রিফান্ড দেওয়া হবে না — আইন প্রয়োজনে ব্যতিক্রম হতে পারে।
-
----
-
-
-৬. ব্যবহারকারীর দায়িত্ব
-
-আপনি সম্মত হচ্ছেন যে, আপনি:
-সেবা অপব্যবহার করবেন না
-ইসলামবিরোধী কিছু করবেন না
-বেআইনি কাজে ব্যবহার করবেন না
-আমাদের সফটওয়্যার অনুমতি ছাড়া কপি/বিক্রি বা পরিবর্তন করবেন না
-
-
----
-
-৭. মেধাস্বত্ব
-
-আমাদের সব কনটেন্ট, সফটওয়্যার, টেক্সট, ছবি ও অন্যান্য সম্পদ হলো:
-Kafa’ah Islamic & Multiproject Company-এর মালিকানা
-ব্যবহারকারী:
-মালিকানা দাবি করতে পারবেন না
-অনুমতি ছাড়া পুনঃবিতরণ করতে পারবেন না
-
-
----
-
-৮. সেবা বন্ধ করার অধিকার
-
-আমরা অধিকার রাখি:
-অ্যাকাউন্ট বন্ধ করতে
-সেবা সীমাবদ্ধ করতে
-সম্পূর্ণভাবে সেবা বাতিল করতে
-
-যদি শর্ত ভঙ্গ হয় বা প্ল্যাটফর্ম ক্ষতিগ্রস্ত হয়।
----
-
-৯. শর্তাবলী পরিবর্তন
-
-আমরা যেকোনো সময় এই Terms & Conditions হালনাগাদ করতে পারি।
-পরিবর্তনের ক্ষেত্রে ব্যবহারকারীদের জানানো হবে:
-ওয়েবসাইট নোটিশ
-অ্যাপ নোটিফিকেশন
-ইমেইল (যদি সম্ভব হয়)
-
-
----
-
-
-১০. যোগাযোগ
-
-
-যেকোনো সহায়তা, অভিযোগ বা আইনি প্রশ্নে যোগাযোগ করুন:
-📧 ইমেইল: tanvirishrak04@gmail.com
-🌐 ওয়েবসাইট: kafaah.com`,
-    en: `Terms and Conditions
-
-Kafa’ah Islamic & Multiproject Company (These terms apply to our website, app, and all digital services)
-
-
----
-
-
-1. Acceptance of Terms
-
-By using our website, app, or any Islamic and educational software, you automatically agree to these terms.
-
-If you do not agree to these terms, please do not use our services.
-
----
-
-
-2. Our Services
-
-We provide:
-Islamic software
-Educational software
-
-These will be available both free and paid.
-We may add, modify, or discontinue services at any time.
-
----
-
-3. User Account
-
-To use our full features, you must create an account using:
-Email or phone number
-
-You are fully responsible for your account's:
-Security
-Password
-Usage
-
-We reserve the right to suspend or terminate accounts that violate these terms.
-
----
-
-4. Data Security and Privacy
-
-Your personal information will be kept safe with us — InShaAllah.
-We:
-Do not sell your data
-Do not share without your permission
-
-(Details are explained in our Privacy Policy)
-
----
-
-5. Free and Paid Access
-
-Some parts of our service:
-Completely free
-Some paid (one-time or subscription)
-
-We may change pricing or access policy at any time — with notice if possible.
-Payments are generally non-refundable — exceptions may apply as required by law.
-
----
-
-
-6. User Responsibilities
-
-You agree that you will:
-Not misuse the service
-Not do anything anti-Islamic
-Not use for illegal purposes
-Not copy/sell/modify our software without permission
-
-
----
-
-7. Intellectual Property
-
-All our content, software, text, images, and other assets are:
-Owned by Kafa’ah Islamic & Multiproject Company
-Users may not:
-Claim ownership
-Redistribute without permission
-
-
----
-
-8. Right to Terminate Services
-
-We reserve the right to:
-Close accounts
-Limit services
-Discontinue services entirely
-
-If terms are violated or platform is harmed.
----
-
-9. Changes to Terms
-
-We may update these Terms & Conditions at any time.
-Users will be notified of changes via:
-Website notice
-App notification
-Email (if possible)
-
-
----
-
-
-10. Contact
-
-
-For any support, complaints, or legal inquiries, contact us:
-📧 Email: tanvirishrak04@gmail.com
-🌐 Website: kafaah.com`,
-  };
+  const isBn = lang === "bn";
+
+  const sections = [
+    {
+      icon: <CheckCircle2 className="text-emerald-500" />,
+      title: isBn ? "১. শর্তাবলী গ্রহণ" : "1. Acceptance of Terms",
+      content: isBn 
+        ? "আমাদের যেকোনো ডিজিটাল সেবা ব্যবহার করলে আপনি এই শর্তাবলী মেনে নিচ্ছেন। দ্বিমত থাকলে দয়া করে সেবা ব্যবহার থেকে বিরত থাকুন।" 
+        : "By using our digital services, you agree to these terms. If you disagree, please refrain from using our services."
+    },
+    {
+      icon: <Settings className="text-blue-500" />,
+      title: isBn ? "২. আমাদের সেবা" : "2. Our Services",
+      content: isBn 
+        ? "আমরা ফ্রি এবং পেইড উভয় প্রকার ইসলামিক ও এডুকেশনাল সফটওয়্যার প্রদান করি। আমরা যেকোনো সময় সেবা পরিবর্তন বা বন্ধ করতে পারি।" 
+        : "We provide both free and paid Islamic and educational software. We may modify or discontinue services at any time."
+    },
+    {
+      icon: <UserCircle className="text-purple-500" />,
+      title: isBn ? "৩. ইউজার অ্যাকাউন্ট" : "3. User Account",
+      content: isBn 
+        ? "অ্যাকাউন্টের নিরাপত্তা এবং পাসওয়ার্ড ব্যবহারের জন্য আপনি সম্পূর্ণ দায়ী। শর্ত লঙ্ঘন করলে অ্যাকাউন্ট স্থগিত করা হতে পারে।" 
+        : "You are fully responsible for your account security and password. Accounts may be suspended for violations."
+    },
+    {
+      icon: <Lock className="text-emerald-600" />,
+      title: isBn ? "৪. নিরাপত্তা ও গোপনীয়তা" : "4. Data & Privacy",
+      content: isBn 
+        ? "আপনার তথ্য আমাদের কাছে নিরাপদ — ইনশাআল্লাহ। আমরা অনুমতি ছাড়া আপনার ডাটা কারো কাছে শেয়ার করি না।" 
+        : "Your data is safe with us — InshaAllah. We do not share your data without your permission."
+    },
+    {
+      icon: <CreditCard className="text-amber-500" />,
+      title: isBn ? "৫. ফ্রি ও পেইড এক্সেস" : "5. Access & Payments",
+      content: isBn 
+        ? "পেমেন্ট সাধারণত অফেরতযোগ্য। আমরা যেকোনো সময় মূল্য বা অ্যাক্সেস পলিসি পরিবর্তনের অধিকার রাখি।" 
+        : "Payments are generally non-refundable. We reserve the right to change pricing or access policy."
+    },
+    {
+      icon: <AlertTriangle className="text-rose-500" />,
+      title: isBn ? "৬. ব্যবহারকারীর দায়িত্ব" : "6. User Responsibilities",
+      content: isBn 
+        ? "সেবা অপব্যবহার বা ইসলামবিরোধী কাজে ব্যবহার করা সম্পূর্ণ নিষেধ। অনুমতি ছাড়া সফটওয়্যার কপি করা যাবে না।" 
+        : "Misuse of service or anti-Islamic usage is strictly prohibited. Software cannot be copied without permission."
+    },
+    {
+      icon: <Copyright className="text-indigo-500" />,
+      title: isBn ? "৭. মেধাস্বত্ব" : "7. Intellectual Property",
+      content: isBn 
+        ? "সকল কনটেন্ট ও সফটওয়্যার Kafa’ah-এর মালিকানা। মালিকানা দাবি বা পুনঃবিতরণ করা আইনত দণ্ডনীয়।" 
+        : "All content and software are owned by Kafa’ah. Claiming ownership or redistribution is prohibited."
+    },
+    {
+      icon: <Ban className="text-red-500" />,
+      title: isBn ? "৮. সেবা বন্ধের অধিকার" : "8. Right to Terminate",
+      content: isBn 
+        ? "শর্ত ভঙ্গ হলে আমরা যেকোনো সময় আপনার অ্যাকাউন্ট বন্ধ বা সেবা সীমাবদ্ধ করার অধিকার রাখি।" 
+        : "We reserve the right to terminate accounts or limit services if terms are violated."
+    }
+  ];
 
   return (
-    <div className="min-h-screen bg-geometric-light dark:bg-geometric-dark py-16 px-4">
+    <div className="min-h-screen bg-slate-50 dark:bg-[#05070a] py-20 px-4 transition-colors duration-500">
       <SEO 
-        title={lang === "bn" ? "ব্যবহারের শর্তাবলী" : "Terms & Conditions"}
-        description={lang === "bn" ? "কাফআহ ওয়েবসাইট ও অ্যাপ ব্যবহারের শর্তাবলী। ইউজার অ্যাকাউন্ট, তথ্যের নিরাপত্তা, মেধাস্বত্ব সংক্রান্ত তথ্য।" : "Terms and conditions for using Kafa'ah website and app. User account, data security, intellectual property."}
+        title={isBn ? "ব্যবহারের শর্তাবলী" : "Terms & Conditions"}
+        description="Terms and conditions for Kafa'ah Islamic & Multiproject Company"
         url="https://kafaahbd.com/terms-conditions"
       />
-      <div className="max-w-4xl mx-auto bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-lg">
-        <ScrollAnimation>
-          <div className="prose prose-lg dark:prose-invert max-w-none">
-            <p className="whitespace-pre-line text-gray-800 dark:text-gray-200">
-              {lang === "bn" ? text.bn : text.en}
+
+      <div className="max-w-5xl mx-auto">
+        {/* Hero Section */}
+        <div className="text-center mb-16">
+          <ScrollAnimation>
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400 text-xs font-bold uppercase tracking-widest mb-6">
+              <Scale size={14} /> {isBn ? "আইনি চুক্তি" : "Legal Agreement"}
+            </div>
+            <h1 className="text-4xl md:text-6xl font-black text-gray-900 dark:text-white mb-6">
+              {isBn ? "ব্যবহারের শর্তাবলী" : "Terms & Conditions"}
+            </h1>
+            <p className="text-gray-500 dark:text-gray-400 max-w-2xl mx-auto">
+              {isBn 
+                ? "আমাদের প্ল্যাটফর্ম ব্যবহারের মাধ্যমে আপনি যে নিয়মগুলো মেনে চলতে সম্মত হচ্ছেন তার বিস্তারিত বিবরণ নিচে দেওয়া হলো।" 
+                : "A detailed description of the rules you agree to follow by using our platform."}
             </p>
+          </ScrollAnimation>
+        </div>
+
+        {/* Content Grid */}
+        <div className="grid md:grid-cols-2 gap-6">
+          {sections.map((item, idx) => (
+            <ScrollAnimation key={idx} delay={idx * 0.05} direction="up">
+              <div className="group h-full p-8 bg-white dark:bg-[#0d1117] border border-gray-100 dark:border-white/5 rounded-[2.5rem] shadow-sm hover:shadow-xl transition-all duration-300">
+                <div className="flex items-start gap-4">
+                  <div className="p-3 bg-gray-50 dark:bg-white/5 rounded-2xl group-hover:scale-110 transition-transform">
+                    {item.icon}
+                  </div>
+                  <div>
+                    <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-3">
+                      {item.title}
+                    </h3>
+                    <p className="text-sm md:text-base text-gray-600 dark:text-gray-400 leading-relaxed">
+                      {item.content}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </ScrollAnimation>
+          ))}
+        </div>
+
+        {/* Contact Support Footer */}
+        <ScrollAnimation className="mt-16">
+          <div className="bg-gradient-to-br from-slate-800 to-slate-900 dark:from-blue-900/20 dark:to-emerald-900/10 p-10 md:p-16 rounded-[3.5rem] text-center border border-white/5">
+            <h2 className="text-2xl md:text-3xl font-bold text-white mb-6">
+              {isBn ? "কোনো প্রশ্ন আছে?" : "Have Questions?"}
+            </h2>
+            <p className="text-slate-400 mb-10 max-w-lg mx-auto leading-relaxed">
+              {isBn 
+                ? "আমাদের শর্তাবলী সম্পর্কে আরও বিস্তারিত জানতে বা কোনো আইনি জিজ্ঞাসায় সরাসরি ইমেইল করুন।" 
+                : "For more details about our terms or any legal inquiries, please email us directly."}
+            </p>
+            <div className="flex flex-wrap justify-center gap-4">
+              <a 
+                href="mailto:tanvirishrak04@gmail.com"
+                className="flex items-center gap-2 px-8 py-4 bg-white text-slate-900 font-bold rounded-2xl hover:bg-slate-100 transition-colors"
+              >
+                <Mail size={18} /> {isBn ? "ইমেইল পাঠান" : "Send Email"}
+              </a>
+              <div className="px-8 py-4 bg-white/5 border border-white/10 text-white rounded-2xl font-bold backdrop-blur-sm">
+                kafaahbd.com
+              </div>
+            </div>
           </div>
         </ScrollAnimation>
       </div>

@@ -1,83 +1,118 @@
 import { Link } from 'react-router-dom';
 import { useLanguage } from '../contexts/LanguageContext';
 import { motion } from 'framer-motion';
+import { 
+  Home, 
+  ArrowLeft, 
+  Compass, 
+  Search, 
+  BookOpen, 
+  MessageCircle 
+} from 'lucide-react';
 
 const NotFound = () => {
   const { t, lang } = useLanguage();
+  const isBn = lang === 'bn';
 
   return (
-    <div className="min-h-screen flex items-center justify-center px-4 bg-slate-50 dark:bg-gray-900 transition-colors overflow-hidden">
-      <div className="relative max-w-2xl w-full text-center">
+    <div className="min-h-screen flex items-center justify-center px-6 bg-slate-50 dark:bg-[#05070a] transition-colors overflow-hidden relative">
+      
+      {/* Background Decorative Elements */}
+      <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none -z-10">
+        <div className="absolute top-[-10%] left-[-10%] w-96 h-96 bg-emerald-500/10 rounded-full blur-[120px]" />
+        <div className="absolute bottom-[-10%] right-[-10%] w-96 h-96 bg-blue-500/10 rounded-full blur-[120px]" />
+      </div>
+
+      <div className="max-w-3xl w-full text-center relative">
         
-        {/* Background Decorative Circles */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-green-500/10 dark:bg-blue-500/10 rounded-full blur-3xl -z-10"></div>
-        
-        {/* Animated 404 Text */}
+        {/* Large 404 Backdrop Text */}
         <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
+          initial={{ opacity: 0, scale: 0.5 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 1, ease: "circOut" }}
+          className="absolute inset-0 flex items-center justify-center -z-10 select-none pointer-events-none"
         >
-          <h1 className="text-[10rem] md:text-[15rem] font-black leading-none tracking-tighter text-transparent bg-clip-text bg-gradient-to-b from-green-600 to-green-100 dark:from-blue-600 dark:to-gray-900 opacity-20 dark:opacity-40">
+          <h1 className="text-[12rem] md:text-[22rem] font-black leading-none text-emerald-500/[0.05] dark:text-white/[0.03]">
             404
           </h1>
         </motion.div>
 
-        {/* Content Card */}
+        {/* Main Content Card */}
         <motion.div 
-          initial={{ opacity: 0, scale: 0.9 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ delay: 0.2 }}
-          className="relative -mt-24 md:-mt-32 bg-white/60 dark:bg-gray-900/60 backdrop-blur-xl p-8 md:p-12 rounded-[3rem] border border-white/50 dark:border-gray-800 shadow-2xl shadow-gray-200/50 dark:shadow-none"
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="bg-white/70 dark:bg-[#0d1117]/80 backdrop-blur-2xl p-10 md:p-16 rounded-[3.5rem] border border-white dark:border-white/5 shadow-2xl shadow-emerald-500/5"
         >
-          <div className="mb-6 inline-flex items-center justify-center w-20 h-20 rounded-3xl bg-amber-50 dark:bg-amber-900/20 text-amber-500 border border-amber-100 dark:border-amber-800 animate-bounce">
-            <i className="fas fa-map-signs text-3xl"></i>
-          </div>
+          {/* Animated Compass Icon */}
+          <motion.div 
+            animate={{ rotate: [0, 15, -15, 0] }}
+            transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+            className="mb-8 inline-flex items-center justify-center w-24 h-24 rounded-[2rem] bg-emerald-50 dark:bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-100 dark:border-emerald-500/20"
+          >
+            <Compass size={48} strokeWidth={1.5} />
+          </motion.div>
 
-          <h2 className="text-3xl md:text-4xl font-black text-gray-900 dark:text-white mb-4">
-            {t('notFound.title') || (lang === 'bn' ? 'রাস্তা হারিয়ে ফেলেছেন?' : 'Are you lost?')}
+          <h2 className="text-3xl md:text-5xl font-black text-gray-900 dark:text-white mb-6 tracking-tight">
+            {isBn ? 'গন্তব্য খুঁজে পাওয়া যায়নি' : 'Path Not Found'}
           </h2>
           
-          <p className="text-gray-600 dark:text-gray-400 font-medium mb-10 max-w-sm mx-auto leading-relaxed">
-            {t('notFound.message') || (lang === 'bn' 
-              ? 'দুঃখিত, আপনি যে পাতাটি খুঁজছেন সেটি খুঁজে পাওয়া যায়নি অথবা সরিয়ে ফেলা হয়েছে।' 
-              : 'The page you are looking for does not exist or has been moved to a new destination.')}
+          <p className="text-gray-500 dark:text-gray-400 font-medium mb-12 max-w-md mx-auto leading-relaxed text-sm md:text-lg">
+            {isBn 
+              ? 'দুঃখিত, আপনি যে পাতাটি খুঁজছেন সেটি বর্তমানে আমাদের ডেটাবেজে নেই। সম্ভবত এটি সরিয়ে ফেলা হয়েছে।' 
+              : 'The page you are looking for has been moved or no longer exists in our database.'}
           </p>
 
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+          {/* Action Buttons */}
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12">
             <Link
               to="/"
-              className="w-full sm:w-auto px-10 py-4 bg-gray-900 dark:bg-blue-600 text-white rounded-2xl font-black uppercase text-xs tracking-[0.2em] shadow-xl hover:scale-105 active:scale-95 transition-all"
+              className="group w-full sm:w-auto px-10 py-4 bg-emerald-600 text-white rounded-2xl font-bold shadow-lg shadow-emerald-600/20 hover:bg-emerald-500 transition-all flex items-center justify-center gap-2"
             >
-              {t('notFound.goHome') || 'Go Home'}
+              <Home size={18} />
+              {isBn ? 'হোমপেজে ফিরে যান' : 'Back to Home'}
             </Link>
             
             <button
               onClick={() => window.history.back()}
-              className="w-full sm:w-auto px-10 py-4 bg-white dark:bg-transparent border-2 border-gray-100 dark:border-gray-800 text-gray-700 dark:text-gray-300 rounded-2xl font-black uppercase text-xs tracking-[0.2em] hover:bg-gray-50 dark:hover:bg-gray-800 transition-all"
+              className="w-full sm:w-auto px-10 py-4 bg-white dark:bg-white/5 border border-gray-200 dark:border-white/10 text-gray-700 dark:text-gray-300 rounded-2xl font-bold hover:bg-gray-50 dark:hover:bg-white/10 transition-all flex items-center justify-center gap-2"
             >
-              {lang === 'bn' ? 'পেছনে যান' : 'Go Back'}
+              <ArrowLeft size={18} />
+              {isBn ? 'পেছনে যান' : 'Go Back'}
             </button>
+          </div>
+
+          {/* Quick Help Links */}
+          <div className="pt-8 border-t border-gray-100 dark:border-white/5">
+            <p className="text-xs font-bold text-gray-400 dark:text-gray-500 uppercase tracking-widest mb-6">
+              {isBn ? 'সহায়ক কিছু লিংক' : 'Helpful Links'}
+            </p>
+            <div className="flex flex-wrap justify-center gap-6">
+              {[
+                { name: isBn ? 'প্রজেক্টস' : 'Projects', icon: <Search size={14} />, path: '/projects' },
+                { name: isBn ? 'পড়াশোনা' : 'Study', icon: <BookOpen size={14} />, path: '/study' },
+                { name: isBn ? 'যোগাযোগ' : 'Contact', icon: <MessageCircle size={14} />, path: '/contact' },
+              ].map((link) => (
+                <Link 
+                  key={link.path} 
+                  to={link.path} 
+                  className="flex items-center gap-1.5 text-sm font-bold text-gray-500 dark:text-gray-400 hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors"
+                >
+                  {link.icon}
+                  {link.name}
+                </Link>
+              ))}
+            </div>
           </div>
         </motion.div>
 
-        {/* Floating Icons for Decoration */}
+        {/* Small Decorative Floating Quran/Knowledge Elements */}
         <motion.div 
-          animate={{ y: [0, -20, 0], rotate: [0, 10, 0] }}
-          transition={{ duration: 5, repeat: Infinity }}
-          className="absolute -top-10 left-10 text-green-300 dark:text-blue-900/30 text-6xl -z-10 opacity-50"
+          animate={{ y: [0, -15, 0] }}
+          transition={{ duration: 6, repeat: Infinity }}
+          className="hidden md:block absolute -top-12 -right-8 p-4 bg-white dark:bg-[#0d1117] rounded-2xl shadow-xl border border-white/50 dark:border-white/5 -rotate-12"
         >
-          <i className="fas fa-book-open"></i>
+          <BookOpen className="text-emerald-500" size={32} />
         </motion.div>
-        
-        <motion.div 
-          animate={{ y: [0, 20, 0], rotate: [0, -10, 0] }}
-          transition={{ duration: 4, repeat: Infinity, delay: 1 }}
-          className="absolute -bottom-10 right-10 text-green-300 dark:text-blue-900/30 text-6xl -z-10 opacity-50"
-        >
-          <i className="fas fa-graduation-cap"></i>
-        </motion.div>
-
       </div>
     </div>
   );
