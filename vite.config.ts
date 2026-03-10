@@ -20,9 +20,6 @@ export default defineConfig({
       output: {
         manualChunks(id) {
           if (id.includes("node_modules")) {
-            if (id.includes("html2pdf.js") || id.includes("jspdf") || id.includes("html2canvas")) {
-              return "pdf-engine";
-            }
             if (id.includes("framer-motion") || id.includes("lucide-react")) {
               return "ui-libs";
             }
