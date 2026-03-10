@@ -16,7 +16,7 @@ const SEO: React.FC<SEOProps> = ({
   image = 'https://kafaahbd.com/home.jpg', 
   // পাথ ডাইনামিক করার জন্য মেইন ডোমেইন রাখা হলো
   url = '',
-  keywords = 'study, kafaah, islam, bd, education, islamic technology, ssc, hsc, admission, bangladesh, kafaahbd'
+  keywords = ' kafaah, study, islam, bd, education, islamic technology, ssc, hsc, admission, bangladesh, kafaahbd'
 }) => {
   const siteTitle = `${title} | Kafa'ah - Islamic & Multiproject Company`;
   
