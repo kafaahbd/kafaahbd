@@ -24,7 +24,7 @@ export const content: Record<string, Record<string, string>> = {
 			"© ২০২৫ Kafa’ah Islamic and Multiproject Company. সর্বস্বত্ব সংরক্ষিত। এই ওয়েবসাইট এবং এর সমস্ত কন্টেন্ট Kafa’ah Islamic and Multiproject Company (kafaah.com) এর একচেটিয়া সম্পত্তি। এই কন্টেন্টের কোনো অংশ অনুমতি ছাড়া — কপি, শেয়ার, সংরক্ষণ, বিতরণ, পুনঃপ্রকাশ বা কোনোভাবে ব্যবহৃত করা যাবে না। অননুমোদিত ব্যবহার আন্তর্জাতিক কপিরাইট আইনের অধীনে আইনগত ব্যবস্থা গ্রহণের কারণ হতে পারে",
 
 		// Home
-		"home.hero.tagline": "Technology for Ummah – In Sha Allah",
+		"home.hero.tagline": "Kafa'ah \n Technology for Ummah – In Sha Allah",
 		"home.slogan": "Remember that Exception is an example!",
 		"home.mission.title": "Our Mission",
 		"home.mission.text":
@@ -174,7 +174,7 @@ export const content: Record<string, Record<string, string>> = {
 		"notFound.goHome": "হোম পৃষ্ঠায় যান",
 
 		// Home
-		"home.hero.tagline": "প্রযুক্তি উম্মাহর জন্য – ইন শা আল্লাহ",
+		"home.hero.tagline": "কাফআহ \n প্রযুক্তি উম্মাহর জন্য – ইন শা আল্লাহ",
 		"home.mission.title": "আমাদের লক্ষ্য",
 		"home.slogan": "মনে রাখবেন যে ব্যতিক্রম একটি উদাহরণ!",
 		"home.mission.text":

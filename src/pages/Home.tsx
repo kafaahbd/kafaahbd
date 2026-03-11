@@ -79,7 +79,7 @@ const Home: React.FC = () => {
   return (
     <>
       <SEO 
-        title={lang === "bn" ? "হোম" : "Home"}
+        title={lang === "bn" ? "হোম | কাফআহ" : "Home | Kafa'ah"  }
         description={lang === "bn" ? "কাফআহ ইসলামিক অ্যান্ড মাল্টিপ্রজেক্ট কোম্পানি..." : "Kafa'ah Islamic..."}
         url="https://kafaahbd.com/"
         image="https://kafaahbd.com/home.jpg"
