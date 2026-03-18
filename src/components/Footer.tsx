@@ -106,13 +106,13 @@ const Footer: React.FC = () => {
                 </li>
               ))}
               <li>
-                <a 
-                  href="https://docs.google.com/forms/..." 
-                  target="_blank" 
+                <Link 
+                  to={"/join"}
+                  
                   className="inline-flex items-center gap-1.5 text-sm font-bold text-green-600 dark:text-green-500 hover:underline"
                 >
                   {t('footer.join')} <ExternalLink size={14} />
-                </a>
+                </Link>
               </li>
             </ul>
           </div>

@@ -4,6 +4,7 @@ import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import { useLanguage } from './contexts/LanguageContext';
 import NotFound from './pages/NotFound';
+import JoinForm from './pages/JoinForm';
  // নতুন কম্পোনেন্ট ইম্পোর্ট
 
 // অন্যান্য পৃষ্ঠা লেজি লোড
@@ -53,6 +54,7 @@ const App: React.FC = () => {
             <Route path="/contact" element={<Contact />} />
             <Route path="/team" element={<Team />} />
             <Route path="/*" element={<NotFound />} />
+            <Route path='/join' element={<JoinForm/>}/>
           </Routes>
         </Suspense>
       </main>
