@@ -28,6 +28,7 @@ const JoinForm: React.FC = () => {
   const [selectedSkills, setSelectedSkills] = useState<string[]>([]);
   const [formData, setFormData] = useState({
     fullName: "",
+    email: "",
     dob: "",
     presentAddress: "",
     permanentAddress: "",
@@ -35,14 +36,22 @@ const JoinForm: React.FC = () => {
     previousWork: "",
     motivation: ""
   });
+  const [image, setImage] = useState<File | null>(null);
 
   // UI States
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
+  };
+
+  const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files && e.target.files[0]) {
+      setImage(e.target.files[0]);
+    }
   };
 
   const toggleSkill = (skill: string) => {
@@ -53,36 +62,53 @@ const JoinForm: React.FC = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setIsSubmitting(true);
+    
+    if (!image) {
+      setErrorMessage("Please upload a profile picture.");
+      return;
+    }
+    if (selectedSkills.length === 0) {
+      setErrorMessage("Please select at least one skill.");
+      return;
+    }
 
-    const submissionData = {
-      ...formData,
-      skills: selectedSkills
-    };
+    setIsSubmitting(true);
+    setErrorMessage("");
+
+    const data = new FormData();
+    Object.entries(formData).forEach(([key, value]) => {
+      data.append(key, value);
+    });
+    data.append("skills", selectedSkills.join(", "));
+    data.append("image", image);
 
     try {
-      // TODO: Replace this URL with your actual Node.js/Express backend endpoint
-      // Example: fetch('https://api.kafaahbd.com/v1/applications', { ... })
-      
-      /* const response = await fetch("YOUR_BACKEND_API_URL", {
+      const response = await fetch("/api/join", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(submissionData),
+        body: data,
       });
 
-      if (!response.ok) throw new Error("Failed to submit");
-      */
+      const result = await response.json();
 
-      // Simulating an API call delay for UI demonstration
-      await new Promise(resolve => setTimeout(resolve, 1500));
-      
+      if (!response.ok) throw new Error(result.error || "Failed to submit");
+
       // On success:
       setIsSuccess(true);
-    } catch (error) {
+      setFormData({
+        fullName: "",
+        email: "",
+        dob: "",
+        presentAddress: "",
+        permanentAddress: "",
+        experience: "",
+        previousWork: "",
+        motivation: ""
+      });
+      setSelectedSkills([]);
+      setImage(null);
+    } catch (error: any) {
       console.error("Submission error:", error);
-      // Handle error UI here if needed
+      setErrorMessage(error.message || "An unexpected error occurred.");
     } finally {
       setIsSubmitting(false);
     }
@@ -147,6 +173,11 @@ const JoinForm: React.FC = () => {
                 onSubmit={handleSubmit} 
                 className="p-6 md:p-12 space-y-10"
               >
+                {errorMessage && (
+                  <div className="p-4 bg-red-50 border border-red-200 rounded-xl text-red-600 text-sm font-medium">
+                    {errorMessage}
+                  </div>
+                )}
                 
                 {/* Personal Information Section */}
                 <div className="space-y-6">
@@ -164,6 +195,18 @@ const JoinForm: React.FC = () => {
                         onChange={handleInputChange}
                         required
                         placeholder="John Doe" 
+                        className="w-full bg-slate-50 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl px-4 py-3 focus:ring-2 focus:ring-green-500 outline-none transition-all dark:text-white" 
+                      />
+                    </div>
+                    <div className="space-y-2">
+                      <label className="text-sm font-semibold text-gray-700 dark:text-gray-300">Email Address</label>
+                      <input 
+                        type="email" 
+                        name="email"
+                        value={formData.email}
+                        onChange={handleInputChange}
+                        required
+                        placeholder="john@example.com" 
                         className="w-full bg-slate-50 dark:bg-white/5 border border-gray-200 dark:border-white/10 rounded-xl px-4 py-3 focus:ring-2 focus:ring-green-500 outline-none transition-all dark:text-white" 
                       />
                     </div>
@@ -290,11 +333,19 @@ const JoinForm: React.FC = () => {
                     />
                   </div>
 
-                  {/* Note: In a real app, bind this to an actual file input state using an invisible <input type="file" /> */}
-                  <div className="p-8 border-2 border-dashed border-gray-200 dark:border-white/10 rounded-[2rem] text-center hover:border-green-500 transition-colors cursor-pointer group">
+                  <div className="relative p-8 border-2 border-dashed border-gray-200 dark:border-white/10 rounded-[2rem] text-center hover:border-green-500 transition-colors cursor-pointer group">
+                    <input 
+                      type="file" 
+                      accept="image/*"
+                      onChange={handleImageChange}
+                      className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
+                      required
+                    />
                     <div className="flex flex-col items-center">
                       <ImageIcon size={40} className="text-gray-400 group-hover:text-green-500 transition-colors mb-2" />
-                      <span className="text-sm font-bold text-gray-500 dark:text-gray-400">Upload Professional Profile Picture</span>
+                      <span className="text-sm font-bold text-gray-500 dark:text-gray-400">
+                        {image ? image.name : "Upload Professional Profile Picture"}
+                      </span>
                       <span className="text-[10px] text-gray-400 mt-1">PNG, JPG up to 5MB</span>
                     </div>
                   </div>

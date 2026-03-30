@@ -27,7 +27,7 @@ const Navbar: React.FC = () => {
   const navLinks: NavLink[] = [
     { name: t('nav.home'), path: '/', icon: <Home size={18} /> },
     { name: t('nav.projects'), path: '/projects', icon: <Briefcase size={18} /> },
-    { name: t('nav.join'), path: '/join', icon: <UserPlus size={18} />, external: true },
+    { name: t('nav.join'), path: '/join', icon: <UserPlus size={18} />},
     { name: t('nav.study'), path: '/study', icon: <GraduationCap size={18} /> },
     { name: t('nav.about'), path: '/about', icon: <Info size={18} /> },
   ]
