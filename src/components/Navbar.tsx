@@ -82,7 +82,7 @@ const Navbar: React.FC = () => {
                   <Link
                     key={link.name}
                     to={link.path}
-                    target={link.external ? "_blank" : "_self"}
+                    
                     className={`relative px-4 py-2 text-sm font-bold transition-all duration-300 rounded-full flex items-center gap-2 ${
                       location.pathname === link.path 
                       ? 'text-green-600 dark:text-green-400' 
@@ -137,7 +137,7 @@ const Navbar: React.FC = () => {
                   <Link
                     key={link.name}
                     to={link.path}
-                    target={link.external ? "_blank" : "_self"}
+                   
                     onClick={() => setIsOpen(false)}
                     className={`flex items-center gap-4 px-4 py-4 rounded-2xl text-base font-bold transition-all ${
                       location.pathname === link.path
