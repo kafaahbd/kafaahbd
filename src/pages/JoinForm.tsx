@@ -83,7 +83,8 @@ const JoinForm: React.FC = () => {
     data.append("image", image);
 
     try {
-      const response = await fetch("/api/join", {
+      const apiUrl = import.meta.env.VITE_API_URL || "";
+      const response = await fetch(`${apiUrl}/api/join`, {
         method: "POST",
         body: data,
       });
