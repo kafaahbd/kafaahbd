@@ -3,9 +3,6 @@ import { Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import { useLanguage } from './contexts/LanguageContext';
-import NotFound from './pages/NotFound';
-import JoinForm from './pages/JoinForm';
- // নতুন কম্পোনেন্ট ইম্পোর্ট
 
 // অন্যান্য পৃষ্ঠা লেজি লোড
 const Home = lazy(() => import('./pages/Home'));
@@ -17,6 +14,8 @@ const TermsConditions = lazy(() => import('./pages/TermsConditions'));
 const Contact = lazy(() => import('./pages/Contact'));
 const Team = lazy(() => import('./pages/Team'));
 const StudyCornerRedirect = lazy(() => import('./pages/StudyCornerRedirect'));
+const NotFound = lazy(() => import('./pages/NotFound'));
+const JoinForm = lazy(() => import('./pages/JoinForm'));
 
 // Study সংক্রান্ত পুরনো পৃষ্ঠাগুলো সরিয়ে ফেলা হয়েছে (এগুলো এখন আলাদা অ্যাপে)
 
@@ -53,8 +52,8 @@ const App: React.FC = () => {
             <Route path="/terms-conditions" element={<TermsConditions />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/team" element={<Team />} />
-            <Route path="/*" element={<NotFound />} />
             <Route path='/join' element={<JoinForm/>}/>
+            <Route path="/*" element={<NotFound />} />
           </Routes>
         </Suspense>
       </main>

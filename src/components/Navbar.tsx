@@ -53,14 +53,14 @@ const Navbar: React.FC = () => {
 
   return (
     <>
-      <nav 
+      <header 
         className={`fixed top-0 w-full z-[100] transition-all duration-500 ${
           scrolled 
           ? 'py-2 bg-white/90 dark:bg-[#05070a]/90 backdrop-blur-xl shadow-lg border-b border-gray-100 dark:border-white/5' 
           : 'py-4 bg-transparent'
         }`}
       >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             
             {/* Logo Section */}
@@ -120,7 +120,7 @@ const Navbar: React.FC = () => {
               </button>
             </div>
           </div>
-        </div>
+        </nav>
 
         {/* Mobile Menu Overlay */}
         <AnimatePresence>
@@ -165,7 +165,7 @@ const Navbar: React.FC = () => {
             </motion.div>
           )}
         </AnimatePresence>
-      </nav>
+      </header>
 
       {/* Hero Section এর জন্য স্পেসার */}
       <div className="h-20 md:h-24"></div>
