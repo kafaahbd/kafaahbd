@@ -18,7 +18,7 @@ const skillsList = [
   "Frontend (React/Next.js)", "Backend (Node/Express)", "TypeScript", 
   "UI/UX Design", "App Development (Flutter/RN)", "Graphic Design", 
   "Content Writing", "Video Editing", "SEO Specialist", "Digital Marketing",
-  "Project Management", "Cyber Security", "Database Management", "QA Testing"
+  "Project Management", "Cyber Security", "Database Management", "QA Testing","Photo Editing " ,"Photo Design" ,"Page management ","Question Creation "
 ];
 
 const JoinForm: React.FC = () => {
