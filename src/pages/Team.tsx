@@ -12,7 +12,12 @@ import {
 	ShieldCheck,
 	Facebook,
 	Github,
-	MessageCircle, // WhatsApp এর জন্য Lucide আইকন
+	MessageCircle,
+	FileText,
+	Edit3,
+	HelpCircle,
+	FileQuestion,
+	Droplet,// WhatsApp এর জন্য Lucide আইকন
 } from "lucide-react";
 
 interface TeamMember {
@@ -46,9 +51,56 @@ const Team: React.FC = () => {
 			},
 		},
 		{
+			name: "Mueen Ahmad",
+			role: isBn ? "অ্যাপ নির্মাতা" : "App Developer",
+			icon: <Code2 size={32} />,
+			theme: "from-cyan-500 to-blue-600",
+			image: "",
+			socials: {
+				
+				whatsapp: "https://wa.me/8801744635364",
+				github: "https://github.com/Mueen-Ahmad",
+			},
+		},
+		{
+			name: "Tousif Hasnat Anan",
+			role: isBn ? "কন্টেন্ট নির্মাতা" : "Content Creator",
+			icon: <Edit3 size={32} />,
+			theme: "from-green-500 to-emerald-600",
+			image: "",
+			socials: {
+				
+				whatsapp: "https://wa.me/8801743199426",
+				
+			},
+		},
+		{
+			name: "Labonnay Das",
+			role: isBn ? "প্রশ্ন নির্মাতা" : "Question Creator",
+			icon: <HelpCircle size={32} />,
+			theme: "from-pink-500 to-rose-600",
+			image: "",
+			socials: {
+				
+				whatsapp: "https://wa.me/8801727719346",
+				
+			},
+		},
+		{
+			name: "MD Rifat Al Mahmud",
+			role: isBn ? "বিশ্লেষক" : "Analyst",
+			icon: <Zap size={32} />,
+			theme: "from-rose-500 to-purple-600",
+			image: "",
+			socials: {
+				facebook: "https://www.facebook.com/rifatdoyox",
+				whatsapp: "https://wa.me/8801581483444",
+			},
+		},
+		{
 			name: "Marjuk Mahmud",
-			role: isBn ? "পরিকল্পনা প্রসূতকারী" : "Idea Generator",
-			icon: <Lightbulb size={32} />,
+			role: isBn ? "-" : "-",
+			icon: <FileQuestion size={32} />,
 			theme: "from-amber-400 to-orange-600",
 			image: "",
 			socials: {
@@ -68,28 +120,18 @@ const Team: React.FC = () => {
 			},
 		},
 		{
-			name: "MD Rifat Al Mahmud",
-			role: isBn ? "অনুঘটক" : "Catalyst",
-			icon: <Zap size={32} />,
-			theme: "from-rose-500 to-purple-600",
+			name: "MD Limon Sarkar",
+			role: isBn ? "গ্রাফিক্স নির্মাতা" : "Grapics Designer",
+			icon: <Droplet size={32} />,
+			theme: "from-yello-500 to-orange-600",
 			image: "",
 			socials: {
-				facebook: "https://www.facebook.com/rifatdoyox",
-				whatsapp: "https://wa.me/8801581483444",
+				facebook: "https://www.facebook.com/profile.php?id=100090667061416",
+				whatsapp: "https://wa.me/8801409538310",
+				
 			},
 		},
-		{
-			name: "Mueen Ahmad",
-			role: isBn ? "অ্যাপ নির্মাতা" : "App Developer",
-			icon: <Code2 size={32} />,
-			theme: "from-cyan-500 to-blue-600",
-			image: "",
-			socials: {
-				facebook: "#",
-				whatsapp: "https://wa.me/8801744635364",
-				github: "https://github.com/Mueen-Ahmad",
-			},
-		},
+		
 	];
 
 	return (
