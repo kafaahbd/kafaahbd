@@ -1,18 +1,9 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { 
-  Sparkles, 
-  BookOpen, 
-  RefreshCw, 
-  Code, 
-  Smartphone, 
-  GraduationCap, 
-  Layers, 
-  ShoppingCart, 
-  ChevronRight,
-  Target,
-  Eye,
-  ArrowRight
+  Sparkles, BookOpen, RefreshCw, Code, Smartphone, 
+  GraduationCap, Layers, ShoppingCart, ChevronRight,
+  Target, Eye, Zap, ShieldCheck, HeartHandshake
 } from "lucide-react"; 
 import { useLanguage } from "../contexts/LanguageContext";
 import { Link } from "react-router-dom";
@@ -34,12 +25,9 @@ const Home: React.FC = () => {
   const fetchRandomAyat = async (): Promise<void> => {
     setLoading(true);
     try {
-      const response = await fetch(
-        "https://raw.githubusercontent.com/kafaahbd/nothing/refs/heads/main/ayat.json"
-      );
+      const response = await fetch("https://raw.githubusercontent.com/kafaahbd/nothing/refs/heads/main/ayat.json");
       const data: Ayat[] = await response.json();
-      const randomIndex = Math.floor(Math.random() * data.length);
-      setAyat(data[randomIndex]);
+      setAyat(data[Math.floor(Math.random() * data.length)]);
     } catch (err) {
       console.error("Failed to fetch ayat", err);
     } finally {
@@ -47,226 +35,221 @@ const Home: React.FC = () => {
     }
   };
 
-  useEffect(() => {
-    fetchRandomAyat();
-  }, []);
+  useEffect(() => { fetchRandomAyat(); }, []);
 
   const serviceIcons = [
-    <Code size={28} />, 
-    <Smartphone size={28} />, 
-    <GraduationCap size={28} />, 
-    <Layers size={28} />, 
-    <ShoppingCart size={28} />
+    <Code size={28} />, <Smartphone size={28} />, 
+    <GraduationCap size={28} />, <Layers size={28} />, <ShoppingCart size={28} />
   ];
 
   const services: string[] = [
-    t("home.services.software"),
-    t("home.services.islamicapps"),
-    t("home.services.learning"),
-    t("home.services.saas"),
-    t("home.services.ecommerce"),
+    t("home.services.software"), t("home.services.islamicapps"),
+    t("home.services.learning"), t("home.services.saas"), t("home.services.ecommerce"),
   ];
 
-  // Animation Variants
-  const fadeInUp = {
-    initial: { opacity: 0, y: 30 },
-    whileInView: { opacity: 1, y: 0 },
-    viewport: { once: true },
-    transition: { duration: 0.6, ease: "easeOut" }
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: { opacity: 1, transition: { staggerChildren: 0.1 } }
+  };
+
+  const itemVariants = {
+    hidden: { y: 20, opacity: 0 },
+    visible: { y: 0, opacity: 1 }
   };
 
   return (
     <>
       <SEO 
-        title={lang === "bn" ? "হোম | কাফআহ - ইসলামিক ও আধুনিক প্রযুক্তি" : "Home | Kafa'ah - Islamic & Modern Tech"  }
-        description={lang === "bn" ? "কাফআহ একটি আধুনিক ইসলামিক মাল্টিপ্রজেক্ট কোম্পানি। আমরা সফটওয়্যার, অ্যাপ এবং ইসলামিক লার্নিং নিয়ে কাজ করি।" : "Kafa'ah is a modern Islamic multi-project company specializing in software, apps, and ethical tech solutions."}
+        title={lang === "bn" ? "হোম | কাফআহ - আধুনিক ইসলামিক প্রযুক্তি" : "Home | Kafa'ah - Modern Islamic Tech"}
+        description={lang === "bn" ? "প্রযুক্তির মাধ্যমে ইসলামের সেবা। আমরা তৈরি করি আধুনিক সফটওয়্যার এবং ইসলামিক অ্যাপস।" : "Serving Islam through technology. We build modern software and ethical Islamic applications."}
         url="https://kafaahbd.com/"
         image="https://kafaahbd.com/home.jpg"
       />
 
-      <div className="bg-white dark:bg-[#020408] transition-colors duration-500 overflow-x-hidden">
+      <div className="bg-[#f8fafc] dark:bg-[#030712] transition-colors duration-500">
         
-        {/* --- Modern Hero Section --- */}
-        <section className="relative min-h-screen flex items-center justify-center px-6 pt-20">
-          <div className="absolute inset-0 overflow-hidden">
-            <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-green-500/10 blur-[120px] rounded-full" />
-            <div className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-emerald-500/10 blur-[120px] rounded-full" />
+        {/* --- Hero: Dynamic Mesh Background --- */}
+        <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20 px-4">
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full max-w-7xl">
+            <div className="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] bg-green-400/20 blur-[120px] rounded-full animate-pulse" />
+            <div className="absolute bottom-[10%] right-[-5%] w-[40%] h-[40%] bg-emerald-500/10 blur-[100px] rounded-full" />
           </div>
-          
-          <div className="max-w-6xl w-full text-center relative z-10">
+
+          <div className="max-w-6xl w-full relative z-10">
             <motion.div 
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-green-50 dark:bg-green-500/10 border border-green-100 dark:border-green-500/20 text-green-700 dark:text-green-400 text-xs md:text-sm font-semibold mb-8 shadow-sm"
+              className="flex justify-center mb-8"
             >
-              <Sparkles size={16} className="animate-pulse" /> {t("home.slogan")}
+              <span className="glass-effect px-4 py-2 rounded-full text-xs font-bold tracking-tighter text-green-600 dark:text-green-400 flex items-center gap-2 border border-green-500/20">
+                <Sparkles size={14} className="animate-spin-slow" /> {t("home.slogan")}
+              </span>
             </motion.div>
-            
+
             <motion.h1 
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2 }}
-              className="text-4xl md:text-8xl font-extrabold text-gray-900 dark:text-white leading-[1.1] tracking-tight mb-8"
+              initial={{ y: 30, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              className="text-5xl md:text-8xl font-black text-center text-slate-900 dark:text-white leading-[0.95] tracking-tight mb-8"
             >
-              <span className="block">{t("home.hero.tagline").split(' ').slice(0, -1).join(' ')}</span>
-              <span className="bg-clip-text text-transparent bg-gradient-to-r from-green-600 via-emerald-500 to-teal-500">
-                {t("home.hero.tagline").split(' ').pop()}
+              {lang === "bn" ? "ইসলামিক প্রযুক্তি" : "Modern Islamic"}{" "}
+              <span className="bg-clip-text text-transparent bg-gradient-to-tr from-green-600 via-emerald-500 to-teal-400">
+                {lang === "bn" ? "বিপ্লব" : "Revolution"}
               </span>
             </motion.h1>
-            
+
             <motion.p 
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.4 }}
-              className="text-lg md:text-2xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto leading-relaxed mb-10"
+              initial={{ y: 20, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ delay: 0.2 }}
+              className="text-lg md:text-2xl text-slate-600 dark:text-slate-400 text-center max-w-3xl mx-auto mb-12 font-medium"
             >
               {t("home.mission.text")}
             </motion.p>
 
             <motion.div 
-               initial={{ opacity: 0, y: 20 }}
-               animate={{ opacity: 1, y: 0 }}
-               transition={{ delay: 0.6 }}
-               className="flex flex-wrap justify-center gap-4"
+              initial={{ y: 20, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ delay: 0.3 }}
+              className="flex flex-col sm:flex-row items-center justify-center gap-4"
             >
-                <Link to="/services" className="px-8 py-4 bg-green-600 hover:bg-green-700 text-white rounded-2xl font-bold transition-all shadow-lg shadow-green-600/20 flex items-center gap-2">
-                    Explore Services <ArrowRight size={18} />
-                </Link>
-                <Link to="/about" className="px-8 py-4 bg-gray-100 dark:bg-white/5 text-gray-900 dark:text-white rounded-2xl font-bold hover:bg-gray-200 dark:hover:bg-white/10 transition-all">
-                    Our Vision
-                </Link>
+              <Link to="/join" className="w-full sm:w-auto px-10 py-5 bg-green-600 hover:bg-green-700 text-white rounded-2xl font-bold transition-all shadow-xl shadow-green-500/20 flex items-center justify-center gap-2 group">
+                {t("home.cta.button")} <ChevronRight size={20} className="group-hover:translate-x-1 transition-transform" />
+              </Link>
+              <Link to="/projects" className="w-full sm:w-auto px-10 py-5 glass-effect text-slate-900 dark:text-white rounded-2xl font-bold hover:bg-white/50 transition-all text-center">
+                {lang === "bn" ? "প্রজেক্টসমূহ" : "View Projects"}
+              </Link>
             </motion.div>
           </div>
         </section>
 
-        {/* --- Glassmorphic Quranic Section --- */}
-        <section className="py-20 px-4 relative">
-          <div className="max-w-5xl mx-auto">
+        {/* --- The "Bento" Ayat Section --- */}
+        <section className="py-20 px-4 max-w-7xl mx-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
             <motion.div 
-              {...fadeInUp}
-              className="relative overflow-hidden rounded-[2.5rem] bg-white/70 dark:bg-gray-900/40 backdrop-blur-xl p-8 md:p-20 border border-gray-200 dark:border-white/10 shadow-[0_20px_50px_rgba(0,0,0,0.05)] dark:shadow-none"
+              whileInView={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0, x: -50 }}
+              className="lg:col-span-8 relative group overflow-hidden rounded-[2.5rem] bg-white dark:bg-slate-900/50 p-8 md:p-16 border border-slate-200 dark:border-white/5 shadow-2xl shadow-slate-200/50 dark:shadow-none"
             >
-              <div className="absolute top-0 right-0 p-10 opacity-5 dark:opacity-10 pointer-events-none">
-                <BookOpen size={200} />
+              <div className="absolute top-0 right-0 p-8 opacity-10 group-hover:rotate-12 transition-transform duration-700">
+                <BookOpen size={120} />
               </div>
-
-              <div className="relative z-10 text-center">
-                <h2 className="text-sm md:text-base font-bold text-green-600 uppercase tracking-[0.3em] mb-10">
-                  {lang === "bn" ? "আজকের আয়াত" : "Ayat of the Day"}
-                </h2>
+              
+              <div className="relative z-10">
+                <div className="flex items-center gap-3 mb-8">
+                  <div className="h-2 w-12 bg-green-500 rounded-full" />
+                  <h2 className="text-sm font-black uppercase tracking-widest text-green-600">{lang === "bn" ? "আজকের আয়াত" : "Ayat of the Day"}</h2>
+                </div>
 
                 <AnimatePresence mode="wait">
                   {loading ? (
-                    <motion.div key="loader" animate={{ rotate: 360 }} transition={{ repeat: Infinity, duration: 2 }} className="flex justify-center py-20">
-                      <RefreshCw className="text-green-600" size={40} />
-                    </motion.div>
+                    <div className="h-64 flex items-center justify-center"><RefreshCw className="animate-spin text-green-500" size={32} /></div>
                   ) : (
-                    <motion.div 
-                      key={ayat?.id}
-                      initial={{ opacity: 0, scale: 0.95 }}
-                      animate={{ opacity: 1, scale: 1 }}
-                      exit={{ opacity: 0, scale: 1.05 }}
-                      className="space-y-8"
-                    >
-                      <p className="text-3xl md:text-6xl text-gray-900 dark:text-white leading-[1.6] font-arabic" dir="rtl">
-                        {ayat?.arabic}
-                      </p>
-                      <div className="inline-flex items-center gap-2 px-4 py-1 rounded-full bg-green-50 dark:bg-green-900/30 text-green-700 dark:text-green-400 text-xs md:text-sm font-bold border border-green-100 dark:border-green-800">
-                        <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
-                        {ayat?.surah} : {ayat?.ayat_number}
+                    <motion.div key={ayat?.id} initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="space-y-8">
+                      <p className="text-3xl md:text-5xl text-right font-arabic leading-relaxed text-slate-800 dark:text-white" dir="rtl">{ayat?.arabic}</p>
+                      <p className="text-xl md:text-2xl font-medium text-slate-600 dark:text-slate-300 italic">"{ayat?.bangla}"</p>
+                      <div className="flex items-center justify-between pt-6 border-t border-slate-100 dark:border-white/5">
+                        <span className="text-sm font-bold text-green-600 bg-green-50 dark:bg-green-500/10 px-4 py-2 rounded-full">{ayat?.surah} : {ayat?.ayat_number}</span>
+                        <button onClick={fetchRandomAyat} className="p-4 rounded-xl bg-slate-50 dark:bg-white/5 hover:bg-green-600 hover:text-white transition-all active:scale-95"><RefreshCw size={20} /></button>
                       </div>
-                      <p className="text-base md:text-2xl text-gray-600 dark:text-gray-300 italic max-w-3xl mx-auto leading-relaxed">
-                        "{ayat?.bangla}"
-                      </p>
-                      <button 
-                        onClick={fetchRandomAyat}
-                        className="mt-4 p-4 rounded-full bg-white dark:bg-white/5 shadow-md hover:shadow-xl hover:bg-green-600 hover:text-white transition-all duration-300 active:scale-95"
-                      >
-                        <RefreshCw size={24} />
-                      </button>
                     </motion.div>
                   )}
                 </AnimatePresence>
               </div>
             </motion.div>
+
+            <motion.div 
+              whileInView={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0, x: 50 }}
+              className="lg:col-span-4 rounded-[2.5rem] bg-gradient-to-br from-green-600 to-emerald-800 p-8 md:p-12 text-white flex flex-col justify-between"
+            >
+              <Zap size={40} className="mb-6 animate-pulse" />
+              <div>
+                <h3 className="text-3xl font-black mb-4 leading-tight">{lang === "bn" ? "দ্রুত ও আধুনিক সেবা" : "Fast & Ethical Solutions"}</h3>
+                <p className="text-green-100/80 mb-8">{lang === "bn" ? "আমরা শরীয়াহ সম্মত ভাবে সফটওয়্যার সমাধান প্রদান করি।" : "We provide Shariah-compliant software solutions with modern tech."}</p>
+                <Link to="/contact" className="inline-flex items-center gap-2 font-bold hover:underline">
+                  {lang === "bn" ? "আমাদের সাথে যোগাযোগ করুন" : "Get in touch"} <ChevronRight size={16} />
+                </Link>
+              </div>
+            </motion.div>
           </div>
         </section>
 
-        {/* --- Modern Bento Services Grid --- */}
-        <section className="py-24 px-6 bg-gray-50/50 dark:bg-black/20">
+        {/* --- Services: Hover-Grid --- */}
+        <section className="py-24 px-4 bg-white dark:bg-[#020617] transition-colors duration-500">
           <div className="max-w-7xl mx-auto">
-            <div className="text-center mb-16">
-              <h2 className="text-3xl md:text-5xl font-black mb-4 dark:text-white">
-                {t("home.services.title")}
-              </h2>
-              <div className="h-1.5 w-20 bg-green-500 mx-auto rounded-full" />
+            <div className="mb-16 text-center">
+              <h2 className="text-4xl md:text-6xl font-black mb-4 dark:text-white">{t("home.services.title")}</h2>
+              <p className="text-slate-500 dark:text-slate-400">{lang === "bn" ? "আমরা যা অফার করি" : "What we offer to the Ummah"}</p>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
+            <motion.div 
+              variants={containerVariants}
+              initial="hidden"
+              whileInView="visible"
+              className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4"
+            >
               {services.map((service, idx) => (
                 <motion.div 
                   key={idx}
-                  {...fadeInUp}
-                  transition={{ delay: idx * 0.1 }}
-                  whileHover={{ y: -8, backgroundColor: "rgba(34, 197, 94, 0.05)" }}
-                  className="bg-white dark:bg-[#0d1117] p-8 rounded-[2rem] border border-gray-100 dark:border-white/5 shadow-sm hover:shadow-xl transition-all group flex flex-col items-center text-center"
+                  variants={itemVariants}
+                  whileHover={{ y: -10 }}
+                  className="p-8 rounded-[2rem] bg-[#f8fafc] dark:bg-slate-900/40 border border-slate-100 dark:border-white/5 hover:border-green-500/50 transition-all group"
                 >
-                  <div className="w-16 h-16 bg-green-50 dark:bg-green-900/20 rounded-2xl flex items-center justify-center mb-6 text-green-600 group-hover:scale-110 group-hover:bg-green-600 group-hover:text-white transition-all duration-500">
+                  <div className="w-14 h-14 rounded-2xl bg-white dark:bg-slate-800 flex items-center justify-center text-green-600 shadow-sm group-hover:scale-110 group-hover:bg-green-600 group-hover:text-white transition-all duration-500 mb-6">
                     {serviceIcons[idx]}
                   </div>
-                  <h3 className="text-xs md:text-sm font-black uppercase tracking-widest text-gray-800 dark:text-gray-200">
-                    {service}
-                  </h3>
+                  <h3 className="text-sm font-black uppercase tracking-widest text-slate-800 dark:text-slate-200">{service}</h3>
+                </motion.div>
+              ))}
+            </motion.div>
+          </div>
+        </section>
+
+        {/* --- Why Choose Us: Modern Cards --- */}
+        <section className="py-24 px-4">
+          <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <div className="lg:pr-12">
+              <h2 className="text-4xl md:text-5xl font-black mb-6 leading-tight dark:text-white">{t("home.why.title")}</h2>
+              <p className="text-slate-600 dark:text-slate-400 mb-8">{lang === "bn" ? "কেন আমরা আলাদা? আমাদের মূল্যবোধ এবং কাজের গুণমান।" : "Why choose us? Our values and quality of work set us apart."}</p>
+              <div className="flex gap-4">
+                <div className="p-4 rounded-2xl bg-green-100 dark:bg-green-900/30 text-green-600"><ShieldCheck size={24} /></div>
+                <div className="p-4 rounded-2xl bg-blue-100 dark:bg-blue-900/30 text-blue-600"><HeartHandshake size={24} /></div>
+              </div>
+            </div>
+            
+            <div className="lg:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-4">
+              {t("home.why.authentic") && [
+                t("home.why.authentic"), t("home.why.performance"), 
+                t("home.why.ethical"), t("home.why.affordable")
+              ].map((point, idx) => (
+                <motion.div 
+                  key={idx}
+                  whileHover={{ scale: 1.02 }}
+                  className="p-8 rounded-[2rem] bg-white dark:bg-slate-900/50 border border-slate-100 dark:border-white/5 shadow-sm"
+                >
+                  <div className="h-8 w-8 bg-green-500/10 rounded-full mb-4 flex items-center justify-center text-green-600 font-bold">{idx + 1}</div>
+                  <p className="text-lg font-bold text-slate-800 dark:text-slate-200 italic">"{point}"</p>
                 </motion.div>
               ))}
             </div>
           </div>
         </section>
 
-        {/* --- Vision & Mission Side-by-Side --- */}
-        <section className="py-24 px-6">
-          <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-8">
-             {[
-              { title: t("home.mission.title"), text: t("home.mission.text"), icon: <Target size={40} className="text-green-500" /> },
-              { title: t("home.vision.title"), text: t("home.vision.text"), icon: <Eye size={40} className="text-emerald-500" /> }
-            ].map((item, i) => (
-              <motion.div 
-                key={i}
-                {...fadeInUp}
-                className="p-10 md:p-16 rounded-[3rem] bg-slate-50 dark:bg-[#0d1117] border border-gray-100 dark:border-white/5 relative overflow-hidden group"
-              >
-                <div className="absolute -right-10 -bottom-10 opacity-[0.03] dark:opacity-[0.05] group-hover:scale-110 transition-transform duration-700">
-                    {item.icon}
-                </div>
-                <div className="mb-8">{item.icon}</div>
-                <h2 className="text-3xl md:text-4xl font-black mb-6 dark:text-white">{item.title}</h2>
-                <p className="text-lg text-gray-600 dark:text-gray-400 leading-relaxed">{item.text}</p>
-              </motion.div>
-            ))}
-          </div>
-        </section>
-
-        {/* --- CTA Section --- */}
-        <section className="py-24 px-6">
+        {/* --- Dynamic CTA --- */}
+        <section className="py-20 px-4">
           <motion.div 
-            whileHover={{ scale: 0.99 }}
-            className="max-w-6xl mx-auto rounded-[3rem] bg-gradient-to-br from-green-600 via-green-700 to-emerald-900 p-12 md:p-24 text-center relative overflow-hidden shadow-2xl"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            className="max-w-7xl mx-auto relative overflow-hidden rounded-[3rem] bg-slate-900 dark:bg-green-900/20 p-12 md:p-24 text-center border border-white/10"
           >
-            <div className="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')]" />
-            
-            <div className="relative z-10">
-              <h2 className="text-3xl md:text-7xl font-black text-white mb-10 leading-[1.1]">
-                {t("home.cta.title")}
-              </h2>
-              <Link
-                to="https://docs.google.com/forms/..."
-                target="_blank"
-                className="group inline-flex items-center gap-4 bg-white text-green-800 px-10 py-5 md:px-14 md:py-7 rounded-2xl text-lg md:text-xl font-black shadow-2xl hover:bg-gray-100 transition-all active:scale-95"
-              >
-                {t("home.cta.button")}
-                <ChevronRight className="group-hover:translate-x-2 transition-transform" />
-              </Link>
-            </div>
+            <div className="absolute inset-0 bg-gradient-to-r from-green-600/20 to-transparent pointer-events-none" />
+            <h2 className="text-4xl md:text-7xl font-black text-white mb-10 leading-none">{t("home.cta.title")}</h2>
+            <Link
+              to="/join"
+              className="inline-flex items-center gap-3 bg-white text-slate-900 px-12 py-6 rounded-2xl text-xl font-black hover:bg-green-500 hover:text-white transition-all shadow-2xl"
+            >
+              {t("home.cta.button")} <ChevronRight />
+            </Link>
           </motion.div>
         </section>
 
