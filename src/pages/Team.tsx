@@ -75,7 +75,7 @@ const Team: React.FC = () => {
 			},
 		},
 		{
-			name: "Labonnay Das",
+			name: "Labonnya Das",
 			role: isBn ? "প্রশ্ন নির্মাতা" : "Question Creator",
 			icon: <HelpCircle size={32} />,
 			theme: "from-pink-500 to-rose-600",
@@ -123,7 +123,7 @@ const Team: React.FC = () => {
 			name: "MD Limon Sarkar",
 			role: isBn ? "গ্রাফিক্স নির্মাতা" : "Grapics Designer",
 			icon: <Droplet size={32} />,
-			theme: "from-yello-500 to-orange-600",
+			theme: "from-yellow-500 to-orange-600",
 			image: "",
 			socials: {
 				facebook: "https://www.facebook.com/profile.php?id=100090667061416",
