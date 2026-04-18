@@ -1,10 +1,11 @@
-import { lazy, Suspense } from 'react';
-import { Routes, Route } from 'react-router-dom';
+import { lazy, Suspense, useEffect } from 'react';
+import { Routes, Route, useLocation } from 'react-router-dom';
+import { AnimatePresence, motion } from 'framer-motion';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import { useLanguage } from './contexts/LanguageContext';
 
-// অন্যান্য পৃষ্ঠা লেজি লোড
+// Lazy loading pages
 const Home = lazy(() => import('./pages/Home'));
 const Projects = lazy(() => import('./pages/Projects'));
 const About = lazy(() => import('./pages/About'));
@@ -17,46 +18,68 @@ const StudyCornerRedirect = lazy(() => import('./pages/StudyCornerRedirect'));
 const NotFound = lazy(() => import('./pages/NotFound'));
 const JoinForm = lazy(() => import('./pages/JoinForm'));
 
-// Study সংক্রান্ত পুরনো পৃষ্ঠাগুলো সরিয়ে ফেলা হয়েছে (এগুলো এখন আলাদা অ্যাপে)
+// Scroll to top on route change
+const ScrollToTop = () => {
+  const { pathname } = useLocation();
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+  return null;
+};
 
 const App: React.FC = () => {
   const { lang } = useLanguage();
+  const location = useLocation();
 
   const PageLoader = () => (
-    <div className="flex items-center justify-center min-h-[60vh]">
-      <div className="relative">
-        <div className="animate-spin rounded-full h-20 w-20 border-t-4 border-b-4 border-green-600 dark:border-blue-400"></div>
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-          <div className="h-4 w-4 bg-green-600 dark:bg-blue-400 rounded-full animate-pulse"></div>
-        </div>
-        <p className="text-center mt-4 text-gray-600 dark:text-gray-400 font-medium">
-          {lang === 'bn' ? 'পৃষ্ঠা লোড হচ্ছে...' : 'Loading page...'}
-        </p>
+    <div className="flex flex-col items-center justify-center min-h-[80vh] bg-white dark:bg-[#020408]">
+      <div className="relative flex items-center justify-center">
+        <div className="w-20 h-20 border-4 border-green-500/20 border-t-green-600 rounded-full animate-spin"></div>
+        <div className="absolute w-12 h-12 border-4 border-emerald-500/20 border-b-emerald-500 rounded-full animate-spin-slow"></div>
       </div>
+      <motion.p 
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        className="mt-6 text-sm font-bold tracking-widest text-gray-500 uppercase dark:text-gray-400"
+      >
+        {lang === 'bn' ? 'লোড হচ্ছে...' : 'Loading Kafa\'ah...'}
+      </motion.p>
     </div>
   );
 
   return (
-    <div className="min-h-screen flex flex-col bg-white dark:bg-gray-900 text-gray-900 dark:text-white transition-colors duration-300">
+    <div className="min-h-screen flex flex-col bg-white dark:bg-[#020408] text-gray-900 dark:text-gray-100 selection:bg-green-100 selection:text-green-900 dark:selection:bg-green-900/30 transition-colors duration-500">
+      <ScrollToTop />
       <Navbar />
-      <main className="flex-grow">
-        <Suspense fallback={<PageLoader />}>
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/projects" element={<Projects />} />
-            {/* Study এর সব রাউট এখন একটি কম্পোনেন্টে */}
-            <Route path="/study" element={<StudyCornerRedirect />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/privacy-policy" element={<PrivacyPolicy />} />
-            <Route path="/joining-conditions" element={<JoiningConditions />} />
-            <Route path="/terms-conditions" element={<TermsConditions />} />
-            <Route path="/contact" element={<Contact />} />
-            <Route path="/team" element={<Team />} />
-            <Route path='/join' element={<JoinForm/>}/>
-            <Route path="/*" element={<NotFound />} />
-          </Routes>
-        </Suspense>
+      
+      <main className="flex-grow pt-16 md:pt-20"> {/* Offset for sticky navbar */}
+        <AnimatePresence mode="wait">
+          <Suspense fallback={<PageLoader />}>
+            <motion.div
+              key={location.pathname}
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -10 }}
+              transition={{ duration: 0.3, ease: "easeInOut" }}
+            >
+              <Routes location={location}>
+                <Route path="/" element={<Home />} />
+                <Route path="/projects" element={<Projects />} />
+                <Route path="/study" element={<StudyCornerRedirect />} />
+                <Route path="/about" element={<About />} />
+                <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+                <Route path="/joining-conditions" element={<JoiningConditions />} />
+                <Route path="/terms-conditions" element={<TermsConditions />} />
+                <Route path="/contact" element={<Contact />} />
+                <Route path="/team" element={<Team />} />
+                <Route path="/join" element={<JoinForm />} />
+                <Route path="/*" element={<NotFound />} />
+              </Routes>
+            </motion.div>
+          </Suspense>
+        </AnimatePresence>
       </main>
+
       <Footer />
     </div>
   );
