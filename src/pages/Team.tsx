@@ -99,8 +99,8 @@ const Team: React.FC = () => {
 		},
 		{
 			name: "Marjuk Mahmud",
-			role: isBn ? "-" : "-",
-			icon: <FileQuestion size={32} />,
+			role: isBn ? "চিন্তাবিদ" : "Thinker",
+			icon: <Brain size={32} />,
 			theme: "from-amber-400 to-orange-600",
 			image: "",
 			socials: {
@@ -123,7 +123,7 @@ const Team: React.FC = () => {
 			name: "MD Limon Sarkar",
 			role: isBn ? "গ্রাফিক্স নির্মাতা" : "Grapics Designer",
 			icon: <Droplet size={32} />,
-			theme: "from-yellow-500 to-orange-600",
+			theme: "from-orange-500 to-yellow-600",
 			image: "",
 			socials: {
 				facebook: "https://www.facebook.com/profile.php?id=100090667061416",
