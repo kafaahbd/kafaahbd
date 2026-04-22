@@ -17,7 +17,8 @@ import {
 	Edit3,
 	HelpCircle,
 	FileQuestion,
-	Droplet,// WhatsApp এর জন্য Lucide আইকন
+	Droplet,
+	Brain,// WhatsApp এর জন্য Lucide আইকন
 } from "lucide-react";
 
 interface TeamMember {
