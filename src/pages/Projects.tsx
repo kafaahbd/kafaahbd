@@ -38,8 +38,9 @@ const Projects: React.FC = () => {
       desc: t("projects.study.desc") || (isBn ? "আধুনিক শিক্ষা ও প্রযুক্তির সমন্বয়। শিক্ষার্থীদের জন্য সেরা মানের কন্টেন্ট এবং দিকনির্দেশনা।" : "Merging modern education with technology. High-quality content and guidance for students."),
       icon: <Library size={32} />,
       color: "from-emerald-500 to-teal-600",
-      image: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=1741&auto=format&fit=crop",
-      status: "in-progress"
+      image: "https://raw.githubusercontent.com/kafaahbd/kafaah/refs/heads/main/file_00000000ef98720bb731b6bfa446cc1b.png",
+      status: "in-progress",
+      
     },
     {
       title: t("projects.quran.title") || (isBn ? "কুরআন লার্নিং অ্যাপ" : "Quran Learning App"),
@@ -47,7 +48,7 @@ const Projects: React.FC = () => {
       desc: t("projects.quran.desc") || (isBn ? "সহজে কুরআন শেখার ডিজিটাল প্ল্যাটফর্ম। ইন্টারেক্টিভ মডিউল এবং অডিও সহ।" : "Digital platform to learn Quran easily. With interactive modules and audio."),
       icon: <BookOpen size={32} />,
       color: "from-indigo-500 to-purple-600",
-      image: "https://images.unsplash.com/photo-1584824486516-0555a07fc511?q=80&w=1740&auto=format&fit=crop",
+      image: "",
       status: "planned"
     },
     {
@@ -56,7 +57,7 @@ const Projects: React.FC = () => {
       desc: t("projects.english.desc") || (isBn ? "উম্মাহর জন্য সহজ ইংরেজি শিক্ষা। প্র্যাকটিসের মাধ্যমে নিজের যোগ্যতা বৃদ্ধি।" : "Easy English learning for the Ummah. Enhance your skills through practice."),
       icon: <Languages size={32} />,
       color: "from-amber-500 to-orange-600",
-      image: "https://images.unsplash.com/photo-1546410531-bd4cb01b7908?q=80&w=1740&auto=format&fit=crop",
+      image: "",
       status: "planned"
     },
   ];
