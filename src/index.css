@@ -28,3 +28,8 @@ html {
 .fade-in {
   animation: fadeInUp 0.6s ease-out forwards;
 }
+@layer components {
+  .glass-effect {
+    @apply backdrop-blur-xl bg-white/40 dark:bg-white/5 border border-white/20 dark:border-white/10 shadow-xl;
+  }
+}

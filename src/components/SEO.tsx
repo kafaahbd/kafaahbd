@@ -7,6 +7,7 @@ interface SEOProps {
   image?: string;
   url?: string;
   keywords?: string;
+  breadcrumbs?: { name: string; url: string }[];
 }
 
 const SEO: React.FC<SEOProps> = ({ 
@@ -16,13 +17,25 @@ const SEO: React.FC<SEOProps> = ({
   image = 'https://kafaahbd.com/home.jpg', 
   // পাথ ডাইনামিক করার জন্য মেইন ডোমেইন রাখা হলো
   url = '',
-  keywords = ' kafaah, study, islam, bd, education, islamic technology, ssc, hsc, admission, bangladesh, kafaahbd'
+  keywords = 'kafaah, study, islam, bd, education, islamic technology, ssc, hsc, admission, bangladesh, kafaahbd',
+  breadcrumbs = []
 }) => {
   const siteTitle = `${title} | Kafa'ah - Islamic & Multiproject Company`;
   
   // ডাইনামিক ইউআরএল কনস্ট্রাকশন (যদি url প্রপস না থাকে তবে মেইন ডোমেইন বসবে)
   const siteBase = "https://kafaahbd.com";
   const finalUrl = url ? (url.startsWith('http') ? url : `${siteBase}${url}`) : siteBase;
+
+  const breadcrumbsSchema = breadcrumbs.length > 0 ? {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": breadcrumbs.map((crumb, index) => ({
+      "@type": "ListItem",
+      "position": index + 1,
+      "name": crumb.name,
+      "item": crumb.url.startsWith('http') ? crumb.url : `${siteBase}${crumb.url}`
+    }))
+  } : null;
 
   return (
     <Helmet>
@@ -54,6 +67,22 @@ const SEO: React.FC<SEOProps> = ({
       
       {/* Canonical Link */}
       <link rel="canonical" href={finalUrl} />
+
+      {/* Structured Data for SEO */}
+      <script type="application/ld+json">
+        {JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "WebPage",
+          "name": siteTitle,
+          "description": description,
+          "url": finalUrl
+        })}
+      </script>
+      {breadcrumbsSchema && (
+        <script type="application/ld+json">
+          {JSON.stringify(breadcrumbsSchema)}
+        </script>
+      )}
     </Helmet>
   );
 };
