@@ -34,11 +34,11 @@ const Projects: React.FC = () => {
   const projects: ProjectItem[] = [
     {
       title: t("projects.study.title") || (isBn ? "স্টাডি প্রজেক্ট" : "Study Project"),
-      progress: "44%",
+      progress: "50%",
       desc: t("projects.study.desc") || (isBn ? "আধুনিক শিক্ষা ও প্রযুক্তির সমন্বয়। শিক্ষার্থীদের জন্য সেরা মানের কন্টেন্ট এবং দিকনির্দেশনা।" : "Merging modern education with technology. High-quality content and guidance for students."),
       icon: <Library size={32} />,
       color: "from-emerald-500 to-teal-600",
-      image: "https://raw.githubusercontent.com/kafaahbd/kafaah/refs/heads/main/file_00000000ef98720bb731b6bfa446cc1b.png",
+      image: "https://raw.githubusercontent.com/kafaahbd/kafaah/refs/heads/main/IMG-20260429-WA0040.jpg",
       status: "in-progress",
       
     },
