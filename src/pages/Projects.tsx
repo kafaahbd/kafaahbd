@@ -38,7 +38,7 @@ const Projects: React.FC = () => {
       desc: t("projects.study.desc") || (isBn ? "আধুনিক শিক্ষা ও প্রযুক্তির সমন্বয়। শিক্ষার্থীদের জন্য সেরা মানের কন্টেন্ট এবং দিকনির্দেশনা।" : "Merging modern education with technology. High-quality content and guidance for students."),
       icon: <Library size={32} />,
       color: "from-emerald-500 to-teal-600",
-      image: "https://raw.githubusercontent.com/kafaahbd/kafaah/refs/heads/main/IMG-20260429-WA0040.jpg",
+      image: "https://raw.githubusercontent.com/kafaahbd/nothing/refs/heads/main/file_000000008adc71fab1325234f34107a5.png",
       status: "in-progress",
       
     },
