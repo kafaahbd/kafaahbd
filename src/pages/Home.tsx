@@ -330,7 +330,7 @@ const Home: React.FC = () => {
                 {t("home.cta.title")}
               </h2>
               <Link
-                to="/contact"
+                to="/join"
                 className="group inline-flex items-center gap-3 bg-white text-emerald-800 px-8 py-4 md:px-12 md:py-5 rounded-full text-base md:text-xl font-bold shadow-xl hover:shadow-2xl hover:bg-gray-50 transition-all border border-emerald-100"
               >
                 {t("home.cta.button")}

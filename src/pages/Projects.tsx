@@ -24,6 +24,7 @@ interface ProjectItem {
   color: string;
   image: string;
   status: 'planned' | 'in-progress' | 'completed';
+  link?: string;
 }
 
 const Projects: React.FC = () => {
@@ -41,7 +42,7 @@ const Projects: React.FC = () => {
       color: "from-emerald-500 to-teal-600",
       image: "https://raw.githubusercontent.com/kafaahbd/kafaah/refs/heads/main/file_00000000ef98720bb731b6bfa446cc1b.png",
       status: "in-progress",
-      
+      link: "https://study.kafaahbd.com",
     },
     {
       title: t("projects.quran.title") || (isBn ? "কুরআন লার্নিং অ্যাপ" : "Quran Learning App"),
@@ -102,12 +103,12 @@ const Projects: React.FC = () => {
       </section>
 
       {/* Projects List (One per line) */}
-      <div className="max-w-5xl mx-auto px-4 space-y-12 md:space-y-24">
+      <div className="max-w-8xl mx-auto px-4 space-y-12 md:space-y-24">
         {projects.map((project, idx) => (
           <ScrollAnimation key={idx} direction={idx % 2 === 0 ? "left" : "right"}>
             <motion.div 
-              whileHover={{ scale: 1.01 }}
-              className="group relative flex flex-col md:flex-row bg-white/70 dark:bg-[#0a0d13]/70 backdrop-blur-2xl rounded-[2.5rem] md:rounded-[3rem] overflow-hidden border border-white/50 dark:border-white/5 shadow-xl hover:shadow-[0_20px_50px_rgba(16,185,129,0.1)] transition-all duration-700"
+              whileHover={{ scale: 1.0 }}
+              className="group relative flex flex-col md:flex-row bg-white/70 dark:bg-[#0a0d13]/70 backdrop-blur-2xl rounded-[2.5rem] md:rounded-[3rem] overflow-hidden border border-white/50 dark:border-white/5 shadow-xl hover:shadow-[0_20px_50px_rgba(16,185,129,0.1)] transition-all duration-75"
             >
               {/* Image Side */}
               <div className={`w-full md:w-5/12 h-64 md:h-auto relative overflow-hidden ${idx % 2 !== 0 ? 'md:order-2' : ''}`}>
@@ -138,7 +139,7 @@ const Projects: React.FC = () => {
                   </span>
                 </div>
 
-                <h2 className="text-3xl md:text-4xl lg:text-5xl font-black text-gray-900 dark:text-white mb-6 tracking-tight leading-tight group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r transition-all duration-300" style={{ backgroundImage: `linear-gradient(to right, var(--tw-gradient-stops))` }}>
+                <h2 className="text-3xl md:text-4xl lg:text-5xl font-black text-gray-900 dark:text-white mb-6 tracking-tight leading-tight  group-hover:bg-clip-text group-hover:bg-gradient-to-r transition-all duration-300" style={{ backgroundImage: `linear-gradient(to right, var(--tw-gradient-stops))` }}>
                   <span className={`bg-clip-text hover:bg-gradient-to-r ${project.color}`}>{project.title}</span>
                 </h2>
 
@@ -154,7 +155,8 @@ const Projects: React.FC = () => {
                    <ProgressBar progress={project.progress} />
                 </div>
 
-                <div className="mt-8 flex justify-between items-center w-full max-w-md">
+                <a href={project.link} target='_blank'>
+                  <div className="mt-8 flex justify-between items-center w-full max-w-md">
                    <span className="text-xs font-bold text-gray-400 uppercase tracking-widest italic opacity-70">
                      In Sha Allah
                    </span>
@@ -162,6 +164,7 @@ const Projects: React.FC = () => {
                      <ArrowRight size={20} className="group-hover/btn:-rotate-45 transition-transform" />
                    </button>
                 </div>
+                </a>
               </div>
             </motion.div>
           </ScrollAnimation>
