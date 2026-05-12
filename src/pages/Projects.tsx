@@ -15,6 +15,7 @@ import {
   ArrowRight
 } from 'lucide-react';
 import Latex from 'react-latex-next';
+import { Link } from 'react-router-dom';
 
 interface ProjectItem {
   title: string;
@@ -186,10 +187,12 @@ const Projects: React.FC = () => {
             <p className="text-emerald-100/90 dark:text-emerald-200/80 mb-10 md:mb-12 relative z-10 max-w-2xl mx-auto italic text-lg md:text-xl font-medium">
               {t("projects.more") || (isBn ? "আমরা উম্মাহর সেবায় নিত্যনতুন আইডিয়া নিয়ে কাজ করছি।" : "We are working on innovative ideas to serve the Ummah.")}
             </p>
+            <Link to={"/join"}>
             <button className="relative z-10 px-10 py-4 bg-white text-emerald-800 font-bold text-lg rounded-full shadow-xl hover:shadow-2xl hover:scale-105 active:scale-95 transition-all flex items-center gap-3 mx-auto">
               {isBn ? "আমাদের সাথে যুক্ত হন" : "Join Our Journey"}
               <ArrowRight size={20} />
             </button>
+            </Link>
           </div>
         </ScrollAnimation>
       </section>
