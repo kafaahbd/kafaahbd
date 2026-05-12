@@ -14,6 +14,7 @@ import {
   Layers,
   ArrowRight
 } from 'lucide-react';
+import Latex from 'react-latex-next';
 
 interface ProjectItem {
   title: string;
@@ -142,7 +143,7 @@ const Projects: React.FC = () => {
                 </h2>
 
                 <p className="text-base md:text-lg text-gray-600 dark:text-gray-400 leading-relaxed mb-8 max-w-xl">
-                  {project.desc}
+                 <Latex> {project.desc}</Latex>
                 </p>
 
                 <div className="mt-auto w-full max-w-md bg-gray-50/50 dark:bg-white/5 p-6 rounded-3xl border border-gray-100 dark:border-white/5">
