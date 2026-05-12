@@ -44,7 +44,7 @@ const Team: React.FC = () => {
 			name: "Tanvir Ishrak",
 			role: isBn ? "প্রধান স্থপতি" : "Lead Architect",
 			icon: <Cpu size={32} />,
-			theme: "from-emerald-500 to-teal-600 shadow-emerald-500/20",
+			theme: "from-blue-500 to-blue-600 shadow-emerald-500/20",
 			image: "",
 			socials: {
 				facebook: "https://www.facebook.com/tanvir.ishrak.13",
@@ -84,8 +84,18 @@ const Team: React.FC = () => {
 			},
 		},
 		{
+			name: "Jannatul Fardos Joti ",
+			role: isBn ? "প্রশ্ন নির্মাতা" : "Question Creator",
+			icon: <HelpCircle size={32} />,
+			theme: "from-emerald-500 to-teal-600 shadow-rose-500/20",
+			image: "",
+			socials: {
+				whatsapp: "",
+			},
+		},
+		{
 			name: "MD Rifat Al Mahmud",
-			role: isBn ? "বিশ্লেষক" : "Analyst",
+			role: isBn ? "বাছাইকারী" : "Selector",
 			icon: <Zap size={32} />,
 			theme: "from-rose-500 to-purple-600 shadow-purple-500/20",
 			image: "",
@@ -96,7 +106,7 @@ const Team: React.FC = () => {
 		},
 		{
 			name: "Marjuk Mahmud",
-			role: isBn ? "চিন্তাবিদ" : "Thinker",
+			role: isBn ? "-" : "-",
 			icon: <Brain size={32} />,
 			theme: "from-amber-400 to-orange-600 shadow-orange-500/20",
 			image: "",
@@ -107,7 +117,7 @@ const Team: React.FC = () => {
 		},
 		{
 			name: "Ahnaf Habib Ritom",
-			role: isBn ? "উৎসেচক" : "Enzyme",
+			role: isBn ? "-" : "-",
 			icon: <Beaker size={32} />,
 			theme: "from-blue-500 to-indigo-600 shadow-indigo-500/20",
 			image: "",
@@ -118,7 +128,7 @@ const Team: React.FC = () => {
 		},
 		{
 			name: "MD Limon Sarkar",
-			role: isBn ? "গ্রাফিক্স নির্মাতা" : "Grapics Designer",
+			role: isBn ? "-" : "-",
 			icon: <Droplet size={32} />,
 			theme: "from-orange-500 to-yellow-600 shadow-yellow-500/20",
 			image: "",
