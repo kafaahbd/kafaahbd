@@ -64,6 +64,10 @@ export const content: Record<string, Record<string, string>> = {
 		"projects.study.desc":
 			"Study Corner is a modern, interactive learning platform designed to make studying smarter, faster, and more engaging.<br><br>It brings together multiple powerful features in one place so students can learn, practice, and improve continuously.<br><br><strong>Features:</strong><br>• Exam — Take structured exams with real-time evaluation and performance tracking.<br>• Practice — Solve board-standard questions with detailed explanations.<br>• Adventure — Learn through step-by-step lessons with interactive flow.<br>• Forum — Ask questions, share knowledge, and learn with the community.<br>• Mistake Lab — Analyze mistakes and improve weak areas efficiently.<br>• Messaging — Connect and communicate with other learners.<br>• Animations — Smooth and modern UI for better user experience.<br>• Simulator — Interactive simulations to understand complex concepts easily.<br><br>",
 		"projects.more": "More coming soon InShaAllah...",
+		"projects.exam.title": "Kafaah Smart Exam System",
+
+		"projects.exam.desc":
+			"Kafaah Smart Exam System is a modern, secure, and scalable online examination platform built for coaching centers, schools, madrasas, and organizations.<br><br>It helps institutions conduct fair exams with powerful monitoring, automation, and performance analysis tools.<br><br><strong>Features:</strong><br>• Live Monitoring — Track students in real-time during exams.<br>• Suspicious Detection — Detect tab switching, fullscreen exits, copy attempts, and unusual activities.<br>• Auto Save — Automatically save answers and restore progress during connection issues.<br>• Instant Results — Generate fast and accurate results with analytics.<br>• Multi Admin System — Manage exams with multiple admins and role control.<br>• Secure Exams — Built with anti-cheat focused protections.<br>• Scalable Architecture — Designed to handle large numbers of students smoothly.<br>• Smart Dashboard — Monitor performance and exam activities efficiently.<br><br>",
 
 		// Study
 		"study.quran": "Quran Courses (coming soon)",
@@ -215,6 +219,11 @@ export const content: Record<string, Record<string, string>> = {
 		"projects.study.desc":
 			"Study Corner একটি আধুনিক ও ইন্টারঅ্যাকটিভ লার্নিং প্ল্যাটফর্ম, যা পড়াশোনাকে আরও সহজ, দ্রুত এবং আকর্ষণীয় করে তোলে।<br><br>এটি একাধিক শক্তিশালী ফিচার একসাথে নিয়ে এসেছে, যাতে শিক্ষার্থীরা শেখা, প্র্যাকটিস এবং নিজেদের উন্নতি—সবকিছু এক জায়গা থেকেই করতে পারে।<br><br><strong>ফিচারসমূহ:</strong><br>• Exam — রিয়েল-টাইম মূল্যায়ন ও পারফরম্যান্স ট্র্যাকিংসহ পরীক্ষা দেওয়ার সুবিধা।<br>• Practice — বোর্ড স্ট্যান্ডার্ড প্রশ্ন সমাধান ও বিস্তারিত ব্যাখ্যা।<br>• Adventure — ধাপে ধাপে লেসনের মাধ্যমে ইন্টারঅ্যাকটিভভাবে শেখা।<br>• Forum — প্রশ্ন করা, আলোচনা করা এবং অন্যদের সাথে শেখা।<br>• Mistake Lab — ভুল বিশ্লেষণ করে দুর্বলতা উন্নত করার ব্যবস্থা।<br>• Messaging — অন্যান্য শিক্ষার্থীদের সাথে যোগাযোগের সুবিধা।<br>• Animations — স্মুথ ও আধুনিক UI অভিজ্ঞতা।<br>• Simulator — জটিল বিষয়গুলো সহজে বোঝার জন্য ইন্টারঅ্যাকটিভ সিমুলেশন।<br><br>",
 		"projects.more": "আরো শীঘ্রই আসছে ইনশাআল্লাহ...",
+
+		"projects.exam.title": "কাফাআহ স্মার্ট এক্সাম সিস্টেম",
+
+		"projects.exam.desc":
+			"কাফাআহ স্মার্ট এক্সাম সিস্টেম হলো কোচিং সেন্টার, স্কুল, মাদ্রাসা এবং বিভিন্ন প্রতিষ্ঠানের জন্য তৈরি একটি আধুনিক, নিরাপদ এবং স্কেলেবল অনলাইন পরীক্ষা প্ল্যাটফর্ম।<br><br>এটি প্রতিষ্ঠানগুলোকে সুষ্ঠু পরীক্ষা পরিচালনা করতে সাহায্য করে উন্নত মনিটরিং, অটোমেশন এবং পারফরম্যান্স বিশ্লেষণের মাধ্যমে।<br><br><strong>ফিচারসমূহ:</strong><br>• লাইভ মনিটরিং — পরীক্ষার সময় শিক্ষার্থীদের রিয়েল-টাইম পর্যবেক্ষণ।<br>• সন্দেহজনক কার্যকলাপ শনাক্তকরণ — ট্যাব সুইচ, ফুলস্ক্রিন এক্সিট, কপি করার চেষ্টা ইত্যাদি শনাক্ত করা।<br>• অটো সেভ — ইন্টারনেট সমস্যা হলেও উত্তর স্বয়ংক্রিয়ভাবে সংরক্ষণ।<br>• ইনস্ট্যান্ট রেজাল্ট — দ্রুত ও নির্ভুল ফলাফল এবং অ্যানালিটিক্স।<br>• মাল্টি অ্যাডমিন সিস্টেম — একাধিক অ্যাডমিন দিয়ে সহজ ব্যবস্থাপনা।<br>• সিকিউর এক্সাম — নকল প্রতিরোধে ফোকাসড সিস্টেম।<br>• স্কেলেবল আর্কিটেকচার — অনেক শিক্ষার্থী একসাথে ব্যবহার করতে পারবে।<br>• স্মার্ট ড্যাশবোর্ড — পরীক্ষার কার্যক্রম ও পারফরম্যান্স সহজে পর্যবেক্ষণ।<br><br>",
 
 		// Study
 		"study.quran": "কোরআন কোর্স (শীঘ্রই আসছে)",
