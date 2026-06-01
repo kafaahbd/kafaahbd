@@ -62,7 +62,7 @@ const JoiningConditions: React.FC = () => {
         <>
           <p>
             {isBn 
-              ? "টিমের সাথে দীর্ঘমেয়াদী পথচলায় যারা নিজেদের যোগ্যতা, কাজের মান এবং লিডারশিপ স্কিল প্রমাণ করতে পারবেন, কোম্পানির স্কেলিং ফেজে তাদের জন্য মেধা ও পারফরম্যান্স মূল্যায়নের মাধ্যমে কোম্পানির প্রোফিট শেয়ার বা পার্টনারশিপ/ইক্যুইটি (Equity Allocation) পাওয়ার সুযোগ থাকবে।" 
+              ? "টিমের সাথে দীর্ঘমেয়াদী পথচলায় যারা নিজেদের যোগ্যতা, কাজের মান এবং লিডারশিপ স্কিল প্রমাণ করতে পারবেন, কোম্পানির স্কেলিং ফেজে তাদের জন্য মেধা ও পারফরম্যান্স মূল্যায়নের মাধ্যমে কোম্পানির প্রোফিট শেয়ার বা পার্টনারশিপ/ইক্যুইটি (Equity Allocation) পাওয়ার সুযোগ থাকবে।" 
               : "Core contributors who successfully validate high-tier competence, system ownership, and leadership qualities will be structurally evaluated for future equity options, options pools, or direct profit-sharing brackets during scaling phases."}
           </p>
         </>
@@ -104,7 +104,7 @@ const JoiningConditions: React.FC = () => {
         <>
           <p>
             {isBn 
-              ? "টিমের অভ্যন্তরে শালীনতা বজায় রাখা, সকল প্রকার হারাম কন্টেন্ট বা কাজ থেকে সম্পূর্ণ দূরে থাকা এবং বাকি টিম মেম্বারদের সাথে সর্বোচ্চ পেশাদার ও শ্রদ্ধাপূর্ণ যোগাযোগ বজায় রাখা প্রত্যেকের জন্য বাধ্যতামূলক।" 
+              ? "টিমের অভ্যন্তরে শালীনতা বজায় রাখা, সকল প্রকার হারাম কন্টেন্ট বা কাজ থেকে সম্পূর্ণ দূরে থাকা এবং বাকি টিম মেম্বারদের সাথে সর্বোচ্চ পেশাদার ও শ্রদ্ধাপূর্ণ যোগাযোগ বজায় রাখা প্রত্যেকের জন্য বাধ্যতামুলক।" 
               : "Upholding complete moral modesty, absolute rejection of haram elements or design architectures, and operating under a deeply professional, respectful internal communication loop are baseline requirements."}
           </p>
         </>
@@ -154,7 +154,6 @@ const JoiningConditions: React.FC = () => {
     }
   ];
 
-  // Logic to track scroll and highlight sidebar item
   useEffect(() => {
     const handleScroll = () => {
       const scrollPosition = window.scrollY + 180;
@@ -301,17 +300,19 @@ const JoiningConditions: React.FC = () => {
             </div>
           </section>
         </div>
+      </main>
 
-        {/* Action Trigger Area */}
+      {/* Action Trigger Area */}
+      <div className="max-w-5xl mx-auto px-4 relative z-10">
         <ScrollAnimation direction="up" className="mt-16 text-center">
-          <div className="max-w-2xl mx-auto bg-slate-100 dark:bg-[#090d16] border border-slate-200/60 dark:border-slate-800/80 rounded-3xl p-8 shadow-sm mb-8">
+          <div className="max-w-2xl mx-auto bg-white dark:bg-[#090d16] border border-slate-200/60 dark:border-slate-800/80 rounded-3xl p-8 shadow-sm mb-8">
             <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-2">
               {isBn ? "আপনি কি উপরের সকল শর্তাবলীতে একমত?" : "Are you ready to build with our core team?"}
             </h3>
             <p className="text-sm text-slate-500 dark:text-slate-400">
               {isBn 
                 ? "আবেদন প্রক্রিয়া সম্পন্ন করার পূর্বে প্রতিটি ক্লজ ভালোমতো পড়ে নিশ্চিত হয়ে নিন।" 
-                : "Ensure you clearly align with our bootsrapped phase goals and asset-handling pipelines before submitting."}
+                : "Ensure you clearly align with our bootstrapped phase goals and asset-handling pipelines before submitting."}
             </p>
           </div>
 
