@@ -31,21 +31,87 @@ const App: React.FC = () => {
   const { lang } = useLanguage();
   const location = useLocation();
 
-  const PageLoader = () => (
-    <div className="flex flex-col items-center justify-center min-h-[80vh] bg-white dark:bg-[#020408]">
-      <div className="relative flex items-center justify-center">
-        <div className="w-20 h-20 border-4 border-green-500/20 border-t-green-600 rounded-full animate-spin"></div>
-        <div className="absolute w-12 h-12 border-4 border-emerald-500/20 border-b-emerald-500 rounded-full animate-spin-slow"></div>
+
+const PageLoader = ({ lang = 'en' }) => {
+  const isBn = lang === 'bn';
+
+  return (
+    <div className="relative flex min-h-[80vh] w-full flex-col items-center justify-center overflow-hidden bg-white dark:bg-[#020408]">
+      {/* Dynamic Ambient Background Glow */}
+      <div className="absolute inset-0 flex items-center justify-center">
+        <motion.div
+          animate={{
+            scale: [0.8, 1.2, 0.8],
+            opacity: [0.15, 0.3, 0.15],
+          }}
+          transition={{
+            duration: 4,
+            repeat: Infinity,
+            ease: 'easeInOut',
+          }}
+          className="h-72 w-72 rounded-full bg-emerald-500/20 blur-3xl dark:bg-emerald-500/10"
+        />
       </div>
-      <motion.p 
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        className="mt-6 text-sm font-bold tracking-widest text-gray-500 uppercase dark:text-gray-400"
+
+      {/* Main Loader Core */}
+      <div className="relative flex items-center justify-center">
+        {/* Outer Rotating Glowing Ring */}
+        <motion.div
+          animate={{ rotate: 360 }}
+          transition={{ duration: 3, repeat: Infinity, ease: 'linear' }}
+          className="h-24 w-24 rounded-full border-[3px] border-transparent border-t-emerald-500 border-r-green-400 shadow-[0_0_15px_rgba(16,185,129,0.3)]"
+        />
+
+        {/* Counter-rotating Inner Ring */}
+        <motion.div
+          animate={{ rotate: -360 }}
+          transition={{ duration: 1.8, repeat: Infinity, ease: 'linear' }}
+          className="absolute h-16 w-16 rounded-full border-[3px] border-transparent border-b-emerald-400 border-l-teal-300"
+        />
+
+        {/* Central Pulsing Glowing Core */}
+        <motion.div
+          animate={{
+            scale: [0.85, 1.15, 0.85],
+            opacity: [0.6, 1, 0.6],
+          }}
+          transition={{ duration: 1.5, repeat: Infinity, ease: 'easeInOut' }}
+          className="absolute h-6 w-6 rounded-full bg-gradient-to-tr from-emerald-500 to-green-400 shadow-[0_0_20px_rgba(16,185,129,0.8)]"
+        />
+      </div>
+
+      {/* Animated Text & Dots */}
+      <motion.div
+        initial={{ opacity: 0, y: 10 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.2 }}
+        className="mt-8 flex flex-col items-center gap-2"
       >
-        {lang === 'bn' ? 'লোড হচ্ছে...' : 'Loading Kafa\'ah...'}
-      </motion.p>
+        <motion.p
+          animate={{ opacity: [0.5, 1, 0.5] }}
+          transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
+          className="bg-gradient-to-r from-gray-700 via-emerald-600 to-gray-700 bg-clip-text text-sm font-bold uppercase tracking-[0.25em] text-transparent dark:from-gray-300 dark:via-emerald-400 dark:to-gray-300"
+        >
+          {isBn ? 'লোড হচ্ছে' : "Loading Kafa'ah"}
+        </motion.p>
+
+        {/* Dynamic Loading Bar Indicator */}
+        <div className="h-[2px] w-24 overflow-hidden rounded-full bg-gray-200 dark:bg-gray-800">
+          <motion.div
+            animate={{ x: ['-100%', '100%'] }}
+            transition={{
+              duration: 1.5,
+              repeat: Infinity,
+              ease: 'easeInOut',
+            }}
+            className="h-full w-full bg-gradient-to-r from-transparent via-emerald-500 to-transparent"
+          />
+        </div>
+      </motion.div>
     </div>
   );
+};
+
 
   return (
     <div className="min-h-screen flex flex-col bg-white dark:bg-[#020408] text-gray-900 dark:text-gray-100 selection:bg-green-100 selection:text-green-900 dark:selection:bg-green-900/30 transition-colors duration-500">
